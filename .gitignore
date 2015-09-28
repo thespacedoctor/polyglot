@@ -1,0 +1,33 @@
+.metadata
+*~
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+.svn
+_git*
+*.orig
+.coverage
+.noseids
+cover/
+html_test_coverage_report/
+_ignore_*
+
+# Compiled python modules.
+*.pyc
+
+# Setuptools distribution folder.
+/dist/
+
+# Python egg metadata, regenerated from source files by setuptools.
+/*.egg-info
+/*.egg
+
+README.rst
+
+## Apache logs
+logs/*.log
+transients_cache/
+test_database.sql
+/logs/log.html
+
+path_to_settings.yaml
