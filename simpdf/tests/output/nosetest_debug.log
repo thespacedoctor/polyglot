@@ -150,3 +150,5 @@ nose.config: INFO: Ignoring files matching ['^\\.', '^_', '^setup\\.py$']
 nose.plugins.cover: ERROR: Coverage not available: unable to import coverage module
 nose.config: INFO: Ignoring files matching ['^\\.', '^_', '^setup\\.py$']
 nose.plugins.cover: ERROR: Coverage not available: unable to import coverage module
+nose.config: INFO: Ignoring files matching ['^\\.', '^_', '^setup\\.py$']
+nose.plugins.cover: ERROR: Coverage not available: unable to import coverage module

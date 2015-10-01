@@ -178,14 +178,11 @@ class printpdf():
         print "OUTPUT: " + output
         self.log.debug('output: %(output)s' % locals())
 
-        cmd = """open "%(pdfPath)s" """ % locals()
-        p = Popen(cmd, stdout=PIPE, stdin=PIPE, shell=True)
-        output = p.communicate()[0]
-        print output
-        self.log.debug('output: %(output)s' % locals())
+        # REMOVE HTML FILE
+        os.remove(filePath)
 
         self.log.info('completed the ``get`` method')
-        return printpdf
+        return pdfPath
     # xt-class-method
 
     # 5. @flagged: what actions of the base class(es) need ammending? ammend them here
