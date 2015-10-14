@@ -130,19 +130,31 @@ class printpdf():
 
         text = article["content"]
         regex = re.compile(
-            r'<span class="mw-editsection"><span class="mw-editsection-bracket">.*"mw-editsection-bracket">]')
-        text = regex.sub("", text)
+            u'<span class="mw-editsection"><span class="mw-editsection-bracket">.*"mw-editsection-bracket">]')
+        text = regex.sub(u"", text)
         regex2 = re.compile(
             u'\<sup class="noprint.*better source needed\<\/span\>\<\/a\>\<\/i\>\]\<\/sup\>', re.I)
-        text = regex2.sub("", text)
+        text = regex2.sub(u"", text)
         regex2 = re.compile(
-            r'\<a href="https\:\/\/en\.wikipedia\.org\/wiki\/.*(\#.*)"\>\<span class=\"tocnumber\"\>', re.I)
-        text = regex2.sub('<a href="\g<1>"><span class="tocnumber">', text)
+            u'\<a href="https\:\/\/en\.wikipedia\.org\/wiki\/.*(\#.*)"\>\<span class=\"tocnumber\"\>', re.I)
+        text = regex2.sub(u'<a href="\g<1>"><span class="tocnumber">', text)
+        # RECODE INTO ASCII
         title = article["title"].encode("utf-8", "ignore")
+        title = title.decode("utf-8")
+        title = title.encode("ascii", "ignore")
+        rstrings = """:/"&\\'"""
+        for i in rstrings:
+            title = title.replace(i, "")
+
+        if len(title) == 0:
+            from datetime import datetime, date, time
+            now = datetime.now()
+            title = now.strftime("%Y%m%dt%H%M%S")
+
         filePath = self.folderpath + "/" + title + ".html"
         writeFile = codecs.open(
             self.folderpath + "/" + title + ".html", encoding='utf-8', mode='w')
-        content = """
+        content = u"""
 <!DOCTYPE html>
 <html>
 <head>
