@@ -48,6 +48,7 @@ class printpdf():
         - ``log`` -- logger
         - ``settings`` -- the settings dictionary
         - ``url`` -- toe webpage url
+        - ``title`` -- title of pdf
         - ``folderpath`` -- path at which to save pdf
 
 
@@ -65,6 +66,7 @@ class printpdf():
             log,
             settings=False,
             url=False,
+            title=False,
             folderpath=False
     ):
         self.log = log
@@ -72,7 +74,7 @@ class printpdf():
         self.settings = settings
         self.url = url
         self.folderpath = folderpath
-
+        self.title = title
         # xt-self-arg-tmpx
 
         # 2. @flagged: what are the default attrributes each object could have? Add them to variable attribute set here
@@ -107,6 +109,8 @@ class printpdf():
         """
         self.log.info('starting the ``get`` method')
 
+        title = self.title
+
         printpdf = None
         url = self.url
 
@@ -139,9 +143,10 @@ class printpdf():
             u'\<a href="https\:\/\/en\.wikipedia\.org\/wiki\/.*(\#.*)"\>\<span class=\"tocnumber\"\>', re.I)
         text = regex2.sub(u'<a href="\g<1>"><span class="tocnumber">', text)
         # RECODE INTO ASCII
-        title = article["title"].encode("utf-8", "ignore")
-        title = title.decode("utf-8")
-        title = title.encode("ascii", "ignore")
+        if title == False:
+            title = article["title"].encode("utf-8", "ignore")
+            title = title.decode("utf-8")
+            title = title.encode("ascii", "ignore")
         rstrings = """:/"&\\'"""
         for i in rstrings:
             title = title.replace(i, "")
