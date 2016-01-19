@@ -132,7 +132,11 @@ class printpdf():
 
         import codecs
 
-        text = article["content"]
+        try:
+            text = article["content"]
+        except:
+            print title
+            sys.exit(0)
         regex = re.compile(
             u'<span class="mw-editsection"><span class="mw-editsection-bracket">.*"mw-editsection-bracket">]')
         text = regex.sub(u"", text)
