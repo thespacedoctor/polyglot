@@ -135,8 +135,9 @@ class printpdf():
         try:
             text = article["content"]
         except:
-            print title
-            sys.exit(0)
+            print "Can't decode the text of %(title)s - moving on" % locals()
+            return None
+
         regex = re.compile(
             u'<span class="mw-editsection"><span class="mw-editsection-bracket">.*"mw-editsection-bracket">]')
         text = regex.sub(u"", text)
