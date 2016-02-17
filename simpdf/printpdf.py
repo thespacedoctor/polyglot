@@ -114,7 +114,7 @@ class printpdf():
         thisCss = readFile.read()
         readFile.close()
 
-        if article["error"] == True:
+        if "error" in article and article["error"] == True:
             print title
             print "    " + article["messages"]
             return None
