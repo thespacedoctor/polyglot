@@ -117,7 +117,7 @@ class printpdf():
         try:
             text = article["content"]
             # RECODE INTO ASCII
-            # text=text.decode("utf-8")
+            text = text.decode("utf-8")
             text = text.encode("ascii", "dryx")
 
         except:
