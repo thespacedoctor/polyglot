@@ -114,12 +114,13 @@ class printpdf():
         thisCss = readFile.read()
         readFile.close()
 
+        if article["error"] == True:
+            print title
+            print "    " + article["messages"]
+            return None
+
         try:
             text = article["content"]
-            # RECODE INTO ASCII
-            text = text.decode("utf-8")
-            text = text.encode("ascii", "dryx")
-
         except:
             print "Can't decode the text of %(title)s - moving on" % locals()
             return None
