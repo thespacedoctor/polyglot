@@ -34,9 +34,19 @@ from dryxPython.projectsetup import setup_main_clutil
 from simpdf import authenticate
 
 
+import codecs
+# SET ENCODE ERROR RETURN VALUE
+
+
+def handler(e):
+    return (u' ', e.start + 1)
+codecs.register_error('dryx', handler)
+
 ###################################################################
 # CLASSES                                                         #
 ###################################################################
+
+
 class printpdf():
 
     """
@@ -106,6 +116,10 @@ class printpdf():
 
         try:
             text = article["content"]
+            # RECODE INTO ASCII
+            # text=text.decode("utf-8")
+            text = text.encode("ascii", "dryx")
+
         except:
             print "Can't decode the text of %(title)s - moving on" % locals()
             return None
