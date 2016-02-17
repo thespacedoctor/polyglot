@@ -16,10 +16,7 @@ printpdf.py
     - ``_someObject`` = a 'private' object that should only be changed for debugging
 
 :Notes:
-    - If you have any questions requiring this script/module please email me: d.r.young@qub.ac.uk
-
-:Tasks:
-    @review: when complete pull all general functions and classes into dryxPython
+    - If you have any questions requiring this script/module please email me: davidrobertyoung@gmail.com
 """
 ################# GLOBAL IMPORTS ####################
 import sys
@@ -29,6 +26,7 @@ import readline
 import glob
 import pickle
 import re
+import codecs
 from docopt import docopt
 from dryxPython import logs as dl
 from dryxPython import commonutils as dcu
@@ -47,19 +45,12 @@ class printpdf():
     **Key Arguments:**
         - ``log`` -- logger
         - ``settings`` -- the settings dictionary
-        - ``url`` -- toe webpage url
+        - ``url`` -- the webpage url
         - ``title`` -- title of pdf
         - ``folderpath`` -- path at which to save pdf
-
-
-    **Todo**
-        - @review: when complete, clean printpdf class
-        - @review: when complete add logging
-        - @review: when complete, decide whether to abstract class to another module
+        - ``append`` -- append this at the end of the file name (not title)
     """
     # Initialisation
-    # 1. @flagged: what are the unique attrributes for each object? Add them
-    # to __init__
 
     def __init__(
             self,
@@ -67,7 +58,8 @@ class printpdf():
             settings=False,
             url=False,
             title=False,
-            folderpath=False
+            folderpath=False,
+            append=False
     ):
         self.log = log
         log.debug("instansiating a new 'print' object")
@@ -75,15 +67,11 @@ class printpdf():
         self.url = url
         self.folderpath = folderpath
         self.title = title
+        self.append = append
         # xt-self-arg-tmpx
 
-        # 2. @flagged: what are the default attrributes each object could have? Add them to variable attribute set here
-        # Variable Data Atrributes
-
-        # 3. @flagged: what variable attrributes need overriden in any baseclass(es) used
-        # Override Variable Data Atrributes
-
-        # Initial Actions
+        # INITIAL ACTIONS
+        # AUTHENTICATE AGAINST READABILITY WEBAPP PARSER CLIENT
         self.parser_client = authenticate.authenticate(
             log=self.log,
             settings=self.settings
@@ -91,46 +79,30 @@ class printpdf():
 
         return None
 
-    def close(self):
-        del self
-        return None
-
-    # 4. @flagged: what actions does each object have to be able to perform? Add them here
-    # Method Attributes
     def get(self):
         """get the printpdf object
 
         **Return:**
-            - ``printpdf``
-
-        **Todo**
-            - @review: when complete, clean get method
-            - @review: when complete add logging
+            - ``pdfPath`` -- the path to the generated PDF
         """
         self.log.info('starting the ``get`` method')
 
+        # THE ATTRIBUTES OF THE PDF
         title = self.title
-
-        printpdf = None
         url = self.url
 
+        # PARSE THE CONTENT OF THE WEBPAGE AT THE URL
         parser_response = self.parser_client.get_article(
             self.url)
         article = parser_response.json()
 
+        # GRAB THE CSS USED TO STYLE THE WEBPAGE/PDF CONTENT
         moduleDirectory = os.path.dirname(__file__)
         cssFile = moduleDirectory + "/css/main.css"
-        import codecs
         pathToReadFile = cssFile
         readFile = codecs.open(pathToReadFile, encoding='utf-8', mode='r')
         thisCss = readFile.read()
         readFile.close()
-
-        # RECODE INTO ASCII
-        # udata=thisData.decode("utf-8")
-        # thisData=udata.encode("ascii","ignore")
-
-        import codecs
 
         try:
             text = article["content"]
@@ -138,6 +110,7 @@ class printpdf():
             print "Can't decode the text of %(title)s - moving on" % locals()
             return None
 
+        # COMMON FIXES TO HTML TO RENDER CORRECTLY
         regex = re.compile(
             u'<span class="mw-editsection"><span class="mw-editsection-bracket">.*"mw-editsection-bracket">]')
         text = regex.sub(u"", text)
@@ -147,7 +120,8 @@ class printpdf():
         regex2 = re.compile(
             u'\<a href="https\:\/\/en\.wikipedia\.org\/wiki\/.*(\#.*)"\>\<span class=\"tocnumber\"\>', re.I)
         text = regex2.sub(u'<a href="\g<1>"><span class="tocnumber">', text)
-        # RECODE INTO ASCII
+
+        # GRAB HTML TITLE IF NOT SET IN ARGUMENTS
         if title == False:
             title = article["title"].encode("utf-8", "ignore")
             title = title.decode("utf-8")
@@ -156,14 +130,20 @@ class printpdf():
         for i in rstrings:
             title = title.replace(i, "")
 
+        # USE DATETIME IF TITLE STILL NOT SET
         if len(title) == 0:
             from datetime import datetime, date, time
             now = datetime.now()
             title = now.strftime("%Y%m%dt%H%M%S")
 
-        filePath = self.folderpath + "/" + title + ".html"
+        # REGENERATE THE HTML DOCUMENT WITH CUSTOM STYLE
+        if self.append:
+            append = self.append
+        else:
+            append = ""
+        filePath = self.folderpath + "/" + title + append + ".html"
         writeFile = codecs.open(
-            self.folderpath + "/" + title + ".html", encoding='utf-8', mode='w')
+            filePath, encoding='utf-8', mode='w')
         content = u"""
 <!DOCTYPE html>
 <html>
@@ -191,6 +171,7 @@ class printpdf():
 
         print filePath
 
+        # CONVERT TO PDF WITH ELECTON PDF
         from subprocess import Popen, PIPE, STDOUT
         pdfPath = filePath.replace(".html", ".pdf")
         exe = self.settings["simpdf"]["electron path"]
@@ -207,24 +188,6 @@ class printpdf():
         return pdfPath
     # xt-class-method
 
-    # 5. @flagged: what actions of the base class(es) need ammending? ammend them here
-    # Override Method Attributes
-    # method-override-tmpx
-
-# xt-class-tmpx
-
-
-###################################################################
-# PUBLIC FUNCTIONS                                                #
-###################################################################
-# xt-worker-def
-
-# use the tab-trigger below for new function
-# xt-def-with-logger
-
-###################################################################
-# PRIVATE (HELPER) FUNCTIONS                                      #
-###################################################################
 
 if __name__ == '__main__':
     main()
