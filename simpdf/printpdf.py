@@ -80,6 +80,7 @@ class printpdf():
         self.folderpath = folderpath
         self.title = title
         self.append = append
+        self.readability = readability
         # xt-self-arg-tmpx
 
         # INITIAL ACTIONS
@@ -103,7 +104,7 @@ class printpdf():
         title = self.title
         url = self.url
 
-        if not readability:
+        if not self.readability:
             # CONVERT TO PDF WITH ELECTON PDF
             from subprocess import Popen, PIPE, STDOUT
             pdfPath = self.folderpath + "/" + title + append + ".pdf"
