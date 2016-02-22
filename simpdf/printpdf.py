@@ -59,6 +59,7 @@ class printpdf():
         - ``title`` -- title of pdf
         - ``folderpath`` -- path at which to save pdf
         - ``append`` -- append this at the end of the file name (not title)
+        - ``readability`` -- clean text with readability
     """
     # Initialisation
 
@@ -69,7 +70,8 @@ class printpdf():
             url=False,
             title=False,
             folderpath=False,
-            append=False
+            append=False,
+            readability=True
     ):
         self.log = log
         log.debug("instansiating a new 'print' object")
@@ -100,6 +102,18 @@ class printpdf():
         # THE ATTRIBUTES OF THE PDF
         title = self.title
         url = self.url
+
+        if not readability:
+            # CONVERT TO PDF WITH ELECTON PDF
+            from subprocess import Popen, PIPE, STDOUT
+            pdfPath = self.folderpath + "/" + title + append + ".pdf"
+            exe = self.settings["simpdf"]["electron path"]
+            cmd = """%(exe)s -i "%(url)s" -o "%(pdfPath)s" """ % locals()
+            p = Popen(cmd, stdout=PIPE, stdin=PIPE, shell=True)
+            output = p.communicate()[0]
+            print "OUTPUT: " + output
+            self.log.debug('output: %(output)s' % locals())
+            return pdfPath
 
         # PARSE THE CONTENT OF THE WEBPAGE AT THE URL
         parser_response = self.parser_client.get_article(
