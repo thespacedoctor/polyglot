@@ -104,7 +104,14 @@ class printpdf():
         title = self.title
         url = self.url
 
+        # APPEND TO FILENAME?
+        if self.append:
+            append = self.append
+        else:
+            append = ""
+
         if not self.readability:
+
             # CONVERT TO PDF WITH ELECTON PDF
             from subprocess import Popen, PIPE, STDOUT
             pdfPath = self.folderpath + "/" + title + append + ".pdf"
@@ -167,10 +174,6 @@ class printpdf():
             title = now.strftime("%Y%m%dt%H%M%S")
 
         # REGENERATE THE HTML DOCUMENT WITH CUSTOM STYLE
-        if self.append:
-            append = self.append
-        else:
-            append = ""
         filePath = self.folderpath + "/" + title + append + ".html"
         writeFile = codecs.open(
             filePath, encoding='utf-8', mode='w')
