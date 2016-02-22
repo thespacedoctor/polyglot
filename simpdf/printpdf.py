@@ -116,7 +116,7 @@ class printpdf():
             from subprocess import Popen, PIPE, STDOUT
             pdfPath = self.folderpath + "/" + title + append + ".pdf"
             exe = self.settings["simpdf"]["electron path"]
-            cmd = """%(exe)s -i "%(url)s" -o "%(pdfPath)s" --printBackground=True """ % locals()
+            cmd = """%(exe)s -i "%(url)s" -o "%(pdfPath)s" --printBackground="True" """ % locals()
             p = Popen(cmd, stdout=PIPE, stdin=PIPE, shell=True)
             output = p.communicate()[0]
             print "OUTPUT: " + output
