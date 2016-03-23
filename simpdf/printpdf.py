@@ -126,6 +126,8 @@ class printpdf():
         # PARSE THE CONTENT OF THE WEBPAGE AT THE URL
         parser_response = self.parser_client.get_article(
             self.url)
+        if "503" in str(parser_response):
+            return None
         article = parser_response.json()
 
         # GRAB THE CSS USED TO STYLE THE WEBPAGE/PDF CONTENT
