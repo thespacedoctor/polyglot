@@ -1,10 +1,7 @@
 #!/usr/local/bin/python
 # encoding: utf-8
 """
-authenticate.py
-===============
-:Summary:
-    Authenticate against readability api
+*Authenticate against readability api*
 
 :Author:
     David Young
@@ -12,13 +9,8 @@ authenticate.py
 :Date Created:
     September 28, 2015
 
-:dryx syntax:
-    - ``_someObject`` = a 'private' object that should only be changed for debugging
-
-:Notes:
-    - If you have any questions requiring this script/module please email me: d.r.young@qub.ac.uk
-
-:Tasks:
+.. todo::
+    
     @review: when complete pull all general functions and classes into dryxPython
 """
 ################# GLOBAL IMPORTS ####################
@@ -31,7 +23,7 @@ import pickle
 from docopt import docopt
 from dryxPython import logs as dl
 from dryxPython import commonutils as dcu
-from dryxPython.projectsetup import setup_main_clutil
+from fundamentals import tools, times
 
 ###################################################################
 # CLASSES                                                         #
@@ -41,14 +33,15 @@ from dryxPython.projectsetup import setup_main_clutil
 class authenticate():
 
     """
-    The worker class for the authenticate module
+    *The worker class for the authenticate module*
 
     **Key Arguments:**
         - ``log`` -- logger
         - ``settings`` -- the settings dictionary
 
 
-    **Todo**
+    .. todo::
+
         - @review: when complete, clean authenticate class
         - @review: when complete add logging
         - @review: when complete, decide whether to abstract class to another module
@@ -81,12 +74,14 @@ class authenticate():
     # 4. @flagged: what actions does each object have to be able to perform? Add them here
     # Method Attributes
     def get(self):
-        """get the authenticate object
+        """
+        *get the authenticate object*
 
         **Return:**
             - ``authenticate``
 
-        **Todo**
+        .. todo::
+
             - @review: when complete, clean get method
             - @review: when complete add logging
         """

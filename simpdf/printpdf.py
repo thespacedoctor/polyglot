@@ -1,22 +1,13 @@
 #!/usr/local/bin/python
 # encoding: utf-8
 """
-printpdf.py
-===========
-:Summary:
-    Print a clean simple PDF using URL passed as argument
+*Print a clean simple PDF using URL passed as argument*
 
 :Author:
     David Young
 
 :Date Created:
     September 28, 2015
-
-:dryx syntax:
-    - ``_someObject`` = a 'private' object that should only be changed for debugging
-
-:Notes:
-    - If you have any questions requiring this script/module please email me: davidrobertyoung@gmail.com
 """
 ################# GLOBAL IMPORTS ####################
 import sys
@@ -30,7 +21,7 @@ import codecs
 from docopt import docopt
 from dryxPython import logs as dl
 from dryxPython import commonutils as dcu
-from dryxPython.projectsetup import setup_main_clutil
+from fundamentals import tools, times
 from simpdf import authenticate
 
 
@@ -50,7 +41,7 @@ codecs.register_error('dryx', handler)
 class printpdf():
 
     """
-    The worker class for the printpdf module
+    *The worker class for the printpdf module*
 
     **Key Arguments:**
         - ``log`` -- logger
@@ -93,7 +84,8 @@ class printpdf():
         return None
 
     def get(self):
-        """get the printpdf object
+        """
+        *get the printpdf object*
 
         **Return:**
             - ``pdfPath`` -- the path to the generated PDF

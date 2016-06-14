@@ -1,4 +1,4 @@
-from dryxPython.utKit import utKit
+from fundamentals import utKit
 
 # OVERRIDES
 
@@ -6,7 +6,7 @@ from dryxPython.utKit import utKit
 class utKit(utKit):
 
     """
-    Override dryx utKit
+    *Override dryx utKit*
     """
     # Variable Data Atrributes
 

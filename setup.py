@@ -21,6 +21,7 @@ setup(name='simpdf',
       author_email='davidrobertyoung@gmail.com',
       license='MIT',
       packages=['simpdf'],
+      include_package_data=True,
       install_requires=[
           'pyyaml',
       ],
