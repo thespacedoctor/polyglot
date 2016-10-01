@@ -22,7 +22,7 @@ _ignore_*
 /*.egg-info
 /*.egg
 
-README.rst
+package_description
 
 ## Apache logs
 logs/*.log
@@ -31,3 +31,5 @@ test_database.sql
 /logs/log.html
 
 path_to_settings.yaml
+blog-post.md
+blog-post.rst
