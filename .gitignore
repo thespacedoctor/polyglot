@@ -33,3 +33,4 @@ test_database.sql
 path_to_settings.yaml
 blog-post.md
 blog-post.rst
+simpdf/css/config.codekit
