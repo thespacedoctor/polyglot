@@ -1,13 +1,34 @@
-from setuptools import setup
+from setuptools import setup, find_packages
+import os
+
+moduleDirectory = os.path.dirname(os.path.realpath(__file__))
+exec(open(moduleDirectory + "/simpdf/__version__.py").read())
 
 
 def readme():
-    with open('README.rst') as f:
+    with open(moduleDirectory + '/README.rst') as f:
         return f.read()
 
-setup(name='simpdf',
-      version='0.1',
-      description='',
+install_requires = [
+    'pyyaml',
+    'simpdf',
+    'fundamentals'
+]
+
+# READ THE DOCS SERVERS
+exists = os.path.exists("/home/docs/")
+if exists:
+    c_exclude_list = ['healpy', 'astropy',
+                      'numpy', 'sherlock', 'wcsaxes', 'HMpTy', 'ligo-gracedb']
+    for e in c_exclude_list:
+        try:
+            install_requires.remove(e)
+        except:
+            pass
+
+setup(name="simpdf",
+      version=__version__,
+      description="Using the readability parser API generate clean HTML and PDF documents of articles found on the web",
       long_description=readme(),
       classifiers=[
           'Development Status :: 4 - Beta',
@@ -15,19 +36,19 @@ setup(name='simpdf',
           'Programming Language :: Python :: 2.7',
           'Topic :: Utilities',
       ],
-      keywords='utilities dryx',
-      # url='https://github.com/thespacedoctor/simpdf',
-      author='thespacedoctor',
+      keywords=['pdf, html, parser'],
+      url='https://github.com/thespacedoctor/simpdf',
+      download_url='https://github.com/thespacedoctor/simpdf/archive/v%(__version__)s.zip' % locals(
+      ),
+      author='David Young',
       author_email='davidrobertyoung@gmail.com',
       license='MIT',
-      packages=['simpdf'],
+      packages=find_packages(),
       include_package_data=True,
-      install_requires=[
-          'pyyaml',
-      ],
+      install_requires=install_requires,
       test_suite='nose.collector',
       tests_require=['nose', 'nose-cover3'],
       entry_points={
-          'console_scripts': ['simpdf=simpdf.cl_utils:main']
+          'console_scripts': ['simpdf=simpdf.cl_utils:main'],
       },
       zip_safe=False)

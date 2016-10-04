@@ -1,0 +1,346 @@
+
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>simpdf &mdash; simpdf 0.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/dryx.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="simpdf 0.1 documentation" href="#"/>
+        <link rel="next" title="Installation" href="_includes/index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="#" class="icon icon-home"> simpdf
+          
+
+          
+            
+            <img src="_static/thespacedoctor_icon_white_circle.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_includes/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_includes/index.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_includes/index.html#documentation">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_includes/index.html#tutorial">Tutorial</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="autosummary.html">Subpackages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autosummary.html#modules">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autosummary.html#classes">Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autosummary.html#functions">Functions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="#">simpdf</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="#">Docs</a> &raquo;</li>
+      
+    <li>simpdf</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/index.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="simpdf">
+<h1>simpdf<a class="headerlink" href="#simpdf" title="Permalink to this headline">  ∞</a></h1>
+<p><em>Using the readability parser API generate clean HTML and PDF documents of articles found on the web</em>.</p>
+<div class="toctree-wrapper compound" id="getting-started">
+<p class="caption"><span class="caption-text">Getting Started</span><a class="headerlink" href="#getting-started" title="Permalink to this toctree">  ∞</a></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_includes/index.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_includes/index.html#development">Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_includes/index.html#issues">Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_includes/index.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_includes/index.html#documentation">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_includes/index.html#tutorial">Tutorial</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">  ∞</a></h1>
+<p>The easiest way to install simpdf us to use <code class="docutils literal"><span class="pre">pip</span></code>:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">simpdf</span>
+</pre></div>
+</div>
+<p>Or you can clone the <a class="reference external" href="https://github.com/thespacedoctor/simpdf">github repo</a> and install from a local version of the code:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">thespacedoctor</span><span class="o">/</span><span class="n">simpdf</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">simpdf</span>
+<span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>To upgrade to the latest version of simpdf use the command:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">simpdf</span> <span class="o">--</span><span class="n">upgrade</span>
+</pre></div>
+</div>
+<div class="section" id="development">
+<h2>Development<a class="headerlink" href="#development" title="Permalink to this headline">  ∞</a></h2>
+<p>If you want to tinker with the code, then install in development mode.
+This means you can modify the code from your cloned repo:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">thespacedoctor</span><span class="o">/</span><span class="n">simpdf</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">simpdf</span>
+<span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">develop</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/thespacedoctor/simpdf/pulls">Pull requests</a>
+are welcomed!</p>
+</div>
+<div class="section" id="issues">
+<h2>Issues<a class="headerlink" href="#issues" title="Permalink to this headline">  ∞</a></h2>
+<p>Please report any issues
+<a class="reference external" href="https://github.com/thespacedoctor/simpdf/issues">here</a>.</p>
+</div>
+</div>
+<div class="section" id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">  ∞</a></h1>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>*CL tool <span class="k">for</span> simpdf*
+
+:Author:
+    David Young
+
+:Date Created:
+    September 28, 2015
+
+Usage:
+    simpdf url &lt;urlToParse&gt; &lt;destinationFolder&gt; <span class="o">[</span>-s &lt;pathToSettingsFile&gt;<span class="o">]</span>
+
+    -h, --help            show this <span class="nb">help</span> message
+    -v, --version         show version
+    -s, --settings        the settings file
+    urlToParse            the url of the article to parse and convert to PDF
+    destinationFolder     the folder to add the parsed PDF to
+</pre></div>
+</div>
+</div>
+<div class="section" id="documentation">
+<h1>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">  ∞</a></h1>
+<p>Documentation for simpdf is hosted by <a class="reference external" href="http://simpdf.readthedocs.org/en/stable/">Read the Docs</a> (last <a class="reference external" href="http://simpdf.readthedocs.org/en/stable/">stable version</a> and <a class="reference external" href="http://simpdf.readthedocs.org/en/latest/">latest version</a>).</p>
+</div>
+<div class="section" id="tutorial">
+<h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">  ∞</a></h1>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<ul class="last simple">
+<li>add tutorial</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound" id="id1">
+<p class="caption"><span class="caption-text">Documentation</span><a class="headerlink" href="#id1" title="Permalink to this toctree">  ∞</a></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="autosummary.html">Subpackages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_autosummary/simpdf.html">simpdf (<em>subpackage</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_autosummary/simpdf.commonutils.html">simpdf.commonutils (<em>subpackage</em>)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="autosummary.html#modules">Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_autosummary/simpdf.cl_utils.html">simpdf.cl_utils (<em>module</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_autosummary/simpdf.utKit.html">simpdf.utKit (<em>module</em>)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="autosummary.html#classes">Classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_autosummary/simpdf.authenticate.html">simpdf.authenticate (<em>class</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_autosummary/simpdf.htmlCleaner.html">simpdf.htmlCleaner (<em>class</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_autosummary/simpdf.printpdf.html">simpdf.printpdf (<em>class</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_autosummary/simpdf.utKit.utKit.html">simpdf.utKit.utKit (<em>class</em>)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="autosummary.html#functions">Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_autosummary/simpdf.cl_utils.tab_complete.html">simpdf.cl_utils.tab_complete (<em>function</em>)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="indexes">
+<span id="id2"></span><h2>Indexes<a class="headerlink" href="#indexes" title="Permalink to this headline">  ∞</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Full Index</span></a></li>
+</ul>
+</div>
+<div class="section" id="todo">
+<h2>Todo<a class="headerlink" href="#todo" title="Permalink to this headline">  ∞</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="todo.html">Todolist</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="_includes/index.html" class="btn btn-neutral float-right" title="Installation" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Dave Young.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
