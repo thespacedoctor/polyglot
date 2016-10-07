@@ -37,3 +37,4 @@ simpdf/css/config.codekit
 /simpdf/tests/input/Localization.html
 /simpdf/tests/input/example_settings.yaml
 nosetest_debug.log
+/build
