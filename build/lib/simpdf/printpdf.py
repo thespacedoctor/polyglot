@@ -19,8 +19,6 @@ import pickle
 import re
 import codecs
 from docopt import docopt
-from dryxPython import logs as dl
-from dryxPython import commonutils as dcu
 from fundamentals import tools, times
 from simpdf import authenticate
 

@@ -26,8 +26,6 @@ import readline
 import glob
 import pickle
 from docopt import docopt
-from dryxPython import logs as dl
-from dryxPython import commonutils as dcu
 from fundamentals import tools, times
 from simpdf import printpdf
 # from ..__init__ import *

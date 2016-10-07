@@ -29,6 +29,9 @@ class htmlCleaner():
         - ``url`` -- the URL to the HTML page to parse and clean
         - ``outputDirectory`` -- path to the directory to save the output html file to
         - ``title`` -- title of the document to save. If false will take the title of the HTML page as the filename. Default *False*.
+        - ``style`` -- add simpdf's styling to the HTML document. Default *True*
+        - ``metadata`` -- include metadata in generated HTML. Default *True*
+        - ``h1`` -- include title as H1 at the top of the doc
 
     **Usage:**
 
@@ -68,7 +71,10 @@ class htmlCleaner():
             settings,
             url,
             outputDirectory=False,
-            title=False
+            title=False,
+            style=True,
+            metadata=True,
+            h1=True
     ):
         self.log = log
         log.debug("instansiating a new 'htmlCleaner' object")
@@ -76,7 +82,9 @@ class htmlCleaner():
         self.url = url
         self.outputDirectory = outputDirectory
         self.title = title
-        # xt-self-arg-tmpx
+        self.style = style
+        self.metadata = metadata
+        self.h1 = h1
 
         # INITIAL ACTIONS
         # AUTHENTICATE AGAINST READABILITY WEBAPP PARSER CLIENT
@@ -109,7 +117,7 @@ class htmlCleaner():
                 )
                 cleaner.clean()  
 
-            Or give the cleaner the name of the document:
+            Or give the cleaner the name of the document, and don't apply style:
 
             .. code-block:: python 
 
@@ -119,7 +127,8 @@ class htmlCleaner():
                     settings=settings,
                     url="http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html",
                     outputDirectory="/tmp",
-                    title="my_clean_doc.html"
+                    title="my_clean_doc.html",
+                    style=False
                 )
                 cleaner.clean() 
         """
@@ -134,12 +143,15 @@ class htmlCleaner():
         article = parser_response.json()
 
         # GRAB THE CSS USED TO STYLE THE WEBPAGE/PDF CONTENT
-        moduleDirectory = os.path.dirname(__file__)
-        cssFile = moduleDirectory + "/css/main.css"
-        pathToReadFile = cssFile
-        readFile = codecs.open(pathToReadFile, encoding='utf-8', mode='r')
-        thisCss = readFile.read()
-        readFile.close()
+        if self.style:
+            moduleDirectory = os.path.dirname(__file__)
+            cssFile = moduleDirectory + "/css/main.css"
+            pathToReadFile = cssFile
+            readFile = codecs.open(pathToReadFile, encoding='utf-8', mode='r')
+            thisCss = readFile.read()
+            readFile.close()
+        else:
+            thisCss = ""
 
         # CATCH ERRORS
         if "error" in article and article["error"] == True:
@@ -186,12 +198,21 @@ class htmlCleaner():
         filePath = self.outputDirectory + "/" + title + ".html"
         writeFile = codecs.open(
             filePath, encoding='utf-8', mode='w')
+        if self.metadata:
+            metadata = "<title>%(title)s</title>" % locals()
+        else:
+            metadata = ""
+
+        if self.h1:
+            h1 = "<h1>%(pageTitle)s</h1>" % locals()
+        else:
+            h1 = ""
         content = u"""
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>%(title)s</title>
+%(metadata)s 
 
 <style>
 %(thisCss)s
@@ -200,7 +221,7 @@ class htmlCleaner():
 </head>
 <body>
 
-<h1>%(pageTitle)s</h1>
+%(h1)s 
 <a href="%(url)s">original source</a>
 </br></br>
 

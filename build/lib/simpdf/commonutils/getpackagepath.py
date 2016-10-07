@@ -8,17 +8,11 @@
 
 :Date Created:
     October 24, 2013
-
-.. todo::
-    
-    - [ ] when complete pull all general functions and classes into dryxPython
 """
 ################# GLOBAL IMPORTS ####################
 import sys
 import os
-from docopt import docopt
-from dryxPython import logs as dl
-from dryxPython import commonutils as dcu
+
 
 ###################################################################
 # CLASSES                                                         #

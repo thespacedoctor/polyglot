@@ -152,7 +152,10 @@
            <div itemprop="articleBody">
             
   <h1>Source code for simpdf.utKit</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">fundamentals</span> <span class="k">import</span> <span class="n">utKit</span>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">*Unit testing tools*</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">fundamentals</span> <span class="k">import</span> <span class="n">utKit</span>
 
 <span class="c1"># OVERRIDES</span>
 
@@ -166,6 +169,69 @@
 
     <span class="c1"># Override Variable Data Atrributes</span>
     <span class="c1"># xdpc-override-utkit-init</span>
+
+
+<span class="c1"># +++++++++++++++++++ NEW CONTENT ++++++++++++++++++</span>
+
+
+<span class="kn">from</span> <span class="nn">fundamentals</span> <span class="k">import</span> <span class="n">utKit</span>
+
+<span class="c1"># OVERRIDES</span>
+
+
+<span class="k">class</span> <span class="nc">utKit</span><span class="p">(</span><span class="n">utKit</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    *Override dryx utKit*</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Variable Data Atrributes</span>
+
+    <span class="c1"># Override Variable Data Atrributes</span>
+    <span class="c1"># Initialisation</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">moduleDirectory</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">moduleDirectory</span> <span class="o">=</span> <span class="n">moduleDirectory</span>
+        <span class="c1"># x-self-arg-tmpx</span>
+
+        <span class="c1"># SETUP PATHS TO COMMON DIRECTORIES FOR TEST DATA</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pathToInputDir</span> <span class="o">=</span> <span class="n">moduleDirectory</span> <span class="o">+</span> <span class="s2">&quot;/input/&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pathToOutputDir</span> <span class="o">=</span> <span class="n">moduleDirectory</span> <span class="o">+</span> <span class="s2">&quot;/output/&quot;</span>
+
+        <span class="c1"># SETUP LOGGING</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loggerConfig</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        version: 1</span>
+<span class="s2">        formatters:</span>
+<span class="s2">            file_style:</span>
+<span class="s2">                format: &#39;* </span><span class="si">%(asctime)s</span><span class="s2"> - </span><span class="si">%(name)s</span><span class="s2"> - </span><span class="si">%(levelname)s</span><span class="s2"> (</span><span class="si">%(filename)s</span><span class="s2"> &gt; </span><span class="si">%(funcName)s</span><span class="s2"> &gt; </span><span class="si">%(lineno)d</span><span class="s2">) - </span><span class="si">%(message)s</span><span class="s2">  &#39;</span>
+<span class="s2">                datefmt: &#39;%Y/%m/</span><span class="si">%d</span><span class="s2"> %H:%M:%S&#39;</span>
+<span class="s2">            console_style:</span>
+<span class="s2">                format: &#39;* </span><span class="si">%(asctime)s</span><span class="s2"> - </span><span class="si">%(levelname)s</span><span class="s2">: </span><span class="si">%(filename)s</span><span class="s2">:</span><span class="si">%(funcName)s</span><span class="s2">:</span><span class="si">%(lineno)d</span><span class="s2"> &gt; </span><span class="si">%(message)s</span><span class="s2">&#39;</span>
+<span class="s2">                datefmt: &#39;%H:%M:%S&#39;</span>
+<span class="s2">            html_style:</span>
+<span class="s2">                format: &#39;&lt;div id=&quot;row&quot; class=&quot;</span><span class="si">%(levelname)s</span><span class="s2">&quot;&gt;&lt;span class=&quot;date&quot;&gt;</span><span class="si">%(asctime)s</span><span class="s2">&lt;/span&gt;   &lt;span class=&quot;label&quot;&gt;file:&lt;/span&gt;&lt;span class=&quot;filename&quot;&gt;</span><span class="si">%(filename)s</span><span class="s2">&lt;/span&gt;   &lt;span class=&quot;label&quot;&gt;method:&lt;/span&gt;&lt;span class=&quot;funcName&quot;&gt;</span><span class="si">%(funcName)s</span><span class="s2">&lt;/span&gt;   &lt;span class=&quot;label&quot;&gt;line#:&lt;/span&gt;&lt;span class=&quot;lineno&quot;&gt;</span><span class="si">%(lineno)d</span><span class="s2">&lt;/span&gt; &lt;span class=&quot;pathname&quot;&gt;</span><span class="si">%(pathname)s</span><span class="s2">&lt;/span&gt;  &lt;div class=&quot;right&quot;&gt;&lt;span class=&quot;message&quot;&gt;</span><span class="si">%(message)s</span><span class="s2">&lt;/span&gt;&lt;span class=&quot;levelname&quot;&gt;</span><span class="si">%(levelname)s</span><span class="s2">&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&#39;</span>
+<span class="s2">                datefmt: &#39;%Y-%m-</span><span class="si">%d</span><span class="s2"> &lt;span class= &quot;time&quot;&gt;%H:%M &lt;span class= &quot;seconds&quot;&gt;%Ss&lt;/span&gt;&lt;/span&gt;&#39;</span>
+<span class="s2">        handlers:</span>
+<span class="s2">            console:</span>
+<span class="s2">                class: logging.StreamHandler</span>
+<span class="s2">                level: DEBUG</span>
+<span class="s2">                formatter: console_style</span>
+<span class="s2">                stream: ext://sys.stdout</span>
+<span class="s2">        root:</span>
+<span class="s2">            level: DEBUG</span>
+<span class="s2">            handlers: [console]&quot;&quot;&quot;</span>
+
+        <span class="c1"># Override Variable Data Atrributes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dbConfig</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">         version: 1</span>
+<span class="s2">         db: dryx_unit_testing</span>
+<span class="s2">         host: localhost</span>
+<span class="s2">         user: unittesting</span>
+<span class="s2">         password: utpass</span>
+<span class="s2">         &quot;&quot;&quot;</span>
+
+        <span class="k">return</span>
 
 
 <span class="c1"># +++++++++++++++++++ NEW CONTENT ++++++++++++++++++</span>

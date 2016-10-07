@@ -183,6 +183,9 @@
 <span class="sd">        - ``url`` -- the URL to the HTML page to parse and clean</span>
 <span class="sd">        - ``outputDirectory`` -- path to the directory to save the output html file to</span>
 <span class="sd">        - ``title`` -- title of the document to save. If false will take the title of the HTML page as the filename. Default *False*.</span>
+<span class="sd">        - ``style`` -- add simpdf&#39;s styling to the HTML document. Default *True*</span>
+<span class="sd">        - ``metadata`` -- include metadata in generated HTML. Default *True*</span>
+<span class="sd">        - ``h1`` -- include title as H1 at the top of the doc</span>
 
 <span class="sd">    **Usage:**</span>
 
@@ -222,7 +225,10 @@
             <span class="n">settings</span><span class="p">,</span>
             <span class="n">url</span><span class="p">,</span>
             <span class="n">outputDirectory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-            <span class="n">title</span><span class="o">=</span><span class="kc">False</span>
+            <span class="n">title</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">style</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">metadata</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">h1</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">log</span> <span class="o">=</span> <span class="n">log</span>
         <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;instansiating a new &#39;htmlCleaner&#39; object&quot;</span><span class="p">)</span>
@@ -230,7 +236,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">url</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">outputDirectory</span> <span class="o">=</span> <span class="n">outputDirectory</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">title</span>
-        <span class="c1"># xt-self-arg-tmpx</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">style</span> <span class="o">=</span> <span class="n">style</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span> <span class="o">=</span> <span class="n">metadata</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">h1</span> <span class="o">=</span> <span class="n">h1</span>
 
         <span class="c1"># INITIAL ACTIONS</span>
         <span class="c1"># AUTHENTICATE AGAINST READABILITY WEBAPP PARSER CLIENT</span>
@@ -263,7 +271,7 @@
 <span class="sd">                )</span>
 <span class="sd">                cleaner.clean()  </span>
 
-<span class="sd">            Or give the cleaner the name of the document:</span>
+<span class="sd">            Or give the cleaner the name of the document, and don&#39;t apply style:</span>
 
 <span class="sd">            .. code-block:: python </span>
 
@@ -273,7 +281,8 @@
 <span class="sd">                    settings=settings,</span>
 <span class="sd">                    url=&quot;http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html&quot;,</span>
 <span class="sd">                    outputDirectory=&quot;/tmp&quot;,</span>
-<span class="sd">                    title=&quot;my_clean_doc.html&quot;</span>
+<span class="sd">                    title=&quot;my_clean_doc.html&quot;,</span>
+<span class="sd">                    style=False</span>
 <span class="sd">                )</span>
 <span class="sd">                cleaner.clean() </span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -288,12 +297,15 @@
         <span class="n">article</span> <span class="o">=</span> <span class="n">parser_response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
         <span class="c1"># GRAB THE CSS USED TO STYLE THE WEBPAGE/PDF CONTENT</span>
-        <span class="n">moduleDirectory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">)</span>
-        <span class="n">cssFile</span> <span class="o">=</span> <span class="n">moduleDirectory</span> <span class="o">+</span> <span class="s2">&quot;/css/main.css&quot;</span>
-        <span class="n">pathToReadFile</span> <span class="o">=</span> <span class="n">cssFile</span>
-        <span class="n">readFile</span> <span class="o">=</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">pathToReadFile</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-        <span class="n">thisCss</span> <span class="o">=</span> <span class="n">readFile</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-        <span class="n">readFile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">style</span><span class="p">:</span>
+            <span class="n">moduleDirectory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">)</span>
+            <span class="n">cssFile</span> <span class="o">=</span> <span class="n">moduleDirectory</span> <span class="o">+</span> <span class="s2">&quot;/css/main.css&quot;</span>
+            <span class="n">pathToReadFile</span> <span class="o">=</span> <span class="n">cssFile</span>
+            <span class="n">readFile</span> <span class="o">=</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">pathToReadFile</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+            <span class="n">thisCss</span> <span class="o">=</span> <span class="n">readFile</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            <span class="n">readFile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">thisCss</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 
         <span class="c1"># CATCH ERRORS</span>
         <span class="k">if</span> <span class="s2">&quot;error&quot;</span> <span class="ow">in</span> <span class="n">article</span> <span class="ow">and</span> <span class="n">article</span><span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
@@ -340,12 +352,21 @@
         <span class="n">filePath</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outputDirectory</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">title</span> <span class="o">+</span> <span class="s2">&quot;.html&quot;</span>
         <span class="n">writeFile</span> <span class="o">=</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span>
             <span class="n">filePath</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">:</span>
+            <span class="n">metadata</span> <span class="o">=</span> <span class="s2">&quot;&lt;title&gt;</span><span class="si">%(title)s</span><span class="s2">&lt;/title&gt;&quot;</span> <span class="o">%</span> <span class="nb">locals</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">metadata</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">h1</span><span class="p">:</span>
+            <span class="n">h1</span> <span class="o">=</span> <span class="s2">&quot;&lt;h1&gt;</span><span class="si">%(pageTitle)s</span><span class="s2">&lt;/h1&gt;&quot;</span> <span class="o">%</span> <span class="nb">locals</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">h1</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="n">content</span> <span class="o">=</span> <span class="s2">u&quot;&quot;&quot;</span>
 <span class="s2">&lt;!DOCTYPE html&gt;</span>
 <span class="s2">&lt;html&gt;</span>
 <span class="s2">&lt;head&gt;</span>
 <span class="s2">&lt;meta charset=&quot;utf-8&quot;&gt;</span>
-<span class="s2">&lt;title&gt;</span><span class="si">%(title)s</span><span class="s2">&lt;/title&gt;</span>
+<span class="si">%(metadata)s</span><span class="s2"> </span>
 
 <span class="s2">&lt;style&gt;</span>
 <span class="si">%(thisCss)s</span><span class="s2"></span>
@@ -354,7 +375,7 @@
 <span class="s2">&lt;/head&gt;</span>
 <span class="s2">&lt;body&gt;</span>
 
-<span class="s2">&lt;h1&gt;</span><span class="si">%(pageTitle)s</span><span class="s2">&lt;/h1&gt;</span>
+<span class="si">%(h1)s</span><span class="s2"> </span>
 <span class="s2">&lt;a href=&quot;</span><span class="si">%(url)s</span><span class="s2">&quot;&gt;original source&lt;/a&gt;</span>
 <span class="s2">&lt;/br&gt;&lt;/br&gt;</span>
 

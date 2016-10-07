@@ -12,7 +12,9 @@ def readme():
 install_requires = [
     'pyyaml',
     'simpdf',
-    'fundamentals'
+    'fundamentals',
+    'readability-api',
+    'requests'
 ]
 
 # READ THE DOCS SERVERS

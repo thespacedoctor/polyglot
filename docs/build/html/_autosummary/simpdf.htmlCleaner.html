@@ -165,7 +165,7 @@
 <h1>simpdf.htmlCleaner (<em>class</em>)<a class="headerlink" href="#simpdf-htmlcleaner-class" title="Permalink to this headline">  ∞</a></h1>
 <dl class="class">
 <dt id="simpdf.htmlCleaner">
-<em class="property">class </em><code class="descclassname">simpdf.</code><code class="descname">htmlCleaner</code><span class="sig-paren">(</span><em>log</em>, <em>settings</em>, <em>url</em>, <em>outputDirectory=False</em>, <em>title=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simpdf/htmlCleaner.html#htmlCleaner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simpdf.htmlCleaner" title="Permalink to this definition">  ∞</a></dt>
+<em class="property">class </em><code class="descclassname">simpdf.</code><code class="descname">htmlCleaner</code><span class="sig-paren">(</span><em>log</em>, <em>settings</em>, <em>url</em>, <em>outputDirectory=False</em>, <em>title=False</em>, <em>style=True</em>, <em>metadata=True</em>, <em>h1=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simpdf/htmlCleaner.html#htmlCleaner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simpdf.htmlCleaner" title="Permalink to this definition">  ∞</a></dt>
 <dd><p><em>A parser/cleaner to strip a webpage article of all cruft and neatly present it with soem nice css</em></p>
 <dl class="docutils">
 <dt><strong>Key Arguments:</strong></dt>
@@ -175,6 +175,9 @@
 <li><code class="docutils literal"><span class="pre">url</span></code> &#8211; the URL to the HTML page to parse and clean</li>
 <li><code class="docutils literal"><span class="pre">outputDirectory</span></code> &#8211; path to the directory to save the output html file to</li>
 <li><code class="docutils literal"><span class="pre">title</span></code> &#8211; title of the document to save. If false will take the title of the HTML page as the filename. Default <em>False</em>.</li>
+<li><code class="docutils literal"><span class="pre">style</span></code> &#8211; add simpdf&#8217;s styling to the HTML document. Default <em>True</em></li>
+<li><code class="docutils literal"><span class="pre">metadata</span></code> &#8211; include metadata in generated HTML. Default <em>True</em></li>
+<li><code class="docutils literal"><span class="pre">h1</span></code> &#8211; include title as H1 at the top of the doc</li>
 </ul>
 </dd>
 </dl>
@@ -206,7 +209,7 @@
 </div></blockquote>
 <dl class="method">
 <dt id="simpdf.htmlCleaner.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>log</em>, <em>settings</em>, <em>url</em>, <em>outputDirectory=False</em>, <em>title=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simpdf/htmlCleaner.html#htmlCleaner.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simpdf.htmlCleaner.__init__" title="Permalink to this definition">  ∞</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>log</em>, <em>settings</em>, <em>url</em>, <em>outputDirectory=False</em>, <em>title=False</em>, <em>style=True</em>, <em>metadata=True</em>, <em>h1=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simpdf/htmlCleaner.html#htmlCleaner.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simpdf.htmlCleaner.__init__" title="Permalink to this definition">  ∞</a></dt>
 <dd></dd></dl>
 
 <p class="rubric">Methods</p>
