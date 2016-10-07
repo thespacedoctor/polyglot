@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # simpdf documentation build configuration file, created by
-# sphinx-quickstart on Fri Oct  7 13:59:14 2016.
+# sphinx-quickstart on Fri Oct  7 14:40:00 2016.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
