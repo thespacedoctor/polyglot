@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 import os
 
 moduleDirectory = os.path.dirname(os.path.realpath(__file__))
-exec(open(moduleDirectory + "/simpdf/__version__.py").read())
+exec(open(moduleDirectory + "/polygot/__version__.py").read())
 
 
 def readme():
@@ -11,7 +11,7 @@ def readme():
 
 install_requires = [
     'pyyaml',
-    'simpdf',
+    'polygot',
     'fundamentals',
     'readability-api',
     'requests'
@@ -28,7 +28,7 @@ if exists:
         except:
             pass
 
-setup(name="simpdf",
+setup(name="polygot",
       version=__version__,
       description="Using the readability parser API generate clean HTML and PDF documents of articles found on the web",
       long_description=readme(),
@@ -39,8 +39,8 @@ setup(name="simpdf",
           'Topic :: Utilities',
       ],
       keywords=['pdf, html, parser'],
-      url='https://github.com/thespacedoctor/simpdf',
-      download_url='https://github.com/thespacedoctor/simpdf/archive/v%(__version__)s.zip' % locals(
+      url='https://github.com/thespacedoctor/polygot',
+      download_url='https://github.com/thespacedoctor/polygot/archive/v%(__version__)s.zip' % locals(
       ),
       author='David Young',
       author_email='davidrobertyoung@gmail.com',
@@ -51,6 +51,6 @@ setup(name="simpdf",
       test_suite='nose.collector',
       tests_require=['nose', 'nose-cover3'],
       entry_points={
-          'console_scripts': ['simpdf=simpdf.cl_utils:main'],
+          'console_scripts': ['polygot=polygot.cl_utils:main'],
       },
       zip_safe=False)

@@ -2,4 +2,4 @@ Issues
 ------
 
 Please report any issues
-`here <https://github.com/thespacedoctor/simpdf/issues>`__.
+`here <https://github.com/thespacedoctor/polygot/issues>`__.

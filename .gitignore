@@ -33,8 +33,8 @@ test_database.sql
 path_to_settings.yaml
 blog-post.md
 blog-post.rst
-simpdf/css/config.codekit
-/simpdf/tests/input/Localization.html
-/simpdf/tests/input/example_settings.yaml
+polygot/css/config.codekit
+/polygot/tests/input/Localization.html
+/polygot/tests/input/example_settings.yaml
 nosetest_debug.log
 /build

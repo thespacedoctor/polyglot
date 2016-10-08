@@ -1,10 +1,10 @@
+# READ MORE ABOUT READABILITY PARSER HERE: https://www.readability.com/developers/api
+# TO GET YOUR READABILITY PARSER KEY SIGN UP TO READABILITY AND GRAB THE KEY HERE: https://www.readability.com/settings/account
 readability:
-    parser api token: XXX
-    reader api key: XXX
-    reader api secret: XXX
+    parser api token: XXX # REPLACE ME
 
-simpdf:
-    electron path: /XXX/XXX/electron-pdf
+polygot:
+    electron path: /XXX/XXX/electron-pdf # REPLACE ME
 
 logging settings:
     formatters:
@@ -27,12 +27,10 @@ logging settings:
             class: logging.handlers.GroupWriteRotatingFileHandler
             level: WARNING
             formatter: file_style
-            filename: /Users/Dave/.config/simpdf/simpdf.log
+            filename: /Users/Dave/.config/polygot/polygot.log
             mode: w+
             maxBytes: 102400
             backupCount: 1
     root:
         level: ERROR
         handlers: [file,console]
-
-

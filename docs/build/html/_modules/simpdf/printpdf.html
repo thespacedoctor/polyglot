@@ -155,7 +155,7 @@
 <span></span><span class="ch">#!/usr/local/bin/python</span>
 <span class="c1"># encoding: utf-8</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">*Print a clean simple PDF using URL passed as argument*</span>
+<span class="sd">*Print webpages to PDF*</span>
 
 <span class="sd">:Author:</span>
 <span class="sd">    David Young</span>
@@ -172,10 +172,10 @@
 <span class="kn">import</span> <span class="nn">pickle</span>
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">codecs</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">Popen</span><span class="p">,</span> <span class="n">PIPE</span><span class="p">,</span> <span class="n">STDOUT</span>
 <span class="kn">from</span> <span class="nn">docopt</span> <span class="k">import</span> <span class="n">docopt</span>
 <span class="kn">from</span> <span class="nn">fundamentals</span> <span class="k">import</span> <span class="n">tools</span><span class="p">,</span> <span class="n">times</span>
 <span class="kn">from</span> <span class="nn">simpdf</span> <span class="k">import</span> <span class="n">authenticate</span>
-
 
 <span class="kn">import</span> <span class="nn">codecs</span>
 <span class="c1"># SET ENCODE ERROR RETURN VALUE</span>
@@ -193,7 +193,7 @@
 <div class="viewcode-block" id="printpdf"><a class="viewcode-back" href="../../_autosummary/simpdf.printpdf.html#simpdf.printpdf.printpdf">[docs]</a><span class="k">class</span> <span class="nc">printpdf</span><span class="p">():</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    *The worker class for the printpdf module*</span>
+<span class="sd">    *PDF printer*</span>
 
 <span class="sd">    **Key Arguments:**</span>
 <span class="sd">        - ``log`` -- logger</span>
@@ -203,6 +203,67 @@
 <span class="sd">        - ``folderpath`` -- path at which to save pdf</span>
 <span class="sd">        - ``append`` -- append this at the end of the file name (not title)</span>
 <span class="sd">        - ``readability`` -- clean text with readability</span>
+
+<span class="sd">    **Usage:**</span>
+
+<span class="sd">        To print a webpage to PDF without any cleaning of the content using the title of the webpage as filename:</span>
+
+<span class="sd">        .. code-block:: python </span>
+
+<span class="sd">            from simpdf import printpdf</span>
+<span class="sd">            pdf = printpdf(</span>
+<span class="sd">                log=log,</span>
+<span class="sd">                settings=settings,</span>
+<span class="sd">                url=&quot;https://en.wikipedia.org/wiki/Volkswagen&quot;,</span>
+<span class="sd">                folderpath=&quot;/path/to/output&quot;,</span>
+<span class="sd">                readability=False</span>
+<span class="sd">            ).get()</span>
+
+<span class="sd">        To give the PDF an alternative title use:</span>
+
+<span class="sd">        .. code-block:: python </span>
+
+<span class="sd">            from simpdf import printpdf</span>
+<span class="sd">            pdf = printpdf(</span>
+<span class="sd">                log=log,</span>
+<span class="sd">                settings=settings,</span>
+<span class="sd">                url=&quot;https://en.wikipedia.org/wiki/Volkswagen&quot;,</span>
+<span class="sd">                folderpath=&quot;/path/to/output&quot;,</span>
+<span class="sd">                title=&quot;Cars&quot;,</span>
+<span class="sd">                readability=False</span>
+<span class="sd">            ).get()</span>
+
+<span class="sd">        Or to append a string to the end of the filename before *.pdf* extension (useful for indexing or adding date created etc):</span>
+
+<span class="sd">        .. code-block:: python </span>
+
+<span class="sd">            from datetime import datetime, date, time</span>
+<span class="sd">            now = datetime.now()</span>
+<span class="sd">            now = now.strftime(&quot;%Y%m%dt%H%M%S&quot;)</span>
+
+<span class="sd">            from simpdf import printpdf</span>
+<span class="sd">            pdf = printpdf(</span>
+<span class="sd">                log=log,</span>
+<span class="sd">                settings=settings,</span>
+<span class="sd">                url=&quot;https://en.wikipedia.org/wiki/Volkswagen&quot;,</span>
+<span class="sd">                folderpath=&quot;/path/to/output&quot;,</span>
+<span class="sd">                append=&quot;_&quot;+now,</span>
+<span class="sd">                readability=False</span>
+<span class="sd">            ).get()</span>
+
+<span class="sd">        To clean the content using the readability parser and apply some simple styling and pretty fonts:</span>
+
+<span class="sd">        .. code-block:: python </span>
+
+<span class="sd">            from simpdf import printpdf</span>
+<span class="sd">            pdf = printpdf(</span>
+<span class="sd">                log=log,</span>
+<span class="sd">                settings=settings,</span>
+<span class="sd">                url=&quot;https://en.wikipedia.org/wiki/Volkswagen&quot;,</span>
+<span class="sd">                folderpath=pathToOutputDir,</span>
+<span class="sd">                readability=True</span>
+<span class="sd">            ).get()</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Initialisation</span>
 
@@ -228,7 +289,7 @@
 
         <span class="c1"># INITIAL ACTIONS</span>
         <span class="c1"># AUTHENTICATE AGAINST READABILITY WEBAPP PARSER CLIENT</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">parser_client</span> <span class="o">=</span> <span class="n">authenticate</span><span class="o">.</span><span class="n">authenticate</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parserClient</span> <span class="o">=</span> <span class="n">authenticate</span><span class="o">.</span><span class="n">authenticate</span><span class="p">(</span>
             <span class="n">log</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">,</span>
             <span class="n">settings</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span>
         <span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
@@ -237,135 +298,118 @@
 
 <div class="viewcode-block" id="printpdf.get"><a class="viewcode-back" href="../../_api/simpdf.printpdf.html#simpdf.printpdf.printpdf.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        *get the printpdf object*</span>
+<span class="sd">        *get the PDF*</span>
 
 <span class="sd">        **Return:**</span>
 <span class="sd">            - ``pdfPath`` -- the path to the generated PDF</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;starting the ``get`` method&#39;</span><span class="p">)</span>
 
-        <span class="c1"># THE ATTRIBUTES OF THE PDF</span>
-        <span class="n">title</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span>
-        <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span>
-
         <span class="c1"># APPEND TO FILENAME?</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">:</span>
-            <span class="n">append</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">append</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">append</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">readability</span><span class="p">:</span>
-
-            <span class="c1"># CONVERT TO PDF WITH ELECTON PDF</span>
-            <span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">Popen</span><span class="p">,</span> <span class="n">PIPE</span><span class="p">,</span> <span class="n">STDOUT</span>
-            <span class="n">pdfPath</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">folderpath</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">title</span> <span class="o">+</span> <span class="n">append</span> <span class="o">+</span> <span class="s2">&quot;.pdf&quot;</span>
-            <span class="n">exe</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s2">&quot;simpdf&quot;</span><span class="p">][</span><span class="s2">&quot;electron path&quot;</span><span class="p">]</span>
-            <span class="n">cmd</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span><span class="si">%(exe)s</span><span class="s2"> -i &quot;</span><span class="si">%(url)s</span><span class="s2">&quot; -o &quot;</span><span class="si">%(pdfPath)s</span><span class="s2">&quot; --printBackground &quot;&quot;&quot;</span> <span class="o">%</span> <span class="nb">locals</span><span class="p">()</span>
-            <span class="n">p</span> <span class="o">=</span> <span class="n">Popen</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stdin</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-            <span class="n">output</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">communicate</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="nb">print</span> <span class="s2">&quot;OUTPUT: &quot;</span> <span class="o">+</span> <span class="n">output</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;output: </span><span class="si">%(output)s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">locals</span><span class="p">())</span>
-            <span class="k">return</span> <span class="n">pdfPath</span>
-
-        <span class="c1"># PARSE THE CONTENT OF THE WEBPAGE AT THE URL</span>
-        <span class="n">parser_response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parser_client</span><span class="o">.</span><span class="n">get_article</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
-        <span class="k">if</span> <span class="s2">&quot;503&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">parser_response</span><span class="p">):</span>
-            <span class="k">return</span> <span class="kc">None</span>
-        <span class="n">article</span> <span class="o">=</span> <span class="n">parser_response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-
-        <span class="c1"># GRAB THE CSS USED TO STYLE THE WEBPAGE/PDF CONTENT</span>
-        <span class="n">moduleDirectory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">__file__</span><span class="p">)</span>
-        <span class="n">cssFile</span> <span class="o">=</span> <span class="n">moduleDirectory</span> <span class="o">+</span> <span class="s2">&quot;/css/main.css&quot;</span>
-        <span class="n">pathToReadFile</span> <span class="o">=</span> <span class="n">cssFile</span>
-        <span class="n">readFile</span> <span class="o">=</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">pathToReadFile</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-        <span class="n">thisCss</span> <span class="o">=</span> <span class="n">readFile</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-        <span class="n">readFile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-        <span class="k">if</span> <span class="s2">&quot;error&quot;</span> <span class="ow">in</span> <span class="n">article</span> <span class="ow">and</span> <span class="n">article</span><span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="nb">print</span> <span class="n">title</span>
-            <span class="nb">print</span> <span class="s2">&quot;    &quot;</span> <span class="o">+</span> <span class="n">article</span><span class="p">[</span><span class="s2">&quot;messages&quot;</span><span class="p">]</span>
-            <span class="k">return</span> <span class="kc">None</span>
-
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">text</span> <span class="o">=</span> <span class="n">article</span><span class="p">[</span><span class="s2">&quot;content&quot;</span><span class="p">]</span>
-        <span class="k">except</span><span class="p">:</span>
-            <span class="nb">print</span> <span class="s2">&quot;Can&#39;t decode the text of </span><span class="si">%(title)s</span><span class="s2"> - moving on&quot;</span> <span class="o">%</span> <span class="nb">locals</span><span class="p">()</span>
-            <span class="k">return</span> <span class="kc">None</span>
-
-        <span class="c1"># COMMON FIXES TO HTML TO RENDER CORRECTLY</span>
-        <span class="n">regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
-            <span class="s1">u&#39;&lt;span class=&quot;mw-editsection&quot;&gt;&lt;span class=&quot;mw-editsection-bracket&quot;&gt;.*&quot;mw-editsection-bracket&quot;&gt;]&#39;</span><span class="p">)</span>
-        <span class="n">text</span> <span class="o">=</span> <span class="n">regex</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">u&quot;&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
-        <span class="n">regex2</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
-            <span class="s1">u&#39;\&lt;sup class=&quot;noprint.*better source needed\&lt;\/span\&gt;\&lt;\/a\&gt;\&lt;\/i\&gt;\]\&lt;\/sup\&gt;&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
-        <span class="n">text</span> <span class="o">=</span> <span class="n">regex2</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">u&quot;&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
-        <span class="n">regex2</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
-            <span class="s1">u&#39;\&lt;a href=&quot;https\:\/\/en\.wikipedia\.org\/wiki\/.*(\#.*)&quot;\&gt;\&lt;span class=</span><span class="se">\&quot;</span><span class="s1">tocnumber</span><span class="se">\&quot;</span><span class="s1">\&gt;&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
-        <span class="n">text</span> <span class="o">=</span> <span class="n">regex2</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">u&#39;&lt;a href=&quot;\g&lt;1&gt;&quot;&gt;&lt;span class=&quot;tocnumber&quot;&gt;&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
-
-        <span class="c1"># GRAB HTML TITLE IF NOT SET IN ARGUMENTS</span>
-        <span class="k">if</span> <span class="n">title</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
-            <span class="n">title</span> <span class="o">=</span> <span class="n">article</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span> <span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
-            <span class="n">title</span> <span class="o">=</span> <span class="n">title</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
-            <span class="n">title</span> <span class="o">=</span> <span class="n">title</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">,</span> <span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
-        <span class="n">rstrings</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;:/&quot;&amp;</span><span class="se">\\</span><span class="s2">&#39;&quot;&quot;&quot;</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">rstrings</span><span class="p">:</span>
-            <span class="n">title</span> <span class="o">=</span> <span class="n">title</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-
-        <span class="c1"># USE DATETIME IF TITLE STILL NOT SET</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">title</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">date</span><span class="p">,</span> <span class="n">time</span>
-            <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-            <span class="n">title</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">t%H%M%S&quot;</span><span class="p">)</span>
-
-        <span class="c1"># REGENERATE THE HTML DOCUMENT WITH CUSTOM STYLE</span>
-        <span class="n">filePath</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">folderpath</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">title</span> <span class="o">+</span> <span class="n">append</span> <span class="o">+</span> <span class="s2">&quot;.html&quot;</span>
-        <span class="n">writeFile</span> <span class="o">=</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span>
-            <span class="n">filePath</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
-        <span class="n">content</span> <span class="o">=</span> <span class="s2">u&quot;&quot;&quot;</span>
-<span class="s2">&lt;!DOCTYPE html&gt;</span>
-<span class="s2">&lt;html&gt;</span>
-<span class="s2">&lt;head&gt;</span>
-<span class="s2">&lt;meta charset=&quot;utf-8&quot;&gt;</span>
-<span class="s2">&lt;title&gt;</span><span class="si">%(title)s</span><span class="s2">&lt;/title&gt;</span>
-
-<span class="s2">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;</span><span class="si">%(cssFile)s</span><span class="s2">&quot; /&gt;</span>
-
-
-
-<span class="s2">&lt;/head&gt;</span>
-<span class="s2">&lt;body&gt;</span>
-
-<span class="s2">&lt;h1&gt;</span><span class="si">%(title)s</span><span class="s2">&lt;/h1&gt;</span>
-<span class="s2">&lt;a href=&quot;</span><span class="si">%(url)s</span><span class="s2">&quot;&gt;original source&lt;/a&gt;</span>
-<span class="s2">&lt;/br&gt;&lt;/br&gt;</span>
-
-
-<span class="si">%(text)s</span><span class="s2"> </span>
-<span class="s2">&lt;/body&gt;</span>
-<span class="s2">&lt;/html&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="nb">locals</span><span class="p">()</span>
-        <span class="n">writeFile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
-        <span class="n">writeFile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-        <span class="nb">print</span> <span class="n">filePath</span>
-
-        <span class="c1"># CONVERT TO PDF WITH ELECTON PDF</span>
-        <span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">Popen</span><span class="p">,</span> <span class="n">PIPE</span><span class="p">,</span> <span class="n">STDOUT</span>
-        <span class="n">pdfPath</span> <span class="o">=</span> <span class="n">filePath</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.html&quot;</span><span class="p">,</span> <span class="s2">&quot;.pdf&quot;</span><span class="p">)</span>
-        <span class="n">exe</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s2">&quot;simpdf&quot;</span><span class="p">][</span><span class="s2">&quot;electron path&quot;</span><span class="p">]</span>
-        <span class="n">cmd</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span><span class="si">%(exe)s</span><span class="s2"> -i &quot;</span><span class="si">%(filePath)s</span><span class="s2">&quot; -o &quot;</span><span class="si">%(pdfPath)s</span><span class="s2">&quot; &quot;&quot;&quot;</span> <span class="o">%</span> <span class="nb">locals</span><span class="p">()</span>
-        <span class="n">p</span> <span class="o">=</span> <span class="n">Popen</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stdin</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="n">output</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">communicate</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="nb">print</span> <span class="s2">&quot;OUTPUT: &quot;</span> <span class="o">+</span> <span class="n">output</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;output: </span><span class="si">%(output)s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">locals</span><span class="p">())</span>
-
-        <span class="c1"># REMOVE HTML FILE</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">filePath</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_print_original_webpage</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_print_parsed_webpage</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;completed the ``get`` method&#39;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">pdfPath</span></div></div>
-    <span class="c1"># xt-class-method</span>
+        <span class="k">return</span> <span class="n">pdfPath</span></div>
+
+    <span class="k">def</span> <span class="nf">_print_original_webpage</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;*print the original webpage*</span>
+
+<span class="sd">        **Return:**</span>
+<span class="sd">            - ``pdfPath`` -- the path to the generated PDF</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;starting the ``_print_original_webpage`` method&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">simpdf</span> <span class="k">import</span> <span class="n">htmlCleaner</span>
+            <span class="n">cleaner</span> <span class="o">=</span> <span class="n">htmlCleaner</span><span class="p">(</span>
+                <span class="n">log</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">,</span>
+                <span class="n">settings</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">,</span>
+                <span class="n">url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">,</span>
+                <span class="n">outputDirectory</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">folderpath</span><span class="p">,</span>
+                <span class="n">title</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>  <span class="c1"># SET TO FALSE TO USE WEBPAGE TITLE,</span>
+                <span class="n">style</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># add simpdf&#39;s styling to the HTML document</span>
+                <span class="c1"># include metadata in generated HTML (e.g. title),</span>
+                <span class="n">metadata</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">h1</span><span class="o">=</span><span class="kc">True</span>  <span class="c1"># include title as H1 at the top of the doc</span>
+            <span class="p">)</span>
+            <span class="n">htmlFile</span> <span class="o">=</span> <span class="n">cleaner</span><span class="o">.</span><span class="n">clean</span><span class="p">()</span>
+            <span class="n">basename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">htmlFile</span><span class="p">)</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="n">basename</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.html&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">htmlFile</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span>
+
+        <span class="c1"># CONVERT TO PDF WITH ELECTON PDF</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span>
+        <span class="n">pdfPath</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">folderpath</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">title</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span> <span class="o">+</span> <span class="s2">&quot;.pdf&quot;</span>
+        <span class="n">electron</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s2">&quot;simpdf&quot;</span><span class="p">][</span><span class="s2">&quot;electron path&quot;</span><span class="p">]</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span><span class="si">%(electron)s</span><span class="s2"> -i &quot;</span><span class="si">%(url)s</span><span class="s2">&quot; -o &quot;</span><span class="si">%(pdfPath)s</span><span class="s2">&quot; --printBackground &quot;&quot;&quot;</span> <span class="o">%</span> <span class="nb">locals</span><span class="p">()</span>
+        <span class="nb">print</span> <span class="n">cmd</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">Popen</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">communicate</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;output: </span><span class="si">%(stdout)s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">locals</span><span class="p">())</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">stderr</span><span class="p">):</span>
+            <span class="nb">print</span> <span class="n">stderr</span>
+
+        <span class="n">exists</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">pdfPath</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">:</span>
+            <span class="nb">print</span> <span class="s2">&quot;</span><span class="si">%(pdfPath)s</span><span class="s2"> was not generated for some reason - please investigate&quot;</span> <span class="o">%</span> <span class="nb">locals</span><span class="p">()</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;completed the ``_print_original_webpage`` method&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pdfPath</span>
+
+    <span class="k">def</span> <span class="nf">_print_parsed_webpage</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;*print the parsed/cleaned webpage*</span>
+
+<span class="sd">        **Return:**</span>
+<span class="sd">            - ``pdfPath`` -- the path to the generated PDF</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;starting the ``_print_parsed_webpage()`` method&#39;</span><span class="p">)</span>
+
+        <span class="kn">from</span> <span class="nn">simpdf</span> <span class="k">import</span> <span class="n">htmlCleaner</span>
+        <span class="n">cleaner</span> <span class="o">=</span> <span class="n">htmlCleaner</span><span class="p">(</span>
+            <span class="n">log</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">,</span>
+            <span class="n">settings</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">,</span>
+            <span class="n">url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">,</span>
+            <span class="n">outputDirectory</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">folderpath</span><span class="p">,</span>
+            <span class="n">title</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>  <span class="c1"># SET TO FALSE TO USE WEBPAGE TITLE,</span>
+            <span class="n">style</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># add simpdf&#39;s styling to the HTML document</span>
+            <span class="n">metadata</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># include metadata in generated HTML (e.g. title),</span>
+            <span class="n">h1</span><span class="o">=</span><span class="kc">True</span>  <span class="c1"># include title as H1 at the top of the doc</span>
+        <span class="p">)</span>
+        <span class="n">htmlFile</span> <span class="o">=</span> <span class="n">cleaner</span><span class="o">.</span><span class="n">clean</span><span class="p">()</span>
+        <span class="n">pdfPath</span> <span class="o">=</span> <span class="n">htmlFile</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.html&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span> <span class="o">+</span> <span class="s2">&quot;.pdf&quot;</span><span class="p">)</span>
+
+        <span class="c1"># CONVERT TO PDF WITH ELECTON PDF</span>
+        <span class="n">electron</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s2">&quot;simpdf&quot;</span><span class="p">][</span><span class="s2">&quot;electron path&quot;</span><span class="p">]</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span><span class="si">%(electron)s</span><span class="s2"> -i &quot;</span><span class="si">%(htmlFile)s</span><span class="s2">&quot; -o &quot;</span><span class="si">%(pdfPath)s</span><span class="s2">&quot; &quot;&quot;&quot;</span> <span class="o">%</span> <span class="nb">locals</span><span class="p">()</span>
+        <span class="nb">print</span> <span class="n">cmd</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">Popen</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">communicate</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">stderr</span><span class="p">):</span>
+            <span class="nb">print</span> <span class="n">stderr</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;output: </span><span class="si">%(stdout)s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">locals</span><span class="p">())</span>
+
+        <span class="c1"># REMOVE HTML FILE</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">htmlFile</span><span class="p">)</span>
+
+        <span class="n">exists</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">pdfPath</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">:</span>
+            <span class="nb">print</span> <span class="s2">&quot;</span><span class="si">%(pdfPath)s</span><span class="s2"> was not generated for some reason - please investigate&quot;</span> <span class="o">%</span> <span class="nb">locals</span><span class="p">()</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;completed the ``_print_parsed_webpage()`` method&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
 
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>

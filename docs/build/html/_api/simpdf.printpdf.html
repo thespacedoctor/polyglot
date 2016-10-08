@@ -150,7 +150,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <span class="target" id="module-simpdf.printpdf"></span><p><em>Print a clean simple PDF using URL passed as argument</em></p>
+  <span class="target" id="module-simpdf.printpdf"></span><p><em>Print webpages to PDF</em></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -169,7 +169,7 @@
 <dl class="class">
 <dt id="simpdf.printpdf.printpdf">
 <em class="property">class </em><code class="descclassname">simpdf.printpdf.</code><code class="descname">printpdf</code><span class="sig-paren">(</span><em>log</em>, <em>settings=False</em>, <em>url=False</em>, <em>title=False</em>, <em>folderpath=False</em>, <em>append=False</em>, <em>readability=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simpdf/printpdf.html#printpdf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simpdf.printpdf.printpdf" title="Permalink to this definition">  ∞</a></dt>
-<dd><p><em>The worker class for the printpdf module</em></p>
+<dd><p><em>PDF printer</em></p>
 <dl class="docutils">
 <dt><strong>Key Arguments:</strong></dt>
 <dd><ul class="first last simple">
@@ -183,10 +183,63 @@
 </ul>
 </dd>
 </dl>
+<p><strong>Usage:</strong></p>
+<blockquote>
+<div><p>To print a webpage to PDF without any cleaning of the content using the title of the webpage as filename:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">simpdf</span> <span class="kn">import</span> <span class="n">printpdf</span>
+<span class="n">pdf</span> <span class="o">=</span> <span class="n">printpdf</span><span class="p">(</span>
+    <span class="n">log</span><span class="o">=</span><span class="n">log</span><span class="p">,</span>
+    <span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">,</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://en.wikipedia.org/wiki/Volkswagen&quot;</span><span class="p">,</span>
+    <span class="n">folderpath</span><span class="o">=</span><span class="s2">&quot;/path/to/output&quot;</span><span class="p">,</span>
+    <span class="n">readability</span><span class="o">=</span><span class="bp">False</span>
+<span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>To give the PDF an alternative title use:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">simpdf</span> <span class="kn">import</span> <span class="n">printpdf</span>
+<span class="n">pdf</span> <span class="o">=</span> <span class="n">printpdf</span><span class="p">(</span>
+    <span class="n">log</span><span class="o">=</span><span class="n">log</span><span class="p">,</span>
+    <span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">,</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://en.wikipedia.org/wiki/Volkswagen&quot;</span><span class="p">,</span>
+    <span class="n">folderpath</span><span class="o">=</span><span class="s2">&quot;/path/to/output&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Cars&quot;</span><span class="p">,</span>
+    <span class="n">readability</span><span class="o">=</span><span class="bp">False</span>
+<span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Or to append a string to the end of the filename before <em>.pdf</em> extension (useful for indexing or adding date created etc):</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">date</span><span class="p">,</span> <span class="n">time</span>
+<span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="n">now</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">t%H%M%S&quot;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">simpdf</span> <span class="kn">import</span> <span class="n">printpdf</span>
+<span class="n">pdf</span> <span class="o">=</span> <span class="n">printpdf</span><span class="p">(</span>
+    <span class="n">log</span><span class="o">=</span><span class="n">log</span><span class="p">,</span>
+    <span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">,</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://en.wikipedia.org/wiki/Volkswagen&quot;</span><span class="p">,</span>
+    <span class="n">folderpath</span><span class="o">=</span><span class="s2">&quot;/path/to/output&quot;</span><span class="p">,</span>
+    <span class="n">append</span><span class="o">=</span><span class="s2">&quot;_&quot;</span><span class="o">+</span><span class="n">now</span><span class="p">,</span>
+    <span class="n">readability</span><span class="o">=</span><span class="bp">False</span>
+<span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>To clean the content using the readability parser and apply some simple styling and pretty fonts:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">simpdf</span> <span class="kn">import</span> <span class="n">printpdf</span>
+<span class="n">pdf</span> <span class="o">=</span> <span class="n">printpdf</span><span class="p">(</span>
+    <span class="n">log</span><span class="o">=</span><span class="n">log</span><span class="p">,</span>
+    <span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">,</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://en.wikipedia.org/wiki/Volkswagen&quot;</span><span class="p">,</span>
+    <span class="n">folderpath</span><span class="o">=</span><span class="n">pathToOutputDir</span><span class="p">,</span>
+    <span class="n">readability</span><span class="o">=</span><span class="bp">True</span>
+<span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+</pre></div>
+</div>
+</div></blockquote>
 <dl class="method">
 <dt id="simpdf.printpdf.printpdf.get">
 <code class="descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simpdf/printpdf.html#printpdf.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simpdf.printpdf.printpdf.get" title="Permalink to this definition">  ∞</a></dt>
-<dd><p><em>get the printpdf object</em></p>
+<dd><p><em>get the PDF</em></p>
 <dl class="docutils">
 <dt><strong>Return:</strong></dt>
 <dd><ul class="first last simple">

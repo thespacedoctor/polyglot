@@ -1,4 +1,4 @@
 Documentation
 =============
 
-Documentation for simpdf is hosted by `Read the Docs <http://simpdf.readthedocs.org/en/stable/>`__ (last `stable version <http://simpdf.readthedocs.org/en/stable/>`__ and `latest version <http://simpdf.readthedocs.org/en/latest/>`__).
+Documentation for polygot is hosted by `Read the Docs <http://polygot.readthedocs.org/en/stable/>`__ (last `stable version <http://polygot.readthedocs.org/en/stable/>`__ and `latest version <http://polygot.readthedocs.org/en/latest/>`__).

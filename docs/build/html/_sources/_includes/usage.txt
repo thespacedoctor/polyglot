@@ -4,7 +4,7 @@ Usage
 .. code-block:: bash 
    
     
-    *CL tool for simpdf*
+    *Parse and clean up webpage contents with options to print to PDF*
     
     :Author:
         David Young
@@ -13,11 +13,18 @@ Usage
         September 28, 2015
     
     Usage:
-        simpdf url <urlToParse> <destinationFolder> [-s <pathToSettingsFile>]
+        polygot [-oc] (pdf|html) <url> [<destinationFolder> -f <filename> -s <pathToSettingsFile>]
     
-        -h, --help            show this help message
-        -v, --version         show version
-        -s, --settings        the settings file
-        urlToParse            the url of the article to parse and convert to PDF
-        destinationFolder     the folder to add the parsed PDF to
+    Options:
+        pdf                   print webpage to pdf
+        html                  parse and download webpage to a local HTML document
+    
+        -h, --help                                                      show this help message
+        -v, --version                                                   show version
+        -o, --open                                                      open the document after creation
+        -c, --clean                                                     add polygot's clean styling to the output document
+        <url>                                                           the url of the article's webpage
+        -s <pathToSettingsFile>, --settings <pathToSettingsFile>        path to alternative settings file (optional)
+        <destinationFolder>                                             the folder to save the parsed PDF or HTML document to (optional)
+        -f <filename>, --filename <filename>                            the name of the file to save, otherwise use webpage title as filename (optional)
     

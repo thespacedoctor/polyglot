@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# simpdf documentation build configuration file, created by
+# polygot documentation build configuration file, created by
 # sphinx-quickstart on Mon Feb 29 15:00:29 2016.
 #
 # This file is execfile()d with the current directory set to its containing dir.
@@ -42,7 +42,7 @@ sys.modules.update((mod_name, Mock()) for mod_name in MOCK_MODULES)
 # needs_sphinx = '1.0'
 
 moduleDirectory = os.path.dirname(os.path.realpath(__file__))
-exec(open(moduleDirectory + "/../../simpdf/__version__.py").read())
+exec(open(moduleDirectory + "/../../polygot/__version__.py").read())
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
@@ -71,7 +71,7 @@ master_doc = 'index'
 from datetime import datetime, date, time
 now = datetime.now()
 now = now.strftime("%Y")
-project = u'simpdf'
+project = u'polygot'
 copyright = u'%(now)s, Dave Young' % locals()
 
 # The version info for the project you're documenting, acts as replacement for
@@ -96,7 +96,7 @@ today_fmt = '%Y'
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 exclude_patterns = ['_build', '_templates',
-                    '**__version__.py', '**setup.py', 'api/simpdf.rst']
+                    '**__version__.py', '**setup.py', 'api/polygot.rst']
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
@@ -199,7 +199,7 @@ html_add_permalinks = u"  ∞"
 # html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'simpdfdoc'
+htmlhelp_basename = 'polygotdoc'
 
 
 # -- Options for LaTeX output --------------------------------------------
@@ -218,7 +218,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-    ('index', 'simpdf.tex', u'simpdf Documentation',
+    ('index', 'polygot.tex', u'polygot Documentation',
      u'Dave Young', 'manual'),
 ]
 
@@ -248,7 +248,7 @@ latex_logo = "_images/thespacedoctor_icon_dark.png"
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'simpdf', u'simpdf Documentation',
+    ('index', 'polygot', u'polygot Documentation',
      [u'Dave Young'], 1)
 ]
 
@@ -262,8 +262,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    ('index', 'simpdf', u'simpdf Documentation',
-     u'Dave Young', 'simpdf', 'Using the readability parser API generate clean HTML and PDF documents of articles found on the web',
+    ('index', 'polygot', u'polygot Documentation',
+     u'Dave Young', 'polygot', 'Using the readability parser API generate clean HTML and PDF documents of articles found on the web',
      'Miscellaneous'),
 ]
 
@@ -289,7 +289,7 @@ trim_footnote_reference_space = True
 
 def updateUsageRST():
 
-    from simpdf import cl_utils
+    from polygot import cl_utils
     usage = cl_utils.__doc__
 
     if not "Usage:" in usage or "todo:" in usage:
@@ -322,7 +322,7 @@ updateUsageRST()
 
 def generateAutosummaryIndex():
 
-    import simpdf
+    import polygot
     import inspect
     import os.path
     import time
@@ -349,9 +349,9 @@ def generateAutosummaryIndex():
         return None
 
     # GET ALL SUBPACKAGES
-    allSubpackages = ["simpdf"]
+    allSubpackages = ["polygot"]
     allSubpackages += findAllSubpackges(
-        pathToPackage="simpdf"
+        pathToPackage="polygot"
     )
 
     # INSPECT TO FIND ALL MODULES, CLASSES AND FUNCTIONS

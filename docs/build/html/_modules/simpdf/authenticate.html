@@ -162,7 +162,6 @@
 
 <span class="sd">:Date Created:</span>
 <span class="sd">    September 28, 2015</span>
-
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="c1">################# GLOBAL IMPORTS ####################</span>
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -174,30 +173,32 @@
 <span class="kn">from</span> <span class="nn">docopt</span> <span class="k">import</span> <span class="n">docopt</span>
 <span class="kn">from</span> <span class="nn">fundamentals</span> <span class="k">import</span> <span class="n">tools</span><span class="p">,</span> <span class="n">times</span>
 
-<span class="c1">###################################################################</span>
-<span class="c1"># CLASSES                                                         #</span>
-<span class="c1">###################################################################</span>
-
 
 <div class="viewcode-block" id="authenticate"><a class="viewcode-back" href="../../_autosummary/simpdf.authenticate.html#simpdf.authenticate.authenticate">[docs]</a><span class="k">class</span> <span class="nc">authenticate</span><span class="p">():</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    *The worker class for the authenticate module*</span>
+<span class="sd">    *Authenticate against readability api*</span>
+
+<span class="sd">    The parser api token is to be found in the simpdf settings file (``~/.config/simpdf/simpdf.yaml``). </span>
+
+<span class="sd">    Read more about readability parser `here &lt;https://www.readability.com/developers/api&gt;`_, or to get your readability parser key sign up to readability and `grab the key here &lt;https://www.readability.com/settings/account&gt;`_</span>
 
 <span class="sd">    **Key Arguments:**</span>
 <span class="sd">        - ``log`` -- logger</span>
 <span class="sd">        - ``settings`` -- the settings dictionary</span>
 
+<span class="sd">    **Usage:**</span>
 
-<span class="sd">    .. todo::</span>
+<span class="sd">        To setup a readability parser client:</span>
 
-<span class="sd">        - @review: when complete, clean authenticate class</span>
-<span class="sd">        - @review: when complete add logging</span>
-<span class="sd">        - @review: when complete, decide whether to abstract class to another module</span>
+<span class="sd">        .. code-block:: python </span>
+
+<span class="sd">            from simpdf import authenticate</span>
+<span class="sd">            parserClient = authenticate(</span>
+<span class="sd">                log=log,</span>
+<span class="sd">                settings=settings</span>
+<span class="sd">            ).get() </span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># Initialisation</span>
-    <span class="c1"># 1. @flagged: what are the unique attrributes for each object? Add them</span>
-    <span class="c1"># to __init__</span>
 
 <div class="viewcode-block" id="authenticate.__init__"><a class="viewcode-back" href="../../_autosummary/simpdf.authenticate.html#simpdf.authenticate.authenticate.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
@@ -210,29 +211,16 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">settings</span> <span class="o">=</span> <span class="n">settings</span>
         <span class="c1"># xt-self-arg-tmpx</span>
 
-        <span class="c1"># 2. @flagged: what are the default attrributes each object could have? Add them to variable attribute set here</span>
-        <span class="c1"># Variable Data Atrributes</span>
-
-        <span class="c1"># 3. @flagged: what variable attrributes need overriden in any baseclass(es) used</span>
-        <span class="c1"># Override Variable Data Atrributes</span>
-
         <span class="c1"># Initial Actions</span>
 
         <span class="k">return</span> <span class="kc">None</span></div>
 
-    <span class="c1"># 4. @flagged: what actions does each object have to be able to perform? Add them here</span>
-    <span class="c1"># Method Attributes</span>
 <div class="viewcode-block" id="authenticate.get"><a class="viewcode-back" href="../../_api/simpdf.authenticate.html#simpdf.authenticate.authenticate.get">[docs]</a>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        *get the authenticate object*</span>
+<span class="sd">        *Get the readability parser client*</span>
 
 <span class="sd">        **Return:**</span>
-<span class="sd">            - ``authenticate``</span>
-
-<span class="sd">        .. todo::</span>
-
-<span class="sd">            - @review: when complete, clean get method</span>
-<span class="sd">            - @review: when complete add logging</span>
+<span class="sd">            - ``parserClient`` -- the readability parser client</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;starting the ``get`` method&#39;</span><span class="p">)</span>
 
@@ -244,29 +232,6 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;completed the ``get`` method&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">parser_client</span></div></div>
-    <span class="c1"># xt-class-method</span>
-
-    <span class="c1"># 5. @flagged: what actions of the base class(es) need ammending? ammend them here</span>
-    <span class="c1"># Override Method Attributes</span>
-    <span class="c1"># method-override-tmpx</span>
-
-<span class="c1"># xt-class-tmpx</span>
-
-
-<span class="c1">###################################################################</span>
-<span class="c1"># PUBLIC FUNCTIONS                                                #</span>
-<span class="c1">###################################################################</span>
-<span class="c1"># xt-worker-def</span>
-
-<span class="c1"># use the tab-trigger below for new function</span>
-<span class="c1"># xt-def-with-logger</span>
-
-<span class="c1">###################################################################</span>
-<span class="c1"># PRIVATE (HELPER) FUNCTIONS                                      #</span>
-<span class="c1">###################################################################</span>
-
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span>
 </pre></div>
 
            </div>

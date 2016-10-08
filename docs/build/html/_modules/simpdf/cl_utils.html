@@ -185,10 +185,6 @@
 <span class="c1"># from ..__init__ import *</span>
 
 
-<div class="viewcode-block" id="tab_complete"><a class="viewcode-back" href="../../_autosummary/simpdf.cl_utils.tab_complete.html#simpdf.cl_utils.tab_complete">[docs]</a><span class="k">def</span> <span class="nf">tab_complete</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">text</span> <span class="o">+</span> <span class="s1">&#39;*&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="kc">None</span><span class="p">])[</span><span class="n">state</span><span class="p">]</span></div>
-
-
 <div class="viewcode-block" id="main"><a class="viewcode-back" href="../../_autosummary/simpdf.cl_utils.html#simpdf.cl_utils.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">arguments</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    *The main function used when ``cl_utils.py`` is run as a single script from the cl, or when installed as a cl command*</span>
@@ -202,11 +198,6 @@
         <span class="n">projectName</span><span class="o">=</span><span class="s2">&quot;simpdf&quot;</span>
     <span class="p">)</span>
     <span class="n">arguments</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="n">log</span><span class="p">,</span> <span class="n">dbConn</span> <span class="o">=</span> <span class="n">su</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
-
-    <span class="c1"># tab completion for raw_input</span>
-    <span class="n">readline</span><span class="o">.</span><span class="n">set_completer_delims</span><span class="p">(</span><span class="s1">&#39; </span><span class="se">\t\n</span><span class="s1">;&#39;</span><span class="p">)</span>
-    <span class="n">readline</span><span class="o">.</span><span class="n">parse_and_bind</span><span class="p">(</span><span class="s2">&quot;tab: complete&quot;</span><span class="p">)</span>
-    <span class="n">readline</span><span class="o">.</span><span class="n">set_completer</span><span class="p">(</span><span class="n">tab_complete</span><span class="p">)</span>
 
     <span class="c1"># unpack remaining cl arguments using `exec` to setup the variable names</span>
     <span class="c1"># automatically</span>

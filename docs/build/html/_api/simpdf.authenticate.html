@@ -164,7 +164,9 @@
 <dl class="class">
 <dt id="simpdf.authenticate.authenticate">
 <em class="property">class </em><code class="descclassname">simpdf.authenticate.</code><code class="descname">authenticate</code><span class="sig-paren">(</span><em>log</em>, <em>settings=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simpdf/authenticate.html#authenticate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simpdf.authenticate.authenticate" title="Permalink to this definition">  ∞</a></dt>
-<dd><p><em>The worker class for the authenticate module</em></p>
+<dd><p><em>Authenticate against readability api</em></p>
+<p>The parser api token is to be found in the simpdf settings file (<code class="docutils literal"><span class="pre">~/.config/simpdf/simpdf.yaml</span></code>).</p>
+<p>Read more about readability parser <a class="reference external" href="https://www.readability.com/developers/api">here</a>, or to get your readability parser key sign up to readability and <a class="reference external" href="https://www.readability.com/settings/account">grab the key here</a></p>
 <dl class="docutils">
 <dt><strong>Key Arguments:</strong></dt>
 <dd><ul class="first last simple">
@@ -173,32 +175,28 @@
 </ul>
 </dd>
 </dl>
-<div class="admonition-todo admonition" id="index-0">
-<p class="first admonition-title">Todo</p>
-<ul class="last simple">
-<li>&#64;review: when complete, clean authenticate class</li>
-<li>&#64;review: when complete add logging</li>
-<li>&#64;review: when complete, decide whether to abstract class to another module</li>
-</ul>
+<p><strong>Usage:</strong></p>
+<blockquote>
+<div><p>To setup a readability parser client:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">simpdf</span> <span class="kn">import</span> <span class="n">authenticate</span>
+<span class="n">parserClient</span> <span class="o">=</span> <span class="n">authenticate</span><span class="p">(</span>
+    <span class="n">log</span><span class="o">=</span><span class="n">log</span><span class="p">,</span>
+    <span class="n">settings</span><span class="o">=</span><span class="n">settings</span>
+<span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> 
+</pre></div>
 </div>
+</div></blockquote>
 <dl class="method">
 <dt id="simpdf.authenticate.authenticate.get">
 <code class="descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simpdf/authenticate.html#authenticate.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simpdf.authenticate.authenticate.get" title="Permalink to this definition">  ∞</a></dt>
-<dd><p><em>get the authenticate object</em></p>
+<dd><p><em>Get the readability parser client</em></p>
 <dl class="docutils">
 <dt><strong>Return:</strong></dt>
 <dd><ul class="first last simple">
-<li><code class="docutils literal"><span class="pre">authenticate</span></code></li>
+<li><code class="docutils literal"><span class="pre">parserClient</span></code> &#8211; the readability parser client</li>
 </ul>
 </dd>
 </dl>
-<div class="admonition-todo admonition" id="index-1">
-<p class="first admonition-title">Todo</p>
-<ul class="last simple">
-<li>&#64;review: when complete, clean get method</li>
-<li>&#64;review: when complete add logging</li>
-</ul>
-</div>
 </dd></dl>
 
 </dd></dl>

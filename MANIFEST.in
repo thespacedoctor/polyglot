@@ -4,6 +4,6 @@ include *.yaml
 include *.txt
 include *.md
 include *.rst
-recursive-include simpdf *
+recursive-include polygot *
 global-exclude *.pyo
 global-exclude *.pyc

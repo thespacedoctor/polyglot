@@ -1,4 +1,4 @@
-simpdf 
+polygot 
 =========================
 
 *Using the readability parser API generate clean HTML and PDF documents of articles found on the web*.
@@ -9,7 +9,7 @@ Usage
 .. code-block:: bash 
    
     
-    *CL tool for simpdf*
+    *CL tool for polygot*
     
     :Author:
         David Young
@@ -18,7 +18,7 @@ Usage
         September 28, 2015
     
     Usage:
-        simpdf url <urlToParse> <destinationFolder> [-s <pathToSettingsFile>]
+        polygot url <urlToParse> <destinationFolder> [-s <pathToSettingsFile>]
     
         -h, --help            show this help message
         -v, --version         show version
@@ -30,30 +30,30 @@ Usage
 Documentation
 =============
 
-Documentation for simpdf is hosted by `Read the Docs <http://simpdf.readthedocs.org/en/stable/>`__ (last `stable version <http://simpdf.readthedocs.org/en/stable/>`__ and `latest version <http://simpdf.readthedocs.org/en/latest/>`__).
+Documentation for polygot is hosted by `Read the Docs <http://polygot.readthedocs.org/en/stable/>`__ (last `stable version <http://polygot.readthedocs.org/en/stable/>`__ and `latest version <http://polygot.readthedocs.org/en/latest/>`__).
 
 Installation
 ============
 
-The easiest way to install simpdf us to use ``pip``:
+The easiest way to install polygot us to use ``pip``:
 
 .. code:: bash
 
-    pip install simpdf
+    pip install polygot
 
-Or you can clone the `github repo <https://github.com/thespacedoctor/simpdf>`__ and install from a local version of the code:
+Or you can clone the `github repo <https://github.com/thespacedoctor/polygot>`__ and install from a local version of the code:
 
 .. code:: bash
 
-    git clone git@github.com:thespacedoctor/simpdf.git
-    cd simpdf
+    git clone git@github.com:thespacedoctor/polygot.git
+    cd polygot
     python setup.py install
 
-To upgrade to the latest version of simpdf use the command:
+To upgrade to the latest version of polygot use the command:
 
 .. code:: bash
 
-    pip install simpdf --upgrade
+    pip install polygot --upgrade
 
 
 Development
@@ -64,11 +64,11 @@ This means you can modify the code from your cloned repo:
 
 .. code:: bash
 
-    git clone git@github.com:thespacedoctor/simpdf.git
-    cd simpdf
+    git clone git@github.com:thespacedoctor/polygot.git
+    cd polygot
     python setup.py develop
 
-`Pull requests <https://github.com/thespacedoctor/simpdf/pulls>`__
+`Pull requests <https://github.com/thespacedoctor/polygot/pulls>`__
 are welcomed!
 
 
@@ -76,7 +76,7 @@ Issues
 ------
 
 Please report any issues
-`here <https://github.com/thespacedoctor/simpdf/issues>`__.
+`here <https://github.com/thespacedoctor/polygot/issues>`__.
 
 License
 =======

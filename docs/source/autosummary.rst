@@ -7,8 +7,8 @@ Subpackages
    :nosignatures:
    :template: autosummary/subpackage.rst
 
-   simpdf
-   simpdf.commonutils 
+   polygot
+   polygot.commonutils 
 
 Modules
 -----------
@@ -17,8 +17,8 @@ Modules
    :toctree: _autosummary
    :nosignatures:
 
-   simpdf.cl_utils
-   simpdf.utKit 
+   polygot.cl_utils
+   polygot.utKit 
 
 Classes
 -----------
@@ -27,10 +27,10 @@ Classes
    :toctree: _autosummary
    :nosignatures:
 
-   simpdf.authenticate
-   simpdf.htmlCleaner
-   simpdf.printpdf
-   simpdf.utKit.utKit 
+   polygot.authenticate
+   polygot.htmlCleaner
+   polygot.printpdf
+   polygot.utKit.utKit 
 
 Functions
 -----------
@@ -39,4 +39,4 @@ Functions
    :toctree: _autosummary
    :nosignatures:
 
-   simpdf.cl_utils.tab_complete 
+    

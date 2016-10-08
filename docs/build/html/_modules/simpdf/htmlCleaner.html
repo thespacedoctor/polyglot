@@ -175,17 +175,17 @@
 
 <div class="viewcode-block" id="htmlCleaner"><a class="viewcode-back" href="../../_autosummary/simpdf.htmlCleaner.html#simpdf.htmlCleaner.htmlCleaner">[docs]</a><span class="k">class</span> <span class="nc">htmlCleaner</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    *A parser/cleaner to strip a webpage article of all cruft and neatly present it with soem nice css*</span>
+<span class="sd">    *A parser/cleaner to strip a webpage article of all cruft and neatly present it with some nice css*</span>
 
 <span class="sd">    **Key Arguments:**</span>
 <span class="sd">        - ``log`` -- logger</span>
 <span class="sd">        - ``settings`` -- the settings dictionary</span>
 <span class="sd">        - ``url`` -- the URL to the HTML page to parse and clean</span>
 <span class="sd">        - ``outputDirectory`` -- path to the directory to save the output html file to</span>
-<span class="sd">        - ``title`` -- title of the document to save. If false will take the title of the HTML page as the filename. Default *False*.</span>
+<span class="sd">        - ``title`` -- title of the document to save. If *False* will take the title of the HTML page as the filename. Default *False*.</span>
 <span class="sd">        - ``style`` -- add simpdf&#39;s styling to the HTML document. Default *True*</span>
 <span class="sd">        - ``metadata`` -- include metadata in generated HTML. Default *True*</span>
-<span class="sd">        - ``h1`` -- include title as H1 at the top of the doc</span>
+<span class="sd">        - ``h1`` -- include title as H1 at the top of the doc. Default *True*</span>
 
 <span class="sd">    **Usage:**</span>
 
@@ -202,7 +202,7 @@
 <span class="sd">            )</span>
 <span class="sd">            cleaner.clean()  </span>
 
-<span class="sd">        Or give the cleaner the name of the document:</span>
+<span class="sd">        Or specify the title of the document and remove styling, metadata and title:</span>
 
 <span class="sd">        .. code-block:: python </span>
 
@@ -212,7 +212,10 @@
 <span class="sd">                settings=settings,</span>
 <span class="sd">                url=&quot;http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html&quot;,</span>
 <span class="sd">                outputDirectory=&quot;/tmp&quot;,</span>
-<span class="sd">                title=&quot;my_clean_doc.html&quot;</span>
+<span class="sd">                title=&quot;my_clean_doc&quot;,</span>
+<span class="sd">                style=False,</span>
+<span class="sd">                metadata=False,</span>
+<span class="sd">                h1=False</span>
 <span class="sd">            )</span>
 <span class="sd">            cleaner.clean() </span>
 
@@ -258,33 +261,7 @@
 
 <span class="sd">        **Usage:**</span>
 
-<span class="sd">            To generate the HTML page, using the title of the webpage as the filename:</span>
-
-<span class="sd">            .. code-block:: python </span>
-
-<span class="sd">                from simpdf import htmlCleaner</span>
-<span class="sd">                cleaner = htmlCleaner(</span>
-<span class="sd">                    log=log,</span>
-<span class="sd">                    settings=settings,</span>
-<span class="sd">                    url=&quot;http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html&quot;,</span>
-<span class="sd">                    outputDirectory=&quot;/tmp&quot;</span>
-<span class="sd">                )</span>
-<span class="sd">                cleaner.clean()  </span>
-
-<span class="sd">            Or give the cleaner the name of the document, and don&#39;t apply style:</span>
-
-<span class="sd">            .. code-block:: python </span>
-
-<span class="sd">                from simpdf import htmlCleaner</span>
-<span class="sd">                cleaner = htmlCleaner(</span>
-<span class="sd">                    log=log,</span>
-<span class="sd">                    settings=settings,</span>
-<span class="sd">                    url=&quot;http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html&quot;,</span>
-<span class="sd">                    outputDirectory=&quot;/tmp&quot;,</span>
-<span class="sd">                    title=&quot;my_clean_doc.html&quot;,</span>
-<span class="sd">                    style=False</span>
-<span class="sd">                )</span>
-<span class="sd">                cleaner.clean() </span>
+<span class="sd">            See class usage </span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;starting the ``clean`` method&#39;</span><span class="p">)</span>
 

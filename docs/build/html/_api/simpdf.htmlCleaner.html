@@ -164,7 +164,7 @@
 <dl class="class">
 <dt id="simpdf.htmlCleaner.htmlCleaner">
 <em class="property">class </em><code class="descclassname">simpdf.htmlCleaner.</code><code class="descname">htmlCleaner</code><span class="sig-paren">(</span><em>log</em>, <em>settings</em>, <em>url</em>, <em>outputDirectory=False</em>, <em>title=False</em>, <em>style=True</em>, <em>metadata=True</em>, <em>h1=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/simpdf/htmlCleaner.html#htmlCleaner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#simpdf.htmlCleaner.htmlCleaner" title="Permalink to this definition">  ∞</a></dt>
-<dd><p><em>A parser/cleaner to strip a webpage article of all cruft and neatly present it with soem nice css</em></p>
+<dd><p><em>A parser/cleaner to strip a webpage article of all cruft and neatly present it with some nice css</em></p>
 <dl class="docutils">
 <dt><strong>Key Arguments:</strong></dt>
 <dd><ul class="first last simple">
@@ -172,10 +172,10 @@
 <li><code class="docutils literal"><span class="pre">settings</span></code> &#8211; the settings dictionary</li>
 <li><code class="docutils literal"><span class="pre">url</span></code> &#8211; the URL to the HTML page to parse and clean</li>
 <li><code class="docutils literal"><span class="pre">outputDirectory</span></code> &#8211; path to the directory to save the output html file to</li>
-<li><code class="docutils literal"><span class="pre">title</span></code> &#8211; title of the document to save. If false will take the title of the HTML page as the filename. Default <em>False</em>.</li>
+<li><code class="docutils literal"><span class="pre">title</span></code> &#8211; title of the document to save. If <em>False</em> will take the title of the HTML page as the filename. Default <em>False</em>.</li>
 <li><code class="docutils literal"><span class="pre">style</span></code> &#8211; add simpdf&#8217;s styling to the HTML document. Default <em>True</em></li>
 <li><code class="docutils literal"><span class="pre">metadata</span></code> &#8211; include metadata in generated HTML. Default <em>True</em></li>
-<li><code class="docutils literal"><span class="pre">h1</span></code> &#8211; include title as H1 at the top of the doc</li>
+<li><code class="docutils literal"><span class="pre">h1</span></code> &#8211; include title as H1 at the top of the doc. Default <em>True</em></li>
 </ul>
 </dd>
 </dl>
@@ -192,14 +192,17 @@
 <span class="n">cleaner</span><span class="o">.</span><span class="n">clean</span><span class="p">()</span>  
 </pre></div>
 </div>
-<p>Or give the cleaner the name of the document:</p>
+<p>Or specify the title of the document and remove styling, metadata and title:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">simpdf</span> <span class="kn">import</span> <span class="n">htmlCleaner</span>
 <span class="n">cleaner</span> <span class="o">=</span> <span class="n">htmlCleaner</span><span class="p">(</span>
     <span class="n">log</span><span class="o">=</span><span class="n">log</span><span class="p">,</span>
     <span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">,</span>
     <span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html&quot;</span><span class="p">,</span>
     <span class="n">outputDirectory</span><span class="o">=</span><span class="s2">&quot;/tmp&quot;</span><span class="p">,</span>
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;my_clean_doc.html&quot;</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;my_clean_doc&quot;</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+    <span class="n">metadata</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+    <span class="n">h1</span><span class="o">=</span><span class="bp">False</span>
 <span class="p">)</span>
 <span class="n">cleaner</span><span class="o">.</span><span class="n">clean</span><span class="p">()</span> 
 </pre></div>
@@ -218,31 +221,7 @@
 </dl>
 <p><strong>Usage:</strong></p>
 <blockquote>
-<div><p>To generate the HTML page, using the title of the webpage as the filename:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">simpdf</span> <span class="kn">import</span> <span class="n">htmlCleaner</span>
-<span class="n">cleaner</span> <span class="o">=</span> <span class="n">htmlCleaner</span><span class="p">(</span>
-    <span class="n">log</span><span class="o">=</span><span class="n">log</span><span class="p">,</span>
-    <span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">,</span>
-    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html&quot;</span><span class="p">,</span>
-    <span class="n">outputDirectory</span><span class="o">=</span><span class="s2">&quot;/tmp&quot;</span>
-<span class="p">)</span>
-<span class="n">cleaner</span><span class="o">.</span><span class="n">clean</span><span class="p">()</span>  
-</pre></div>
-</div>
-<p>Or give the cleaner the name of the document, and don&#8217;t apply style:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">simpdf</span> <span class="kn">import</span> <span class="n">htmlCleaner</span>
-<span class="n">cleaner</span> <span class="o">=</span> <span class="n">htmlCleaner</span><span class="p">(</span>
-    <span class="n">log</span><span class="o">=</span><span class="n">log</span><span class="p">,</span>
-    <span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">,</span>
-    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html&quot;</span><span class="p">,</span>
-    <span class="n">outputDirectory</span><span class="o">=</span><span class="s2">&quot;/tmp&quot;</span><span class="p">,</span>
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;my_clean_doc.html&quot;</span><span class="p">,</span>
-    <span class="n">style</span><span class="o">=</span><span class="bp">False</span>
-<span class="p">)</span>
-<span class="n">cleaner</span><span class="o">.</span><span class="n">clean</span><span class="p">()</span> 
-</pre></div>
-</div>
-</div></blockquote>
+<div>See class usage</div></blockquote>
 </dd></dl>
 
 </dd></dl>
