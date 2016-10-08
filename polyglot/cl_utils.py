@@ -1,6 +1,8 @@
 #!/usr/local/bin/python
 # encoding: utf-8
 """
+Documentation for polyglot can be found here: http://pypolyglot.readthedocs.org/en/stable
+
 Translate documents and webpages to various markup languages and document formats (html, epub, mobi ..)
 
 Usage:
