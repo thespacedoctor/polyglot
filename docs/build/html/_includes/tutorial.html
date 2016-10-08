@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tutorial &mdash; polygot 0.1 documentation</title>
+  <title>Tutorial &mdash; polygot 0.3 documentation</title>
   
 
   
@@ -41,7 +41,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="polygot 0.1 documentation" href="../index.html"/> 
+    <link rel="top" title="polygot 0.3 documentation" href="../index.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -72,7 +72,7 @@
             
             
               <div class="version">
-                v0.1
+                v0.3
               </div>
             
           
@@ -152,11 +152,19 @@
             
   <div class="section" id="tutorial">
 <h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">  ∞</a></h1>
-<div class="admonition-todo admonition" id="index-0">
-<p class="first admonition-title">Todo</p>
-<ul class="last simple">
-<li>add tutorial</li>
-</ul>
+<p>Before you begin using polygot you will need to populate some custom settings within the polygot settings file.</p>
+<p>To setup the default settings file at <code class="docutils literal"><span class="pre">~/.config/polygot/polygot.yaml</span></code> run the command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>polygot init
+</pre></div>
+</div>
+<p>This should create and open the settings file; follow the instruction in the file to populate the missing settings values (usually given an <code class="docutils literal"><span class="pre">XXX</span></code> placeholder).</p>
+<p>To read the basic usage intructions just run <code class="docutils literal"><span class="pre">polygot</span> <span class="pre">-h</span></code></p>
+<div class="section" id="webpage-article-to-html-document">
+<h2>Webpage Article to HTML document<a class="headerlink" href="#webpage-article-to-html-document" title="Permalink to this headline">  ∞</a></h2>
+<p>To generate a parsed, cleaned local HTML document from a webpage at a given URL use polygot&#8217;s <code class="docutils literal"><span class="pre">html</span></code> command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>polygot html https://en.wikipedia.org/wiki/Volkswagen
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -192,7 +200,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.1',
+            VERSION:'0.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

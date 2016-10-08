@@ -30,7 +30,7 @@ if exists:
 
 setup(name="polygot",
       version=__version__,
-      description="Using the readability parser API generate clean HTML and PDF documents of articles found on the web",
+      description="Translate documents and webpages to various markup languages and document formats (html, epub, mobi ..)",
       long_description=readme(),
       classifiers=[
           'Development Status :: 4 - Beta',

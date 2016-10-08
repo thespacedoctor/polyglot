@@ -4,18 +4,14 @@ Usage
 .. code-block:: bash 
    
     
-    *Parse and clean up webpage contents with options to print to PDF*
-    
-    :Author:
-        David Young
-    
-    :Date Created:
-        September 28, 2015
+    Translate documents and webpages to various markup languages and document formats (html, epub, mobi ..)
     
     Usage:
+        polygot init
         polygot [-oc] (pdf|html) <url> [<destinationFolder> -f <filename> -s <pathToSettingsFile>]
     
     Options:
+        init                  setup the polygot settings file for the first time
         pdf                   print webpage to pdf
         html                  parse and download webpage to a local HTML document
     

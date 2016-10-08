@@ -1,4 +1,4 @@
 polygot 
 =========================
 
-*Using the readability parser API generate clean HTML and PDF documents of articles found on the web*.
+*Translate documents and webpages to various markup languages and document formats (html, epub, mobi ..)*.

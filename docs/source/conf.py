@@ -263,7 +263,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     ('index', 'polygot', u'polygot Documentation',
-     u'Dave Young', 'polygot', 'Using the readability parser API generate clean HTML and PDF documents of articles found on the web',
+     u'Dave Young', 'polygot', 'Translate documents and webpages to various markup languages and document formats (html, epub, mobi ..)',
      'Miscellaneous'),
 ]
 
