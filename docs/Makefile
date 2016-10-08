@@ -118,17 +118,17 @@ qthelp:
 	@echo
 	@echo "Build finished; now you can run "qcollectiongenerator" with the" \
 	      ".qhcp project file in $(BUILDDIR)/qthelp, like this:"
-	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/polygot.qhcp"
+	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/polyglot.qhcp"
 	@echo "To view the help file:"
-	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/polygot.qhc"
+	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/polyglot.qhc"
 
 devhelp:
 	$(SPHINXBUILD) -b devhelp $(ALLSPHINXOPTS) $(BUILDDIR)/devhelp
 	@echo
 	@echo "Build finished."
 	@echo "To view the help file:"
-	@echo "# mkdir -p $$HOME/.local/share/devhelp/polygot"
-	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/polygot"
+	@echo "# mkdir -p $$HOME/.local/share/devhelp/polyglot"
+	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/polyglot"
 	@echo "# devhelp"
 
 epub:
@@ -195,7 +195,7 @@ doctest:
 
 buildapi:
 	rm -rf $(APIDIR)
-	sphinx-apidoc -fMeET --full -o source/_api ../ ../setup.py ../polygot/__version__.py ../*/tests* ../*/*/tests* ../*/*/*/tests* ../*/*/*/*/tests*
+	sphinx-apidoc -fMeET --full -o source/_api ../ ../setup.py ../polyglot/__version__.py ../*/tests* ../*/*/tests* ../*/*/*/tests* ../*/*/*/*/tests*
 	@echo "Auto-generation of API documentation finished. " \
 		"The generated files are in '_api/'"
 

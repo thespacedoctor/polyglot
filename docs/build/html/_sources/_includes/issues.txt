@@ -2,4 +2,4 @@ Issues
 ------
 
 Please report any issues
-`here <https://github.com/thespacedoctor/polygot/issues>`__.
+`here <https://github.com/thespacedoctor/polyglot/issues>`__.

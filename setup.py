@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 import os
 
 moduleDirectory = os.path.dirname(os.path.realpath(__file__))
-exec(open(moduleDirectory + "/polygot/__version__.py").read())
+exec(open(moduleDirectory + "/polyglot/__version__.py").read())
 
 
 def readme():
@@ -11,7 +11,7 @@ def readme():
 
 install_requires = [
     'pyyaml',
-    'polygot',
+    'pypolyglot',
     'fundamentals',
     'readability-api',
     'requests'
@@ -28,7 +28,7 @@ if exists:
         except:
             pass
 
-setup(name="polygot",
+setup(name="pypolyglot",
       version=__version__,
       description="Translate documents and webpages to various markup languages and document formats (html, epub, mobi ..)",
       long_description=readme(),
@@ -39,8 +39,8 @@ setup(name="polygot",
           'Topic :: Utilities',
       ],
       keywords=['pdf, html, parser'],
-      url='https://github.com/thespacedoctor/polygot',
-      download_url='https://github.com/thespacedoctor/polygot/archive/v%(__version__)s.zip' % locals(
+      url='https://github.com/thespacedoctor/polyglot',
+      download_url='https://github.com/thespacedoctor/polyglot/archive/v%(__version__)s.zip' % locals(
       ),
       author='David Young',
       author_email='davidrobertyoung@gmail.com',
@@ -51,6 +51,6 @@ setup(name="polygot",
       test_suite='nose.collector',
       tests_require=['nose', 'nose-cover3'],
       entry_points={
-          'console_scripts': ['polygot=polygot.cl_utils:main'],
+          'console_scripts': ['polyglot=polyglot.cl_utils:main'],
       },
       zip_safe=False)

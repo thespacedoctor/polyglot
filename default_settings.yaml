@@ -3,7 +3,7 @@
 readability:
     parser api token: XXX # REPLACE ME
 
-polygot:
+polyglot:
     electron path: /XXX/XXX/electron-pdf # REPLACE ME
 
 logging settings:
@@ -27,7 +27,7 @@ logging settings:
             class: logging.handlers.GroupWriteRotatingFileHandler
             level: WARNING
             formatter: file_style
-            filename: /Users/Dave/.config/polygot/polygot.log
+            filename: /Users/Dave/.config/polyglot/polyglot.log
             mode: w+
             maxBytes: 102400
             backupCount: 1

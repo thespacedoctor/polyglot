@@ -6,10 +6,10 @@ This means you can modify the code from your cloned repo:
 
 .. code:: bash
 
-    git clone git@github.com:thespacedoctor/polygot.git
-    cd polygot
+    git clone git@github.com:thespacedoctor/polyglot.git
+    cd polyglot
     python setup.py develop
 
-`Pull requests <https://github.com/thespacedoctor/polygot/pulls>`__
+`Pull requests <https://github.com/thespacedoctor/polyglot/pulls>`__
 are welcomed!
 

@@ -7,8 +7,8 @@ Subpackages
    :nosignatures:
    :template: autosummary/subpackage.rst
 
-   polygot
-   polygot.commonutils 
+   polyglot
+   polyglot.commonutils 
 
 Modules
 -----------
@@ -17,8 +17,8 @@ Modules
    :toctree: _autosummary
    :nosignatures:
 
-   polygot.cl_utils
-   polygot.utKit 
+   polyglot.cl_utils
+   polyglot.utKit 
 
 Classes
 -----------
@@ -27,10 +27,10 @@ Classes
    :toctree: _autosummary
    :nosignatures:
 
-   polygot.authenticate
-   polygot.htmlCleaner
-   polygot.printpdf
-   polygot.utKit.utKit 
+   polyglot.authenticate
+   polyglot.htmlCleaner
+   polyglot.printpdf
+   polyglot.utKit.utKit 
 
 Functions
 -----------

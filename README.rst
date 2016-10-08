@@ -1,4 +1,4 @@
-polygot 
+polyglot 
 =========================
 
 *Translate documents and webpages to various markup languages and document formats (html, epub, mobi ..)*.
@@ -12,18 +12,18 @@ Usage
     Translate documents and webpages to various markup languages and document formats (html, epub, mobi ..)
     
     Usage:
-        polygot init
-        polygot [-oc] (pdf|html) <url> [<destinationFolder> -f <filename> -s <pathToSettingsFile>]
+        polyglot init
+        polyglot [-oc] (pdf|html) <url> [<destinationFolder> -f <filename> -s <pathToSettingsFile>]
     
     Options:
-        init                  setup the polygot settings file for the first time
+        init                  setup the polyglot settings file for the first time
         pdf                   print webpage to pdf
         html                  parse and download webpage to a local HTML document
     
         -h, --help                                                      show this help message
         -v, --version                                                   show version
         -o, --open                                                      open the document after creation
-        -c, --clean                                                     add polygot's clean styling to the output document
+        -c, --clean                                                     add polyglot's clean styling to the output document
         <url>                                                           the url of the article's webpage
         -s <pathToSettingsFile>, --settings <pathToSettingsFile>        path to alternative settings file (optional)
         <destinationFolder>                                             the folder to save the parsed PDF or HTML document to (optional)
@@ -33,30 +33,30 @@ Usage
 Documentation
 =============
 
-Documentation for polygot is hosted by `Read the Docs <http://polygot.readthedocs.org/en/stable/>`__ (last `stable version <http://polygot.readthedocs.org/en/stable/>`__ and `latest version <http://polygot.readthedocs.org/en/latest/>`__).
+Documentation for polyglot is hosted by `Read the Docs <http://polyglot.readthedocs.org/en/stable/>`__ (last `stable version <http://polyglot.readthedocs.org/en/stable/>`__ and `latest version <http://polyglot.readthedocs.org/en/latest/>`__).
 
 Installation
 ============
 
-The easiest way to install polygot us to use ``pip``:
+The easiest way to install polyglot us to use ``pip``:
 
 .. code:: bash
 
-    pip install polygot
+    pip install polyglot
 
-Or you can clone the `github repo <https://github.com/thespacedoctor/polygot>`__ and install from a local version of the code:
+Or you can clone the `github repo <https://github.com/thespacedoctor/polyglot>`__ and install from a local version of the code:
 
 .. code:: bash
 
-    git clone git@github.com:thespacedoctor/polygot.git
-    cd polygot
+    git clone git@github.com:thespacedoctor/polyglot.git
+    cd polyglot
     python setup.py install
 
-To upgrade to the latest version of polygot use the command:
+To upgrade to the latest version of polyglot use the command:
 
 .. code:: bash
 
-    pip install polygot --upgrade
+    pip install polyglot --upgrade
 
 
 Development
@@ -67,11 +67,11 @@ This means you can modify the code from your cloned repo:
 
 .. code:: bash
 
-    git clone git@github.com:thespacedoctor/polygot.git
-    cd polygot
+    git clone git@github.com:thespacedoctor/polyglot.git
+    cd polyglot
     python setup.py develop
 
-`Pull requests <https://github.com/thespacedoctor/polygot/pulls>`__
+`Pull requests <https://github.com/thespacedoctor/polyglot/pulls>`__
 are welcomed!
 
 
@@ -79,7 +79,7 @@ Issues
 ------
 
 Please report any issues
-`here <https://github.com/thespacedoctor/polygot/issues>`__.
+`here <https://github.com/thespacedoctor/polyglot/issues>`__.
 
 License
 =======

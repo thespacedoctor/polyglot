@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
-# polygot documentation build configuration file, created by
-# sphinx-quickstart on Sat Oct  8 19:09:24 2016.
+# polyglot documentation build configuration file, created by
+# sphinx-quickstart on Sat Oct  8 20:32:39 2016.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -52,7 +52,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'polygot'
+project = u'polyglot'
 copyright = u'2016, Author'
 author = u'Author'
 
@@ -137,7 +137,7 @@ html_theme = 'alabaster'
 # The name for this set of Sphinx documents.
 # "<project> v<release> documentation" by default.
 #
-# html_title = u'polygot v'
+# html_title = u'polyglot v'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #
@@ -237,7 +237,7 @@ html_static_path = ['_static']
 # html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'polygotdoc'
+htmlhelp_basename = 'polyglotdoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -263,7 +263,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'polygot.tex', u'polygot Documentation',
+    (master_doc, 'polyglot.tex', u'polyglot Documentation',
      u'Author', 'manual'),
 ]
 
@@ -305,7 +305,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'polygot', u'polygot Documentation',
+    (master_doc, 'polyglot', u'polyglot Documentation',
      [author], 1)
 ]
 
@@ -320,8 +320,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'polygot', u'polygot Documentation',
-     author, 'polygot', 'One line description of project.',
+    (master_doc, 'polyglot', u'polyglot Documentation',
+     author, 'polyglot', 'One line description of project.',
      'Miscellaneous'),
 ]
 
