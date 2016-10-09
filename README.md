@@ -1,11 +1,15 @@
 polyglot
 ========
 
+<img src="http://i.imgur.com/eifuDPP.png" alt="image" width="300" />
+
 *Translate documents and webpages to various markup languages and
 document formats (html, epub, mobi ..)*.
 
 Usage
 =====
+
+    Documentation for polyglot can be found here: http://pypolyglot.readthedocs.org/en/stable
 
     Translate documents and webpages to various markup languages and document formats (html, epub, mobi ..)
 
@@ -31,9 +35,9 @@ Documentation
 =============
 
 Documentation for polyglot is hosted by [Read the
-Docs](http://polyglot.readthedocs.org/en/stable/) (last [stable
-version](http://polyglot.readthedocs.org/en/stable/) and [latest
-version](http://polyglot.readthedocs.org/en/latest/)).
+Docs](http://pypolyglot.readthedocs.org/en/stable/) (last [stable
+version](http://pypolyglot.readthedocs.org/en/stable/) and [latest
+version](http://pypolyglot.readthedocs.org/en/latest/)).
 
 Installation
 ============

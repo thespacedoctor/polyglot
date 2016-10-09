@@ -1,6 +1,9 @@
 polyglot 
 =========================
 
+.. image:: http://i.imgur.com/eifuDPP.png
+    :width: 300 px
+
 *Translate documents and webpages to various markup languages and document formats (html, epub, mobi ..)*.
 
 Usage
@@ -8,6 +11,8 @@ Usage
 
 .. code-block:: bash 
    
+    
+    Documentation for polyglot can be found here: http://pypolyglot.readthedocs.org/en/stable
     
     Translate documents and webpages to various markup languages and document formats (html, epub, mobi ..)
     
@@ -33,7 +38,7 @@ Usage
 Documentation
 =============
 
-Documentation for polyglot is hosted by `Read the Docs <http://polyglot.readthedocs.org/en/stable/>`__ (last `stable version <http://polyglot.readthedocs.org/en/stable/>`__ and `latest version <http://polyglot.readthedocs.org/en/latest/>`__).
+Documentation for polyglot is hosted by `Read the Docs <http://pypolyglot.readthedocs.org/en/stable/>`__ (last `stable version <http://pypolyglot.readthedocs.org/en/stable/>`__ and `latest version <http://pypolyglot.readthedocs.org/en/latest/>`__).
 
 Installation
 ============
