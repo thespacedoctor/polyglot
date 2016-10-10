@@ -3,8 +3,13 @@
 readability:
     parser api token: XXX # REPLACE ME
 
-polyglot:
+executables:
+    # INSTALL WITH `npm install electron-pdf -g`
     electron path: /XXX/XXX/electron-pdf # REPLACE ME
+    # FIND INSTALLERS FOR PANDOC AT `http://pandoc.org/installing.html`
+    pandoc: /XXX/XXX/pandoc # REPLACE ME
+    # FIND INSTALLERS FOR KINDLEGEN AT `https://www.amazon.com/gp/feature.html?docId=1000765211`
+    kindlegen: /XXX/XXX/kindlegen # REPLACE ME
 
 logging settings:
     formatters:

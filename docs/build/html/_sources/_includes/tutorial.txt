@@ -16,7 +16,7 @@ polyglot often relies on a bunch on other excellent tools to get it's results li
 To read the basic usage intructions just run ``polyglot -h``.
 
 Webpage Article to HTML document
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------
 
 To generate a parsed, cleaned local HTML document from a webpage at a given URL use polyglot's ``html`` command:
 
@@ -41,7 +41,7 @@ To style the result with polyglots simple styling and easy to read fonts, use th
 `See the result here. <_static/examples/Volkswagen_Styled.html>`_
 
 Webpage Article to PDF
-^^^^^^^^^^^^^^^^^^^^^^
+----------------------
 
 To instead print the webpage to PDF, you can either just print the original webpage:
 
@@ -70,7 +70,24 @@ then in whatever bash scripts you write add this before any polyglot commands:
     export DISPLAY=':99.0'
     Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
 
+Webpage Article to eBook
+------------------------
 
+To generate an epub book from a webpage article run the command:
+
+.. code-block:: bash 
+    
+    polyglot epub http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html 
+
+Here is the `output of this command. <_static/examples/mysqlSucker.epub>`_
+
+If you prefer a mobi output, use the command:
+
+.. code-block:: bash 
+
+    polyglot epub http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html 
+
+To get `this mobi book. <_static/examples/mysqlSucker.mobi>`_
 
 
 

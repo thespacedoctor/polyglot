@@ -20,6 +20,7 @@ Submodules
 
    polyglot.authenticate
    polyglot.cl_utils
+   polyglot.ebook
    polyglot.htmlCleaner
    polyglot.printpdf
    polyglot.utKit
