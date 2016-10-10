@@ -130,7 +130,7 @@ class kindle(ebook):
                 'Communication with your SMTP server failed. Maybe wrong connection details? Check exception details and your headjack settings file')
             return False
 
-        os.remove(pathToMobi)
+        # os.remove(pathToMobi)
 
         self.log.info('completed the ``send`` method')
         return True

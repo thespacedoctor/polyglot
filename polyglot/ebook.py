@@ -129,7 +129,7 @@ class ebook():
                 epub = self._url_to_epub()
             ebook = self._epub_to_mobi(
                 epubPath=epub,
-                deleteEpub=True
+                deleteEpub=False
             )
 
         self.log.info('completed the ``get`` method')
@@ -170,7 +170,7 @@ class ebook():
         epub = html.replace(".html", ".epub")
         pandoc = self.settings["executables"]["pandoc"]
 
-        cmd = """%(pandoc)s -S -s -f html -t epub %(header)s "%(html)s" %(footer)s -o "%(epub)s" """ % locals(
+        cmd = """%(pandoc)s -S -s -f html -t epub3 %(header)s "%(html)s" %(footer)s -o "%(epub)s" """ % locals(
         )
         p = Popen(cmd, stdout=PIPE, stderr=PIPE, shell=True)
         stdout, stderr = p.communicate()
@@ -203,7 +203,9 @@ class ebook():
         content = """
 
 <hr>
+<div style="text-align: center">
 %(content)s 
+</div>
 <hr>
 
 """ % locals()
