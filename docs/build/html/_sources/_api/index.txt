@@ -1,5 +1,5 @@
 .. polyglot documentation master file, created by
-   sphinx-quickstart on Mon Oct 10 08:50:23 2016.
+   sphinx-quickstart on Mon Oct 10 08:58:26 2016.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 

@@ -196,7 +196,7 @@ class printpdf():
 
         url = self.url
         pdfPath = self.folderpath + "/" + title + self.append + ".pdf"
-        electron = self.settings["polyglot"]["electron path"]
+        electron = self.settings["executables"]["electron path"]
         cmd = """%(electron)s -i "%(url)s" -o "%(pdfPath)s" --printBackground """ % locals()
         p = Popen(cmd, stdout=PIPE, stderr=PIPE, shell=True)
         stdout, stderr = p.communicate()
@@ -236,7 +236,7 @@ class printpdf():
         pdfPath = htmlFile.replace(".html", self.append + ".pdf")
 
         # CONVERT TO PDF WITH ELECTON PDF
-        electron = self.settings["polyglot"]["electron path"]
+        electron = self.settings["executables"]["electron path"]
         cmd = """%(electron)s -i "%(htmlFile)s" -o "%(pdfPath)s" """ % locals()
         p = Popen(cmd, stdout=PIPE, stderr=PIPE, shell=True)
         stdout, stderr = p.communicate()
