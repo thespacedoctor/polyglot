@@ -7,12 +7,13 @@ Translate documents and webpages to various markup languages and document format
 
 Usage:
     polyglot init
-    polyglot [-oc] (pdf|html) <url> [<destinationFolder> -f <filename> -s <pathToSettingsFile>]
+    polyglot [-oc] (pdf|html|epub|mobi) <url> [<destinationFolder> -f <filename> -s <pathToSettingsFile>]
 
 Options:
     init                  setup the polyglot settings file for the first time
     pdf                   print webpage to pdf
     html                  parse and download webpage to a local HTML document
+    epub                  generate an epub format book from a webpage URL
 
     -h, --help                                                      show this help message
     -v, --version                                                   show version
@@ -124,6 +125,30 @@ def main(arguments=None):
             h1=True  # include title as H1 at the top of the doc
         )
         filepath = cleaner.clean()
+
+    if epub:
+        from polyglot import ebook
+        epub = ebook(
+            log=log,
+            settings=settings,
+            urlOrPath=url,
+            title=filenameFlag,
+            bookFormat="epub",
+            outputDirectory=destinationFolder
+        )
+        filepath = epub.get()
+
+    if mobi:
+        from polyglot import ebook
+        mobi = ebook(
+            log=log,
+            settings=settings,
+            urlOrPath=url,
+            title=filenameFlag,
+            bookFormat="mobi",
+            outputDirectory=destinationFolder,
+        )
+        filepath = mobi.get()
 
     if openFlag:
         try:

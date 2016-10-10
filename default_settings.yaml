@@ -3,8 +3,10 @@
 readability:
     parser api token: XXX # REPLACE ME
 
-polyglot:
+executables:
     electron path: /XXX/XXX/electron-pdf # REPLACE ME
+    pandoc: /XXX/XXX/pandoc # REPLACE ME
+    kindlegen: /XXX/XXX/kindlegen # REPLACE ME
 
 logging settings:
     formatters:

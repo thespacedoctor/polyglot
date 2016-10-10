@@ -165,7 +165,12 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="_includes/index.html#usage">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_includes/index.html#documentation">Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_includes/index.html#tutorial">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_includes/index.html#tutorial">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_includes/index.html#webpage-article-to-html-document">Webpage Article to HTML document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_includes/index.html#webpage-article-to-pdf">Webpage Article to PDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_includes/index.html#webpage-article-to-ebook">Webpage Article to eBook</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -211,12 +216,13 @@ Translate documents and webpages to various markup languages and document format
 
 Usage:
     polyglot init
-    polyglot <span class="o">[</span>-oc<span class="o">]</span> <span class="o">(</span>pdf<span class="p">|</span>html<span class="o">)</span> &lt;url&gt; <span class="o">[</span>&lt;destinationFolder&gt; -f &lt;filename&gt; -s &lt;pathToSettingsFile&gt;<span class="o">]</span>
+    polyglot <span class="o">[</span>-oc<span class="o">]</span> <span class="o">(</span>pdf<span class="p">|</span>html<span class="p">|</span>epub<span class="p">|</span>mobi<span class="o">)</span> &lt;url&gt; <span class="o">[</span>&lt;destinationFolder&gt; -f &lt;filename&gt; -s &lt;pathToSettingsFile&gt;<span class="o">]</span>
 
 Options:
     init                  setup the polyglot settings file <span class="k">for</span> the first <span class="nb">time</span>
     pdf                   print webpage to pdf
     html                  parse and download webpage to a <span class="nb">local</span> HTML document
+    epub                  generate an epub format book from a webpage URL
 
     -h, --help                                                      show this <span class="nb">help</span> message
     -v, --version                                                   show version
@@ -243,6 +249,8 @@ Options:
 <p>This should create and open the settings file; follow the instructions in the file to populate the missing settings values (usually given an <code class="docutils literal"><span class="pre">XXX</span></code> placeholder).</p>
 <p>polyglot often relies on a bunch on other excellent tools to get it&#8217;s results like <a class="reference external" href="https://github.com/fraserxu/electron-pdf">electron-pdf</a>, <a class="reference external" href="http://pandoc.org">pandoc</a> and <a class="reference external" href="https://www.amazon.com/gp/feature.html?docId=1000765211">kidlegen</a>. Depending on how you use polyglot, these tools may need to be install on your system.</p>
 <p>To read the basic usage intructions just run <code class="docutils literal"><span class="pre">polyglot</span> <span class="pre">-h</span></code>.</p>
+<div class="section" id="webpage-article-to-html-document">
+<h2>Webpage Article to HTML document<a class="headerlink" href="#webpage-article-to-html-document" title="Permalink to this headline">  ∞</a></h2>
 <p>To generate a parsed, cleaned local HTML document from a webpage at a given URL use polyglot&#8217;s <code class="docutils literal"><span class="pre">html</span></code> command:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>polyglot html https://en.wikipedia.org/wiki/Volkswagen
 </pre></div>
@@ -257,6 +265,9 @@ Options:
 </pre></div>
 </div>
 <p><a class="reference external" href="_static/examples/Volkswagen_Styled.html">See the result here.</a></p>
+</div>
+<div class="section" id="webpage-article-to-pdf">
+<h2>Webpage Article to PDF<a class="headerlink" href="#webpage-article-to-pdf" title="Permalink to this headline">  ∞</a></h2>
 <p>To instead print the webpage to PDF, you can either just print the original webpage:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>polyglot pdf https://en.wikipedia.org/wiki/Volkswagen
 </pre></div>
@@ -275,6 +286,19 @@ Options:
 Xvfb :99 -screen <span class="m">0</span> 1024x768x24 &gt; /dev/null 2&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">&amp;</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="webpage-article-to-ebook">
+<h2>Webpage Article to eBook<a class="headerlink" href="#webpage-article-to-ebook" title="Permalink to this headline">  ∞</a></h2>
+<p>To generate an epub book from a webpage article run the command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>polyglot epub http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html
+</pre></div>
+</div>
+<p>Here is the <a class="reference external" href="_static/examples/mysqlSucker.epub">output of this command.</a></p>
+<p>If you prefer a mobi output, use the command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>polyglot epub http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html
+</pre></div>
+</div>
+<p>To get <a class="reference external" href="_static/examples/mysqlSucker.mobi">this mobi book.</a></p>
 <div class="toctree-wrapper compound" id="id1">
 <p class="caption"><span class="caption-text">Documentation</span><a class="headerlink" href="#id1" title="Permalink to this toctree">  ∞</a></p>
 <ul>
@@ -290,6 +314,7 @@ Xvfb :99 -screen <span class="m">0</span> 1024x768x24 &gt; /dev/null 2&gt;<span 
 </li>
 <li class="toctree-l1"><a class="reference internal" href="autosummary.html#classes">Classes</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="_autosummary/polyglot.authenticate.html">polyglot.authenticate (<em>class</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_autosummary/polyglot.ebook.html">polyglot.ebook (<em>class</em>)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_autosummary/polyglot.htmlCleaner.html">polyglot.htmlCleaner (<em>class</em>)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_autosummary/polyglot.printpdf.html">polyglot.printpdf (<em>class</em>)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_autosummary/polyglot.utKit.utKit.html">polyglot.utKit.utKit (<em>class</em>)</a></li>
@@ -299,6 +324,7 @@ Xvfb :99 -screen <span class="m">0</span> 1024x768x24 &gt; /dev/null 2&gt;<span 
 </ul>
 </li>
 </ul>
+</div>
 </div>
 <div class="section" id="indexes">
 <span id="id2"></span><h2>Indexes<a class="headerlink" href="#indexes" title="Permalink to this headline">  ∞</a></h2>
