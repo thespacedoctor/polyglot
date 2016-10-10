@@ -108,6 +108,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#webpage-article-to-html-document">Webpage Article to HTML document</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#webpage-article-to-pdf">Webpage Article to PDF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#webpage-article-to-ebook">Webpage Article to eBook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#send-a-webpage-article-straight-to-your-kindle">Send a Webpage Article Straight to Your Kindle</a></li>
 </ul>
 </li>
 </ul>
@@ -204,12 +205,14 @@ Translate documents and webpages to various markup languages and document format
 Usage:
     polyglot init
     polyglot <span class="o">[</span>-oc<span class="o">]</span> <span class="o">(</span>pdf<span class="p">|</span>html<span class="p">|</span>epub<span class="p">|</span>mobi<span class="o">)</span> &lt;url&gt; <span class="o">[</span>&lt;destinationFolder&gt; -f &lt;filename&gt; -s &lt;pathToSettingsFile&gt;<span class="o">]</span>
+    polyglot kindle &lt;url&gt; <span class="o">[</span>-f &lt;filename&gt; -s &lt;pathToSettingsFile&gt;<span class="o">]</span>
 
 Options:
-    init                  setup the polyglot settings file <span class="k">for</span> the first <span class="nb">time</span>
-    pdf                   print webpage to pdf
-    html                  parse and download webpage to a <span class="nb">local</span> HTML document
-    epub                  generate an epub format book from a webpage URL
+    init                                                            setup the polyglot settings file <span class="k">for</span> the first <span class="nb">time</span>
+    pdf                                                             print webpage to pdf
+    html                                                            parse and download webpage to a <span class="nb">local</span> HTML document
+    epub                                                            generate an epub format book from a webpage URL
+    kindle                                                          send webpage article straight to kindle
 
     -h, --help                                                      show this <span class="nb">help</span> message
     -v, --version                                                   show version
@@ -282,10 +285,19 @@ Xvfb :99 -screen <span class="m">0</span> 1024x768x24 &gt; /dev/null 2&gt;<span 
 </div>
 <p>Here is the <a class="reference external" href="_static/examples/mysqlSucker.epub">output of this command.</a></p>
 <p>If you prefer a mobi output, use the command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>polyglot epub http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html
+<div class="highlight-bash"><div class="highlight"><pre><span></span>polyglot mobi http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html
 </pre></div>
 </div>
 <p>To get <a class="reference external" href="_static/examples/mysqlSucker.mobi">this mobi book.</a></p>
+</div>
+<div class="section" id="send-a-webpage-article-straight-to-your-kindle">
+<h2>Send a Webpage Article Straight to Your Kindle<a class="headerlink" href="#send-a-webpage-article-straight-to-your-kindle" title="Permalink to this headline">  ∞</a></h2>
+<p>Polyglot can go even further than creating a mobi ebook from the web-article; it can also send the ebook straight to your kindle device or smart phone app (or both at the same time) as long as you have the email settings populated in the polyglot settings file.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>polyglot kindle http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html
+</pre></div>
+</div>
+<p>And here&#8217;s the book appearing on a smart phone kindle app:</p>
+<a class="reference internal image-reference" href="https://i.imgur.com/RQpvBZu.png"><img alt="https://i.imgur.com/RQpvBZu.png" src="https://i.imgur.com/RQpvBZu.png" style="width: 300px;" /></a>
 </div>
 </div>
 

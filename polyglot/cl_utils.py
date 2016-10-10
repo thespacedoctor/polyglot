@@ -8,12 +8,14 @@ Translate documents and webpages to various markup languages and document format
 Usage:
     polyglot init
     polyglot [-oc] (pdf|html|epub|mobi) <url> [<destinationFolder> -f <filename> -s <pathToSettingsFile>]
+    polyglot kindle <url> [-f <filename> -s <pathToSettingsFile>]
 
 Options:
-    init                  setup the polyglot settings file for the first time
-    pdf                   print webpage to pdf
-    html                  parse and download webpage to a local HTML document
-    epub                  generate an epub format book from a webpage URL
+    init                                                            setup the polyglot settings file for the first time
+    pdf                                                             print webpage to pdf
+    html                                                            parse and download webpage to a local HTML document
+    epub                                                            generate an epub format book from a webpage URL
+    kindle                                                          send webpage article straight to kindle
 
     -h, --help                                                      show this help message
     -v, --version                                                   show version
@@ -149,6 +151,16 @@ def main(arguments=None):
             outputDirectory=destinationFolder,
         )
         filepath = mobi.get()
+
+    if kindle:
+        from polyglot import kindle
+        sender = kindle(
+            log=log,
+            settings=settings,
+            urlOrPath=url,
+            title=filenameFlag
+        )
+        success = sender.send()
 
     if openFlag:
         try:
