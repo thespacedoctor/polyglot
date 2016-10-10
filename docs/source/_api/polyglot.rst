@@ -22,6 +22,7 @@ Submodules
    polyglot.cl_utils
    polyglot.ebook
    polyglot.htmlCleaner
+   polyglot.kindle
    polyglot.printpdf
    polyglot.utKit
 

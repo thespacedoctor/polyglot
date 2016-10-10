@@ -85,10 +85,22 @@ If you prefer a mobi output, use the command:
 
 .. code-block:: bash 
 
-    polyglot epub http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html 
+    polyglot mobi http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html 
 
 To get `this mobi book. <_static/examples/mysqlSucker.mobi>`_
 
+Send a Webpage Article Straight to Your Kindle
+----------------------------------------------
 
+Polyglot can go even further than creating a mobi ebook from the web-article; it can also send the ebook straight to your kindle device or smart phone app (or both at the same time) as long as you have the email settings populated in the polyglot settings file.
+
+.. code-block:: bash 
+    
+    polyglot kindle http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html 
+
+And here's the book appearing on a smart phone kindle app:
+
+.. image:: https://i.imgur.com/RQpvBZu.png
+    :width: 300 px
 
 

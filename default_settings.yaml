@@ -11,6 +11,18 @@ executables:
     # FIND INSTALLERS FOR KINDLEGEN AT `https://www.amazon.com/gp/feature.html?docId=1000765211`
     kindlegen: /XXX/XXX/kindlegen # REPLACE ME
 
+# ADD AN EMAIL ACCOUNT HERE TO SEND MOBI BOOKS STRAIGHT TO KINDLE
+# ADD YOUR EMAIL ADDRESS TO THE LIST OF ADDRESS THAT CAN SEND CONTENT TO YOUR KINDLE HERE: https://www.amazon.co.uk/mn/dcw/myx.html
+email:
+    smtp_server: smtp.gmail.com
+    smtp_port: 465
+    smtp_login: XXX
+    user_email: XXX
+    # YOU CAN LIST MORE THAN ONE KINDLE ADDRESS TO SEND TO MULTIPLE DEVICES
+    kindle_emails:  
+        - XXX
+    smtp_password: "*FQGAsxThDo7DGxycDZYFraUYt,p[6emZNNxdUu"
+
 logging settings:
     formatters:
         file_style:
