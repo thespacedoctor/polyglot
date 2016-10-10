@@ -10,12 +10,13 @@ Usage
     
     Usage:
         polyglot init
-        polyglot [-oc] (pdf|html) <url> [<destinationFolder> -f <filename> -s <pathToSettingsFile>]
+        polyglot [-oc] (pdf|html|epub|mobi) <url> [<destinationFolder> -f <filename> -s <pathToSettingsFile>]
     
     Options:
         init                  setup the polyglot settings file for the first time
         pdf                   print webpage to pdf
         html                  parse and download webpage to a local HTML document
+        epub                  generate an epub format book from a webpage URL
     
         -h, --help                                                      show this help message
         -v, --version                                                   show version

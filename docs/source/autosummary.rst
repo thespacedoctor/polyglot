@@ -28,6 +28,7 @@ Classes
    :nosignatures:
 
    polyglot.authenticate
+   polyglot.ebook
    polyglot.htmlCleaner
    polyglot.printpdf
    polyglot.utKit.utKit 
