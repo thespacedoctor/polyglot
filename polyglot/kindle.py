@@ -96,7 +96,7 @@ class kindle(ebook):
 
         pathToMobi = self.get()
         if not pathToMobi:
-            return False
+            return 404
 
         # create MIME message
 
