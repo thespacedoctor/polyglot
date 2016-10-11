@@ -127,6 +127,8 @@ class ebook():
         if self.format == "mobi":
             if self.urlOrPath[:4] == "http" or self.urlOrPath[:4] == "www.":
                 epub = self._url_to_epub()
+                if not epub:
+                    return None
             ebook = self._epub_to_mobi(
                 epubPath=epub,
                 deleteEpub=False
@@ -153,6 +155,9 @@ class ebook():
             h1=False  # include title as H1 at the top of the doc
         )
         html = cleaner.clean()
+
+        if not html:
+            return None
 
         if self.footer:
             footer = self._tmp_html_file(self.footer)

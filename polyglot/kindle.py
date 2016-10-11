@@ -95,6 +95,8 @@ class kindle(ebook):
         self.log.info('starting the ``send`` method')
 
         pathToMobi = self.get()
+        if not pathToMobi:
+            return False
 
         # create MIME message
 
