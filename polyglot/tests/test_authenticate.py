@@ -11,8 +11,7 @@ su = tools(
     docString=__doc__,
     logLevel="DEBUG",
     options_first=False,
-    projectName="polyglot",
-    tunnel=False
+    projectName="polyglot"
 )
 arguments, settings, log, dbConn = su.setup()
 
