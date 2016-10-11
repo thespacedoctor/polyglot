@@ -132,13 +132,13 @@ class htmlCleaner():
 
         # CATCH ERRORS
         if "error" in article and article["error"] == True:
-            print title
+            print url
             print "    " + article["messages"]
             return None
         try:
             text = article["content"]
         except:
-            print "Can't decode the text of %(title)s - moving on" % locals()
+            print "Can't decode the text of %(url)s - moving on" % locals()
             return None
 
         # COMMON FIXES TO HTML TO RENDER CORRECTLY
