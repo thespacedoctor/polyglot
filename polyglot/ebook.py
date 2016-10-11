@@ -262,8 +262,9 @@ class ebook():
             fileExists = True
         except IOError:
             fileExists = False
-            raise IOError(
+            self.log.error(
                 "the mobi %s does not exist on this machine" % (epubPath,))
+            return False
 
         if deleteEpub:
             os.remove(epubPath)
