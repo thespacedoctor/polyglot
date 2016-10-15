@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Command-Line Usage &mdash; polyglot 0.5.7 documentation</title>
+  <title>Command-Line Usage &mdash; polyglot 0.6 documentation</title>
   
 
   
@@ -41,7 +41,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="polyglot 0.5.7 documentation" href="../index.html"/> 
+    <link rel="top" title="polyglot 0.6 documentation" href="../index.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -72,7 +72,7 @@
             
             
               <div class="version">
-                v0.5.7
+                v0.6
               </div>
             
           
@@ -160,6 +160,8 @@ Usage:
     polyglot init
     polyglot <span class="o">[</span>-oc<span class="o">]</span> <span class="o">(</span>pdf<span class="p">|</span>html<span class="p">|</span>epub<span class="p">|</span>mobi<span class="o">)</span> &lt;url&gt; <span class="o">[</span>&lt;destinationFolder&gt; -f &lt;filename&gt; -s &lt;pathToSettingsFile&gt;<span class="o">]</span>
     polyglot kindle &lt;url&gt; <span class="o">[</span>-f &lt;filename&gt; -s &lt;pathToSettingsFile&gt;<span class="o">]</span>
+    polyglot <span class="o">[</span>-o<span class="o">]</span> <span class="o">(</span>epub<span class="p">|</span>mobi<span class="o">)</span> &lt;docx&gt; <span class="o">[</span>&lt;destinationFolder&gt; -f &lt;filename&gt; -s &lt;pathToSettingsFile&gt;<span class="o">]</span>
+    polyglot kindle &lt;docx&gt; <span class="o">[</span>-f &lt;filename&gt; -s &lt;pathToSettingsFile&gt;<span class="o">]</span>
 
 Options:
     init                                                            setup the polyglot settings file <span class="k">for</span> the first <span class="nb">time</span>
@@ -173,6 +175,7 @@ Options:
     -o, --open                                                      open the document after creation
     -c, --clean                                                     add polyglot<span class="s1">&#39;s clean styling to the output document</span>
 <span class="s1">    &lt;url&gt;                                                           the url of the article&#39;</span>s webpage
+    &lt;docx&gt;                                                          path to a DOCX file
     -s &lt;pathToSettingsFile&gt;, --settings &lt;pathToSettingsFile&gt;        path to alternative settings file <span class="o">(</span>optional<span class="o">)</span>
     &lt;destinationFolder&gt;                                             the folder to save the parsed PDF or HTML document to <span class="o">(</span>optional<span class="o">)</span>
     -f &lt;filename&gt;, --filename &lt;filename&gt;                            the name of the file to save, otherwise use webpage title as filename <span class="o">(</span>optional<span class="o">)</span>
@@ -212,7 +215,7 @@ Options:
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.5.7',
+            VERSION:'0.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
