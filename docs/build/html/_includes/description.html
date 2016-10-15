@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>polyglot &mdash; polyglot 0.4 documentation</title>
+  <title>polyglot &mdash; polyglot 0.6 documentation</title>
   
 
   
@@ -41,7 +41,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="polyglot 0.4 documentation" href="../index.html"/> 
+    <link rel="top" title="polyglot 0.6 documentation" href="../index.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -72,7 +72,7 @@
             
             
               <div class="version">
-                v0.4
+                v0.6
               </div>
             
           
@@ -96,11 +96,11 @@
                 <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="index.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#command-line-usage">Command-Line Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="index.html#documentation">Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html#tutorial">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#command-line-tutorial">Command-Line Tutorial</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Documentation</span></p>
+<p class="caption"><span class="caption-text">Python Package Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../autosummary.html">Subpackages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../autosummary.html#modules">Modules</a></li>
@@ -153,7 +153,44 @@
   <div class="section" id="polyglot">
 <h1>polyglot<a class="headerlink" href="#polyglot" title="Permalink to this headline">  ∞</a></h1>
 <a class="reference internal image-reference" href="http://i.imgur.com/eifuDPP.png"><img alt="http://i.imgur.com/eifuDPP.png" src="http://i.imgur.com/eifuDPP.png" style="width: 300px;" /></a>
-<p><em>Translate documents and webpages to various markup languages and document formats (html, epub, mobi ..)</em>.</p>
+<p><em>A python package and command-line tools for translating documents and webpages to various markup languages and document formats (html, epub, mobi ..)</em>.</p>
+<p>Here&#8217;s a summary of what&#8217;s included in the python package:</p>
+<p><strong>Classes</strong></p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../_autosummary/polyglot.authenticate.html#polyglot.authenticate" title="polyglot.authenticate"><code class="xref py py-obj docutils literal"><span class="pre">polyglot.authenticate</span></code></a></td>
+<td><em>Authenticate against readability api</em></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../_autosummary/polyglot.ebook.html#polyglot.ebook" title="polyglot.ebook"><code class="xref py py-obj docutils literal"><span class="pre">polyglot.ebook</span></code></a></td>
+<td><em>The worker class for the ebook module</em></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../_autosummary/polyglot.htmlCleaner.html#polyglot.htmlCleaner" title="polyglot.htmlCleaner"><code class="xref py py-obj docutils literal"><span class="pre">polyglot.htmlCleaner</span></code></a></td>
+<td><em>A parser/cleaner to strip a webpage article of all cruft and neatly present it with some nice css</em></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../_autosummary/polyglot.kindle.html#polyglot.kindle" title="polyglot.kindle"><code class="xref py py-obj docutils literal"><span class="pre">polyglot.kindle</span></code></a></td>
+<td><em>Send documents or webpage articles to a kindle device or app</em></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../_autosummary/polyglot.printpdf.html#polyglot.printpdf" title="polyglot.printpdf"><code class="xref py py-obj docutils literal"><span class="pre">polyglot.printpdf</span></code></a></td>
+<td><em>PDF printer</em></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../_autosummary/polyglot.utKit.utKit.html#polyglot.utKit.utKit" title="polyglot.utKit.utKit"><code class="xref py py-obj docutils literal"><span class="pre">polyglot.utKit.utKit</span></code></a></td>
+<td><em>Override dryx utKit</em></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Functions</strong></p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+</tbody>
+</table>
 </div>
 
 
@@ -188,7 +225,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.4',
+            VERSION:'0.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

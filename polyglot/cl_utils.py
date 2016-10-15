@@ -9,6 +9,8 @@ Usage:
     polyglot init
     polyglot [-oc] (pdf|html|epub|mobi) <url> [<destinationFolder> -f <filename> -s <pathToSettingsFile>]
     polyglot kindle <url> [-f <filename> -s <pathToSettingsFile>]
+    polyglot [-o] (epub|mobi) <docx> [<destinationFolder> -f <filename> -s <pathToSettingsFile>]
+    polyglot kindle <docx> [-f <filename> -s <pathToSettingsFile>]
 
 Options:
     init                                                            setup the polyglot settings file for the first time
@@ -22,6 +24,7 @@ Options:
     -o, --open                                                      open the document after creation
     -c, --clean                                                     add polyglot's clean styling to the output document
     <url>                                                           the url of the article's webpage
+    <docx>                                                          path to a DOCX file
     -s <pathToSettingsFile>, --settings <pathToSettingsFile>        path to alternative settings file (optional)
     <destinationFolder>                                             the folder to save the parsed PDF or HTML document to (optional)
     -f <filename>, --filename <filename>                            the name of the file to save, otherwise use webpage title as filename (optional)
@@ -103,7 +106,7 @@ def main(arguments=None):
         except:
             pass
 
-    if pdf:
+    if pdf and url:
         filepath = printpdf.printpdf(
             log=log,
             settings=settings,
@@ -114,7 +117,7 @@ def main(arguments=None):
             readability=readability
         ).get()
 
-    if html:
+    if html and url:
 
         cleaner = htmlCleaner.htmlCleaner(
             log=log,
@@ -129,11 +132,15 @@ def main(arguments=None):
         filepath = cleaner.clean()
 
     if epub:
+        if url:
+            iinput = url
+        else:
+            iinput = docx
         from polyglot import ebook
         epub = ebook(
             log=log,
             settings=settings,
-            urlOrPath=url,
+            urlOrPath=iinput,
             title=filenameFlag,
             bookFormat="epub",
             outputDirectory=destinationFolder
@@ -141,11 +148,15 @@ def main(arguments=None):
         filepath = epub.get()
 
     if mobi:
+        if url:
+            iinput = url
+        else:
+            iinput = docx
         from polyglot import ebook
         mobi = ebook(
             log=log,
             settings=settings,
-            urlOrPath=url,
+            urlOrPath=iinput,
             title=filenameFlag,
             bookFormat="mobi",
             outputDirectory=destinationFolder,
@@ -153,11 +164,15 @@ def main(arguments=None):
         filepath = mobi.get()
 
     if kindle:
+        if url:
+            iinput = url
+        else:
+            iinput = docx
         from polyglot import kindle
         sender = kindle(
             log=log,
             settings=settings,
-            urlOrPath=url,
+            urlOrPath=iinput,
             title=filenameFlag
         )
         success = sender.send()

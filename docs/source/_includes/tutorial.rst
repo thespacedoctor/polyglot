@@ -1,5 +1,5 @@
-Tutorial
-========
+Command-Line Tutorial
+=====================
 
 Before you begin using polyglot you will need to populate some custom settings within the polyglot settings file.
 

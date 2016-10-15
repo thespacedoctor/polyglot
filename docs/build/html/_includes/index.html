@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Installation &mdash; polyglot 0.4 documentation</title>
+  <title>Installation &mdash; polyglot 0.6 documentation</title>
   
 
   
@@ -41,7 +41,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="polyglot 0.4 documentation" href="../index.html"/>
+    <link rel="top" title="polyglot 0.6 documentation" href="../index.html"/>
         <link rel="next" title="Subpackages" href="../autosummary.html"/>
         <link rel="prev" title="polyglot" href="../index.html"/> 
 
@@ -74,7 +74,7 @@
             
             
               <div class="version">
-                v0.4
+                v0.6
               </div>
             
           
@@ -98,13 +98,16 @@
                 <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#development">Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#development">Development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sublime-snippets">Sublime Snippets</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#issues">Issues</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#command-line-usage">Command-Line Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#documentation">Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#tutorial">Tutorial</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="#command-line-tutorial">Command-Line Tutorial</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#webpage-article-to-html-document">Webpage Article to HTML document</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#webpage-article-to-pdf">Webpage Article to PDF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#webpage-article-to-ebook">Webpage Article to eBook</a></li>
@@ -112,7 +115,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">Documentation</span></p>
+<p class="caption"><span class="caption-text">Python Package Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../autosummary.html">Subpackages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../autosummary.html#modules">Modules</a></li>
@@ -189,6 +192,10 @@ This means you can modify the code from your cloned repo:</p>
 </div>
 <p><a class="reference external" href="https://github.com/thespacedoctor/polyglot/pulls">Pull requests</a>
 are welcomed!</p>
+<div class="section" id="sublime-snippets">
+<h3>Sublime Snippets<a class="headerlink" href="#sublime-snippets" title="Permalink to this headline">  ∞</a></h3>
+<p>If you use <a class="reference external" href="https://www.sublimetext.com/">Sublime Text</a> as your code editor, and you&#8217;re planning to develop your own python code with polyglot, you might find <a class="reference external" href="https://github.com/thespacedoctor/polyglot-Sublime-Snippets">my Sublime Snippets</a> useful.</p>
+</div>
 </div>
 <div class="section" id="issues">
 <h2>Issues<a class="headerlink" href="#issues" title="Permalink to this headline">  ∞</a></h2>
@@ -196,8 +203,8 @@ are welcomed!</p>
 <a class="reference external" href="https://github.com/thespacedoctor/polyglot/issues">here</a>.</p>
 </div>
 </div>
-<div class="section" id="usage">
-<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">  ∞</a></h1>
+<div class="section" id="command-line-usage">
+<h1>Command-Line Usage<a class="headerlink" href="#command-line-usage" title="Permalink to this headline">  ∞</a></h1>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>Documentation <span class="k">for</span> polyglot can be found here: http://pypolyglot.readthedocs.org/en/stable
 
 Translate documents and webpages to various markup languages and document formats <span class="o">(</span>html, epub, mobi ..<span class="o">)</span>
@@ -206,6 +213,8 @@ Usage:
     polyglot init
     polyglot <span class="o">[</span>-oc<span class="o">]</span> <span class="o">(</span>pdf<span class="p">|</span>html<span class="p">|</span>epub<span class="p">|</span>mobi<span class="o">)</span> &lt;url&gt; <span class="o">[</span>&lt;destinationFolder&gt; -f &lt;filename&gt; -s &lt;pathToSettingsFile&gt;<span class="o">]</span>
     polyglot kindle &lt;url&gt; <span class="o">[</span>-f &lt;filename&gt; -s &lt;pathToSettingsFile&gt;<span class="o">]</span>
+    polyglot <span class="o">[</span>-o<span class="o">]</span> <span class="o">(</span>epub<span class="p">|</span>mobi<span class="o">)</span> &lt;docx&gt; <span class="o">[</span>&lt;destinationFolder&gt; -f &lt;filename&gt; -s &lt;pathToSettingsFile&gt;<span class="o">]</span>
+    polyglot kindle &lt;docx&gt; <span class="o">[</span>-f &lt;filename&gt; -s &lt;pathToSettingsFile&gt;<span class="o">]</span>
 
 Options:
     init                                                            setup the polyglot settings file <span class="k">for</span> the first <span class="nb">time</span>
@@ -219,6 +228,7 @@ Options:
     -o, --open                                                      open the document after creation
     -c, --clean                                                     add polyglot<span class="s1">&#39;s clean styling to the output document</span>
 <span class="s1">    &lt;url&gt;                                                           the url of the article&#39;</span>s webpage
+    &lt;docx&gt;                                                          path to a DOCX file
     -s &lt;pathToSettingsFile&gt;, --settings &lt;pathToSettingsFile&gt;        path to alternative settings file <span class="o">(</span>optional<span class="o">)</span>
     &lt;destinationFolder&gt;                                             the folder to save the parsed PDF or HTML document to <span class="o">(</span>optional<span class="o">)</span>
     -f &lt;filename&gt;, --filename &lt;filename&gt;                            the name of the file to save, otherwise use webpage title as filename <span class="o">(</span>optional<span class="o">)</span>
@@ -229,8 +239,8 @@ Options:
 <h1>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">  ∞</a></h1>
 <p>Documentation for polyglot is hosted by <a class="reference external" href="http://pypolyglot.readthedocs.org/en/stable/">Read the Docs</a> (last <a class="reference external" href="http://pypolyglot.readthedocs.org/en/stable/">stable version</a> and <a class="reference external" href="http://pypolyglot.readthedocs.org/en/latest/">latest version</a>).</p>
 </div>
-<div class="section" id="tutorial">
-<h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">  ∞</a></h1>
+<div class="section" id="command-line-tutorial">
+<h1>Command-Line Tutorial<a class="headerlink" href="#command-line-tutorial" title="Permalink to this headline">  ∞</a></h1>
 <p>Before you begin using polyglot you will need to populate some custom settings within the polyglot settings file.</p>
 <p>To setup the default settings file at <code class="docutils literal"><span class="pre">~/.config/polyglot/polyglot.yaml</span></code> run the command:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>polyglot init
@@ -342,7 +352,7 @@ Xvfb :99 -screen <span class="m">0</span> 1024x768x24 &gt; /dev/null 2&gt;<span 
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.4',
+            VERSION:'0.6',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
