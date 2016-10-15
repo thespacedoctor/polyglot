@@ -12,6 +12,7 @@
 ################# GLOBAL IMPORTS ####################
 import sys
 import os
+import shutil
 os.environ['TERM'] = 'vt100'
 from fundamentals import tools
 import codecs
@@ -28,7 +29,7 @@ class ebook():
         - ``settings`` -- the settings dictionary
         - ``urlOrPath`` -- the url or path to the content source
         - ``bookFormat`` -- the output format (epub, mobi)
-        - ``outputDirectory`` -- path to the directory to save the output html file to. 
+        - ``outputDirectory`` -- path to the directory to save the output html file to.
         - ``title`` -- the title of the output document. I. False then use the title of the original source. Default *False*
         - ``header`` -- content to add before the article/book content in the resulting ebook. Default *False*
         - ``footer`` -- content to add at the end of the article/book content in the resulting ebook. Default *False*
@@ -40,9 +41,82 @@ class ebook():
             - create a sublime snippet for usage
             - update the package tutorial if needed
 
-        .. code-block:: python 
+        **WebToEpub**
 
-            usage code   
+        To generate an ebook from an article found on the web, using the webpages's title as the filename for the book:
+
+        .. code-block:: python
+
+            from polyglot import ebook
+            epub = ebook(
+                log=log,
+                settings=settings,
+                urlOrPath="http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html",
+                title=False,
+                bookFormat="epub",
+                outputDirectory="/path/to/output/folder"
+            )
+            pathToEpub = epub.get()
+
+        To add a header and footer to the epub book, and specify the title/filename for the book:
+
+        .. code-block:: python
+
+            from polyglot import ebook
+            epub = ebook(
+                log=log,
+                settings=settings,
+                urlOrPath="http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html",
+                title="MySQL Sucker",
+                bookFormat="epub",
+                outputDirectory="/path/to/output/folder",
+                header='<a href="http://www.thespacedoctor.co.uk">thespacedoctor</a>',
+                footer='<a href="http://www.thespacedoctor.co.uk">thespacedoctor</a>'
+            )
+            pathToEpub = epub.get()
+
+        **WebToMobi**
+
+        To generate a mobi version of the webarticle, just switch *epub* for *mobi*:
+
+        .. code-block:: python
+
+            from polyglot import ebook
+            mobi = ebook(
+                log=log,
+                settings=settings,
+                urlOrPath="http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html",
+                title="MySQL Sucker",
+                bookFormat="mobi",
+                outputDirectory="/path/to/output/folder",
+                header='<a href="http://www.thespacedoctor.co.uk">thespacedoctor</a>',
+                footer='<a href="http://www.thespacedoctor.co.uk">thespacedoctor</a>'
+            )
+            pathToMobi = mobi.get()
+
+        **DocxToEpub**
+
+        To instead convert a DOCX document to epub, simply switch out the URL for the path to the DOCX file, like so:
+
+        .. code-block:: python
+
+
+            from polyglot import ebook
+            epub = ebook(
+                log=log,
+                settings=settings,
+                urlOrPath="/path/to/Volkswagen.docx",
+                title="A book about a car",
+                bookFormat="epub",
+                outputDirectory="/path/to/output/folder",
+                header='<a href="http://www.thespacedoctor.co.uk">thespacedoctor</a>',
+                footer='<a href="http://www.thespacedoctor.co.uk">thespacedoctor</a>'
+            )
+            pathToEpub = epub.get()
+
+        **DocxToMobi**
+
+        You can work it out yourself by now!
     """
     # Initialisation
 
@@ -80,55 +154,26 @@ class ebook():
             - ``ebook``
 
         **Usage:**
-        .. todo::
 
-            - add usage info
-            - create a sublime snippet for usage
-            - update the package tutorial if needed
-
-        To generate an ebook from an article found on the web, using the webpages's title as the filename for the book:
-
-        .. code-block:: python 
-
-            from polyglot import ebook
-            epub = ebook(
-                log=log,
-                settings=settings,
-                urlOrPath="http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html",
-                title=False,
-                bookFormat="epub",
-                outputDirectory="/path/to/output/folder"
-            )
-            pathToEpub = epub.get()
-
-        To add a header and footer to the epub book, and specify the title/filename for the book:
-
-        .. code-block:: python 
-
-            from polyglot import ebook
-            epub = ebook(
-                log=log,
-                settings=settings,
-                urlOrPath="http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html",
-                title="MySQL Sucker",
-                bookFormat="epub",
-                outputDirectory="/path/to/output/folder",
-                header='<a href="http://www.thespacedoctor.co.uk">thespacedoctor</a>',
-                footer='<a href="http://www.thespacedoctor.co.uk">thespacedoctor</a>'
-            )
-            pathToEpub = epub.get()
+            See class docstring for usage
         """
         self.log.info('starting the ``get`` method')
 
         if self.format == "epub":
             if self.urlOrPath[:4] == "http" or self.urlOrPath[:4] == "www.":
                 ebook = self._url_to_epub()
+            elif ".docx" in self.urlOrPath:
+                ebook = self._docx_to_epub()
 
         if self.format == "mobi":
             if self.urlOrPath[:4] == "http" or self.urlOrPath[:4] == "www.":
                 epub = self._url_to_epub()
-                if not epub:
-                    return None
+            elif ".docx" in self.urlOrPath:
+                epub = self._docx_to_epub()
+
+            if not epub:
+                return None
+
             ebook = self._epub_to_mobi(
                 epubPath=epub,
                 deleteEpub=False
@@ -209,7 +254,7 @@ class ebook():
 
 <hr>
 <div style="text-align: center">
-%(content)s 
+%(content)s
 </div>
 <hr>
 
@@ -263,7 +308,7 @@ class ebook():
         except IOError:
             fileExists = False
             self.log.error(
-                "the mobi %s does not exist on this machine" % (epubPath,))
+                "the mobi %s does not exist on this machine. The kindlegen error was: %s" % (mobi, stdout))
             return False
 
         if deleteEpub:
@@ -271,3 +316,94 @@ class ebook():
 
         self.log.info('completed the ``_epub_to_mobi`` method')
         return mobi
+
+    def _docx_to_epub(
+            self):
+        """*convert docx file to epub*
+        """
+        self.log.info('starting the ``_docx_to_epub`` method')
+
+        if self.footer:
+            footer = self._tmp_html_file(self.footer)
+            footer = '"%(footer)s"' % locals()
+        else:
+            footer = ""
+
+        if self.header:
+            header = self._tmp_html_file(self.header)
+            header = '"%(header)s"' % locals()
+        else:
+            header = ""
+
+        # FIRST CONVERT THE DOC TO HTML
+        docx = self.urlOrPath
+
+        if self.title:
+            title = self.title.replace(".html", "")
+            html = "/tmp/" + self.title.replace(".html", "") + ".html"
+        else:
+            title = os.path.basename(docx).replace(
+                ".docx", "").replace("_", " ")
+            html = "/tmp/" + os.path.basename(docx).replace(".docx", ".html")
+        pandoc = self.settings["executables"]["pandoc"]
+
+        # TMP IMAGE DIR
+        now = datetime.now()
+        now = now.strftime("%Y%m%dt%H%M%S")
+        imageDir = "/tmp/%(now)s" % locals()
+        if not os.path.exists(imageDir):
+            os.makedirs(imageDir)
+        cmd = """%(pandoc)s --extract-media=%(imageDir)s -t html -f docx "%(docx)s" -o "%(html)s" """ % locals()
+        p = Popen(cmd, stdout=PIPE, stderr=PIPE, shell=True)
+        stdout, stderr = p.communicate()
+        self.log.debug('output: %(stdout)s' % locals())
+
+        try:
+            with open(html):
+                pass
+            fileExists = True
+        except IOError:
+            fileExists = False
+            self.log.error(
+                "the html %s does not exist on this machine, here is the failure message: %s" % (html, stderr))
+            try:
+                shutil.rmtree(imageDir)
+            except:
+                pass
+            return None
+
+        if fileExists:
+            if self.outputDirectory:
+                epub = self.outputDirectory + "/" + \
+                    os.path.basename(html).replace(".html", ".epub")
+            else:
+                epub = docx.replace(".docx", ".epub")
+            pandoc = self.settings["executables"]["pandoc"]
+
+            cmd = """%(pandoc)s --metadata=title:"%(title)s" -S -s -f html -t epub3 %(header)s "%(html)s" %(footer)s -o "%(epub)s" """ % locals(
+            )
+            p = Popen(cmd, stdout=PIPE, stderr=PIPE, shell=True)
+            stdout, stderr = p.communicate()
+            self.log.debug('output: %(stdout)s' % locals())
+
+            try:
+                shutil.rmtree(imageDir)
+                os.remove(html)
+            except:
+                pass
+
+            try:
+                with open(epub):
+                    pass
+                fileExists = True
+            except IOError:
+                fileExists = False
+                self.log.error(
+                    "the epub %s does not exist on this machine, here is the failure message: %s" % (epub, stderr))
+                return None
+
+        self.log.info('completed the ``_docx_to_epub`` method')
+        return epub
+
+    # use the tab-trigger below for new method
+    # xt-class-method

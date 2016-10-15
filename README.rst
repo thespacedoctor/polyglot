@@ -4,9 +4,13 @@ polyglot
 .. image:: http://i.imgur.com/eifuDPP.png
     :width: 300 px
 
-*Translate documents and webpages to various markup languages and document formats (html, epub, mobi ..)*.
+*A python package and command-line tools for translating documents and webpages to various markup languages and document formats (html, epub, mobi ..)*.
 
-Usage
+Here's a summary of what's included in the python package:
+
+.. include:: /classes_and_functions.rst
+
+Command-Line Usage
 ======
 
 .. code-block:: bash 
@@ -19,12 +23,14 @@ Usage
     Usage:
         polyglot init
         polyglot [-oc] (pdf|html|epub|mobi) <url> [<destinationFolder> -f <filename> -s <pathToSettingsFile>]
+        polyglot kindle <url> [-f <filename> -s <pathToSettingsFile>]
     
     Options:
-        init                  setup the polyglot settings file for the first time
-        pdf                   print webpage to pdf
-        html                  parse and download webpage to a local HTML document
-        epub                  generate an epub format book from a webpage URL
+        init                                                            setup the polyglot settings file for the first time
+        pdf                                                             print webpage to pdf
+        html                                                            parse and download webpage to a local HTML document
+        epub                                                            generate an epub format book from a webpage URL
+        kindle                                                          send webpage article straight to kindle
     
         -h, --help                                                      show this help message
         -v, --version                                                   show version
@@ -80,6 +86,10 @@ This means you can modify the code from your cloned repo:
 `Pull requests <https://github.com/thespacedoctor/polyglot/pulls>`__
 are welcomed!
 
+Sublime Snippets
+~~~~~~~~~~~~~~~~
+
+If you use `Sublime Text <https://www.sublimetext.com/>`_ as your code editor, and you're planning to develop your own python code with polyglot, you might find `my Sublime Snippets <https://github.com/thespacedoctor/polyglot-Sublime-Snippets>`_ useful. 
 
 Issues
 ------

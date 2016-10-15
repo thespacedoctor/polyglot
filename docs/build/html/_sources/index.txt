@@ -11,7 +11,7 @@
 
 .. toctree::
    :maxdepth: 30
-   :caption: Documentation
+   :caption: Python Package Documentation
 
    autosummary
 

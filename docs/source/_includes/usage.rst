@@ -1,4 +1,4 @@
-Usage
+Command-Line Usage
 ======
 
 .. code-block:: bash 

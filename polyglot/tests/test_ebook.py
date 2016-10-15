@@ -48,26 +48,86 @@ if not os.path.exists(pathToOutputDir):
 
 class test_ebook():
 
-    def test_epub_function(self):
+    # def test_epub_function(self):
 
-        from polyglot import ebook
-        this = ebook(
-            log=log,
-            settings=settings,
-            urlOrPath="http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html",
-            title=False,
-            bookFormat="epub",
-            outputDirectory=pathToOutputDir,
-            header=False,
-            footer=False
-        )
-        this._url_to_epub()
+    #     from polyglot import ebook
+    #     this = ebook(
+    #         log=log,
+    #         settings=settings,
+    #         urlOrPath="http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html",
+    #         title=False,
+    #         bookFormat="epub",
+    #         outputDirectory=pathToOutputDir,
+    #         header=False,
+    #         footer=False
+    #     )
+    #     this._url_to_epub()
+
+    #     from polyglot import ebook
+    #     epub = ebook(
+    #         log=log,
+    #         settings=settings,
+    #         urlOrPath="http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html",
+    #         title=False,
+    #         bookFormat="epub",
+    #         outputDirectory=pathToOutputDir,
+    #         header='<a href="http://www.thespacedoctor.co.uk">thespacedoctor</a>',
+    #         footer='<a href="http://www.thespacedoctor.co.uk">thespacedoctor</a>'
+    #     )
+    #     pathToEpub = epub.get()
+    #     print pathToEpub
+
+    #     from polyglot import ebook
+    #     epub = ebook(
+    #         log=log,
+    #         settings=settings,
+    #         urlOrPath="http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html",
+    #         title="my first book",
+    #         bookFormat="epub",
+    #         outputDirectory=pathToOutputDir,
+    #         header='<a href="http://www.thespacedoctor.co.uk">thespacedoctor</a>',
+    #         footer='<a href="http://www.thespacedoctor.co.uk">thespacedoctor</a>'
+    #     )
+    #     pathToEpub = epub.get()
+    #     print pathToEpub
+
+    # def test_mobi_function(self):
+
+    #     from polyglot import ebook
+    #     mobi = ebook(
+    #         log=log,
+    #         settings=settings,
+    #         urlOrPath="http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html",
+    #         title=False,
+    #         bookFormat="mobi",
+    #         outputDirectory=pathToOutputDir,
+    #         header='<a href="http://www.thespacedoctor.co.uk">thespacedoctor</a>',
+    #         footer='<a href="http://www.thespacedoctor.co.uk">thespacedoctor</a>'
+    #     )
+    #     pathToEpub = mobi.get()
+    #     print pathToEpub
+
+    #     from polyglot import ebook
+    #     mobi = ebook(
+    #         log=log,
+    #         settings=settings,
+    #         urlOrPath="http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html",
+    #         title="my first book",
+    #         bookFormat="mobi",
+    #         outputDirectory=pathToOutputDir,
+    #         header='<a href="http://www.thespacedoctor.co.uk">thespacedoctor</a>',
+    #         footer='<a href="http://www.thespacedoctor.co.uk">thespacedoctor</a>'
+    #     )
+    #     pathToEpub = mobi.get()
+    #     print pathToEpub
+
+    def test_docx_to_epub_function(self):
 
         from polyglot import ebook
         epub = ebook(
             log=log,
             settings=settings,
-            urlOrPath="http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html",
+            urlOrPath=pathToInputDir + "Volkswagen.docx",
             title=False,
             bookFormat="epub",
             outputDirectory=pathToOutputDir,
@@ -81,8 +141,8 @@ class test_ebook():
         epub = ebook(
             log=log,
             settings=settings,
-            urlOrPath="http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html",
-            title="my first book",
+            urlOrPath=pathToInputDir + "Volkswagen.docx",
+            title="A book about a car",
             bookFormat="epub",
             outputDirectory=pathToOutputDir,
             header='<a href="http://www.thespacedoctor.co.uk">thespacedoctor</a>',
@@ -91,35 +151,35 @@ class test_ebook():
         pathToEpub = epub.get()
         print pathToEpub
 
-    def test_mobi_function(self):
+    def test_docx_to_mobi_function(self):
 
         from polyglot import ebook
         mobi = ebook(
             log=log,
             settings=settings,
-            urlOrPath="http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html",
+            urlOrPath=pathToInputDir + "Volkswagen.docx",
             title=False,
             bookFormat="mobi",
             outputDirectory=pathToOutputDir,
             header='<a href="http://www.thespacedoctor.co.uk">thespacedoctor</a>',
             footer='<a href="http://www.thespacedoctor.co.uk">thespacedoctor</a>'
         )
-        pathToEpub = mobi.get()
-        print pathToEpub
+        pathToMobi = mobi.get()
+        print pathToMobi
 
         from polyglot import ebook
         mobi = ebook(
             log=log,
             settings=settings,
-            urlOrPath="http://www.thespacedoctor.co.uk/blog/2016/09/26/mysqlSucker-index.html",
-            title="my first book",
+            urlOrPath=pathToInputDir + "Volkswagen.docx",
+            title="A book about a car",
             bookFormat="mobi",
             outputDirectory=pathToOutputDir,
             header='<a href="http://www.thespacedoctor.co.uk">thespacedoctor</a>',
             footer='<a href="http://www.thespacedoctor.co.uk">thespacedoctor</a>'
         )
-        pathToEpub = mobi.get()
-        print pathToEpub
+        pathToMobi = mobi.get()
+        print pathToMobi
 
     def test_ebook_function_exception(self):
 
