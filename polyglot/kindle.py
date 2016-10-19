@@ -46,7 +46,7 @@ class kindle(ebook):
 
         To send content from a webpage article straight to your kindle device or smart phone app, you will first need to populate the email settings with polyglot's settings file at ``~.config/polyglot/polyglot.yaml``, then use the following code:
 
-        .. code-block:: python 
+        .. code-block:: python
 
             from polyglot import kindle
             sender = kindle(
@@ -94,21 +94,29 @@ class kindle(ebook):
         """
         self.log.info('starting the ``send`` method')
 
-        pathToMobi = self.get()
-        if not pathToMobi:
-            return 404
+        if self.urlOrPath.split(".")[-1] == "docx":
+            if self.title:
+                pathToMobi = self.outputDirectory + "/" + self.title + ".docx"
+            else:
+                pathToMobi = self.outputDirectory + "/" + \
+                    os.path.basename(self.urlOrPath)
+            shutil.copyfile(self.urlOrPath, pathToMobi)
+        else:
+            pathToMobi = self.get()
+            if not pathToMobi:
+                return 404
 
         # create MIME message
 
         msg = MIMEMultipart()
         msg['From'] = self.settings["email"]["user_email"]
         msg['To'] = ", ".join(self.settings["email"]["kindle_emails"])
-        msg['Subject'] = 'Headjack to Kindle'
-        text = 'This email has been automatically sent by headjack'
+        msg['Subject'] = 'Polyglot to Kindle'
+        text = 'This email has been automatically sent by polyglot'
         msg.attach(MIMEText(text))
 
         basename = os.path.basename(pathToMobi)
-        print "Sending the mobi book `%(pathToMobi)s` to Kindle device(s)" % locals()
+        print "Sending the book `%(pathToMobi)s` to Kindle device(s)" % locals()
         msg.attach(self.get_attachment(pathToMobi))
 
         # convert MIME message to string
@@ -132,7 +140,7 @@ class kindle(ebook):
                 'Communication with your SMTP server failed. Maybe wrong connection details? Check exception details and your headjack settings file')
             return False
 
-        # os.remove(pathToMobi)
+        os.remove(pathToMobi)
 
         self.log.info('completed the ``send`` method')
         return True
