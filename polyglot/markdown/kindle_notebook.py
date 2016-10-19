@@ -36,15 +36,29 @@ class kindle_notebook():
         - ``outputPath`` -- the output path to the md file.
 
     **Usage:**
-        .. todo::
 
-            - add usage info
-            - create a sublime snippet for usage
-            - update the package tutorial if needed
+        To convert the exported HTML file of annotation and notes from a kindle book or document to markdown, run the code:
 
         .. code-block:: python 
 
-            usage code   
+            from polyglot.markdown import kindle_notebook
+            nb = kindle_notebook(
+                log=log,
+                kindleExportPath="/path/to/kindle_export.html",
+                outputPath="/path/to/coverted_annotations.md"
+            )
+            nb.convert()
+
+        The colours of the annotations convert to markdown attributes via the following key:
+
+        .. code-block: json
+
+            colorCode = {
+                "blue": "code",
+                "yellow": "text",
+                "orange": "quote",
+                "pink": "header"
+            }
     """
     # Initialisation
 

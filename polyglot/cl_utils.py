@@ -11,6 +11,7 @@ Usage:
     polyglot kindle <url> [-f <filename> -s <pathToSettingsFile>]
     polyglot [-o] (epub|mobi) <docx> [<destinationFolder> -f <filename> -s <pathToSettingsFile>]
     polyglot kindle <docx> [-f <filename> -s <pathToSettingsFile>]
+    polyglot [-o] kindleNB2MD <notebook> [<destinationFolder> -s <pathToSettingsFile>]
 
 Options:
     init                                                            setup the polyglot settings file for the first time
@@ -176,6 +177,22 @@ def main(arguments=None):
             title=filenameFlag
         )
         success = sender.send()
+
+    if kindleNB2MD:
+        basename = os.path.basename(notebook)
+        extension = os.path.splitext(basename)[1]
+        filenameNoExtension = os.path.splitext(basename)[0]
+        if destinationFolder:
+            filepath = destinationFolder + "/" + filenameNoExtension + ".md"
+        else:
+            filepath = notebook.replace("." + extension, ".md")
+        from polyglot.markdown import kindle_notebook
+        nb = kindle_notebook(
+            log=log,
+            kindleExportPath=notebook,
+            outputPath=filepath
+        )
+        nb.convert()
 
     if openFlag:
         try:

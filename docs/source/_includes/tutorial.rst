@@ -103,4 +103,21 @@ And here's the book appearing on a smart phone kindle app:
 .. image:: https://i.imgur.com/RQpvBZu.png
     :width: 300 px
 
+Converting Kindle Notebook HTML Exports to Markdown
+---------------------------------------------------
+
+On the Kindle app for iOS you can export an HTML document of your notes and annotations via email.
+
+The colors of the annotation convert to markdown with the following color-key:
+
+"blue": "code",
+"yellow": "text",
+"orange": "quote",
+"pink": "header"
+
+.. todo::
+
+    - add a tutorial to convert kindle annotations
+
+
 
