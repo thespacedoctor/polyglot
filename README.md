@@ -19,6 +19,8 @@ Command-Line Usage ======
         polyglot init
         polyglot [-oc] (pdf|html|epub|mobi) <url> [<destinationFolder> -f <filename> -s <pathToSettingsFile>]
         polyglot kindle <url> [-f <filename> -s <pathToSettingsFile>]
+        polyglot [-o] (epub|mobi) <docx> [<destinationFolder> -f <filename> -s <pathToSettingsFile>]
+        polyglot kindle <docx> [-f <filename> -s <pathToSettingsFile>]
 
     Options:
         init                                                            setup the polyglot settings file for the first time
@@ -32,6 +34,7 @@ Command-Line Usage ======
         -o, --open                                                      open the document after creation
         -c, --clean                                                     add polyglot's clean styling to the output document
         <url>                                                           the url of the article's webpage
+        <docx>                                                          path to a DOCX file
         -s <pathToSettingsFile>, --settings <pathToSettingsFile>        path to alternative settings file (optional)
         <destinationFolder>                                             the folder to save the parsed PDF or HTML document to (optional)
         -f <filename>, --filename <filename>                            the name of the file to save, otherwise use webpage title as filename (optional)
