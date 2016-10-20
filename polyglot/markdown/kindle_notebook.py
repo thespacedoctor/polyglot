@@ -116,7 +116,10 @@ class kindle_notebook():
             u"“ ", '"').replace(u"“", '"').replace(u"”", '"').replace(u"–", "-").replace(u"—", "-")
 
         # COLLECT KEY COMPONENTS
-        title = self.find_component("bookTitle", annotations)
+        try:
+            title = self.find_component("bookTitle", annotations)
+        except:
+            return False
         regex = re.compile(r'_xx\d*xx$')
         title = regex.sub("", title)
         authors = self.find_component("authors", annotations)
@@ -177,6 +180,9 @@ class kindle_notebook():
         mdContent = "\n# %(title)s\n\nAuthors: **%(authors)s**\n\n" % locals()
         for k, v in annotationDict.iteritems():
             mdContent += self.convertToMD(v) + "\n\n"
+
+        if len(annotationDict) == 0:
+            return False
 
         pathToWriteFile = self.outputPath
         try:
