@@ -45,6 +45,8 @@ if not os.path.exists(pathToOutputDir):
 
 shutil.copyfile(pathToInputDir + "How_Light_Works_xx1578xx_-_Notebook.html",
                 pathToOutputDir + "How_Light_Works_xx1578xx_-_Notebook.html")
+shutil.copyfile(pathToInputDir + "Non-Kindle.html",
+                pathToOutputDir + "Non-Kindle.html")
 
 # xt-setup-unit-testing-files-and-folders
 
@@ -60,6 +62,14 @@ class test_kindle_notebook():
             outputPath=pathToOutputDir + "How_Light_Works.md"
         )
         this.convert()
+
+        from polyglot.markdown import kindle_notebook
+        this = kindle_notebook(
+            log=log,
+            kindleExportPath=pathToOutputDir + "Non-Kindle.html",
+            outputPath=pathToOutputDir + "How_Light_Works.md"
+        )
+        print this.convert()
 
     def test_kindle_notebook_function_exception(self):
 
