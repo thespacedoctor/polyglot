@@ -194,11 +194,11 @@ class kindle_notebook():
             message = 'could not open the file %s' % (pathToWriteFile,)
             self.log.critical(message)
             raise IOError(message)
-        writeFile.write(mdContent.encode("utf-8"))
+        writeFile.write(mdContent)
         writeFile.close()
 
         self.log.info('completed the ``convert`` method')
-        return kindle_notebook
+        return pathToWriteFile
 
     def clean(self, text):
         return text.strip().replace(u"’", "'").replace(u"“ ", '"').replace(u"“", '"').replace(u"”", '"').replace(u"–", "-").replace(u"—", "-")
