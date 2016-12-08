@@ -13,7 +13,6 @@ install_requires = [
     'pyyaml',
     'pypolyglot',
     'fundamentals',
-    'readability-api',
     'requests',
     'pyopenssl',
     'ndg-httpsclient',

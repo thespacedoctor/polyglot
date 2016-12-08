@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # encoding: utf-8
 """
-*using the Readability API to clean up a local html file*
+*using the Mercury Parser API to clean up a local html file*
 
 :Author:
     David Young
@@ -16,7 +16,6 @@ import codecs
 import re
 os.environ['TERM'] = 'vt100'
 from fundamentals import tools
-from polyglot import authenticate
 import requests
 
 
@@ -91,17 +90,12 @@ class htmlCleaner():
         self.h1 = h1
 
         # INITIAL ACTIONS
-        # AUTHENTICATE AGAINST READABILITY WEBAPP PARSER CLIENT
-        self.parser_client = authenticate.authenticate(
-            log=self.log,
-            settings=self.settings
-        ).get()
 
         return None
 
     def clean(
             self):
-        """*parse and clean the html document with readability parser*
+        """*parse and clean the html document with Mercury Parser*
 
         **Return:**
             - ``filePath`` -- path to the cleaned HTML document
