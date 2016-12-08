@@ -12,13 +12,13 @@ Subpackages
 .. toctree::
 
     polyglot.commonutils
+    polyglot.markdown
 
 Submodules
 ----------
 
 .. toctree::
 
-   polyglot.authenticate
    polyglot.cl_utils
    polyglot.ebook
    polyglot.htmlCleaner

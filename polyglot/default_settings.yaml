@@ -1,7 +1,5 @@
-# READ MORE ABOUT READABILITY PARSER HERE: https://www.readability.com/developers/api
-# TO GET YOUR READABILITY PARSER KEY SIGN UP TO READABILITY AND GRAB THE KEY HERE: https://www.readability.com/settings/account
-readability:
-    parser api token: XXX # REPLACE ME
+# READ MORE ABOUT MERCURY PARSER AND SIGN-UP FOR YOUR API KEY HERE: https://mercury.postlight.com/web-parser/
+mercury api key: XXX # REPLACE ME
 
 executables:
     # INSTALL WITH `npm install electron-pdf -g`

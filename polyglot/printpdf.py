@@ -21,8 +21,6 @@ import codecs
 from subprocess import Popen, PIPE, STDOUT
 from docopt import docopt
 from fundamentals import tools, times
-from polyglot import authenticate
-
 import codecs
 # SET ENCODE ERROR RETURN VALUE
 
@@ -48,7 +46,7 @@ class printpdf():
         - ``title`` -- title of pdf
         - ``folderpath`` -- path at which to save pdf
         - ``append`` -- append this at the end of the file name (not title)
-        - ``readability`` -- clean text with readability
+        - ``readability`` -- clean text with Mercury Parser
 
     **Usage:**
 
@@ -97,7 +95,7 @@ class printpdf():
                 readability=False
             ).get()
 
-        To clean the content using the readability parser and apply some simple styling and pretty fonts:
+        To clean the content using the Mercury Parser and apply some simple styling and pretty fonts:
 
         .. code-block:: python 
 
@@ -134,12 +132,6 @@ class printpdf():
         # xt-self-arg-tmpx
 
         # INITIAL ACTIONS
-        # AUTHENTICATE AGAINST READABILITY WEBAPP PARSER CLIENT
-        self.parserClient = authenticate.authenticate(
-            log=self.log,
-            settings=self.settings
-        ).get()
-
         return None
 
     def get(self):

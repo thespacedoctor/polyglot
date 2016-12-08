@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # encoding: utf-8
 """
-*using the Readability API to clean up a local html file*
+*using the Mercury Parser API to clean up a local html file*
 
 :Author:
     David Young
@@ -16,7 +16,7 @@ import codecs
 import re
 os.environ['TERM'] = 'vt100'
 from fundamentals import tools
-from polyglot import authenticate
+import requests
 
 
 class htmlCleaner():
@@ -90,17 +90,12 @@ class htmlCleaner():
         self.h1 = h1
 
         # INITIAL ACTIONS
-        # AUTHENTICATE AGAINST READABILITY WEBAPP PARSER CLIENT
-        self.parser_client = authenticate.authenticate(
-            log=self.log,
-            settings=self.settings
-        ).get()
 
         return None
 
     def clean(
             self):
-        """*parse and clean the html document with readability parser*
+        """*parse and clean the html document with Mercury Parser*
 
         **Return:**
             - ``filePath`` -- path to the cleaned HTML document
@@ -114,7 +109,8 @@ class htmlCleaner():
         url = self.url
 
         # PARSE THE CONTENT OF THE WEBPAGE AT THE URL
-        parser_response = self.parser_client.get_article(self.url)
+
+        parser_response = self._request_parsed_article_from_mercury(url)
         if "503" in str(parser_response):
             return None
         article = parser_response.json()
@@ -151,6 +147,9 @@ class htmlCleaner():
         regex2 = re.compile(
             u'\<a href="https\:\/\/en\.wikipedia\.org\/wiki\/.*(\#.*)"\>\<span class=\"tocnumber\"\>', re.I)
         text = regex2.sub(u'<a href="\g<1>"><span class="tocnumber">', text)
+        regex = re.compile(
+            u'srcset=".*?">')
+        text = regex.sub(u"", text)
 
         # GRAB HTML TITLE IF NOT SET IN ARGUMENTS
         if self.title == False:
@@ -212,4 +211,49 @@ class htmlCleaner():
         self.log.info('completed the ``clean`` method')
         return filePath
 
+    def _request_parsed_article_from_mercury(
+            self,
+            url):
+        """* request parsed article from mercury*
+
+        **Key Arguments:**
+            - ``url`` -- the URL to the HTML page to parse and clean
+
+        **Return:**
+            - None
+
+        **Usage:**
+            ..  todo::
+
+                - add usage info
+                - create a sublime snippet for usage
+                - update package tutorial if needed
+
+            .. code-block:: python 
+
+                usage code 
+
+        """
+        self.log.info(
+            'starting the ``_request_parsed_article_from_mercury`` method')
+
+        try:
+            response = requests.get(
+                url="https://mercury.postlight.com/parser",
+                params={
+                    "url": url,
+                },
+                headers={
+                    "x-api-key": self.settings["mercury api key"],
+                },
+            )
+
+        except requests.exceptions.RequestException:
+            print('HTTP Request failed')
+
+        self.log.info(
+            'completed the ``_request_parsed_article_from_mercury`` method')
+        return response
+
+    # use the tab-trigger below for new method
     # xt-class-method

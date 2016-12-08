@@ -11,7 +11,7 @@ Here's a summary of what's included in the python package:
 .. include:: /classes_and_functions.rst
 
 Command-Line Usage
-======
+==================
 
 .. code-block:: bash 
    
@@ -26,6 +26,7 @@ Command-Line Usage
         polyglot kindle <url> [-f <filename> -s <pathToSettingsFile>]
         polyglot [-o] (epub|mobi) <docx> [<destinationFolder> -f <filename> -s <pathToSettingsFile>]
         polyglot kindle <docx> [-f <filename> -s <pathToSettingsFile>]
+        polyglot [-o] kindleNB2MD <notebook> [<destinationFolder> -s <pathToSettingsFile>]
     
     Options:
         init                                                            setup the polyglot settings file for the first time
