@@ -225,6 +225,9 @@ class printpdf():
             h1=True  # include title as H1 at the top of the doc
         )
         htmlFile = cleaner.clean()
+        if not htmlFile:
+            return
+
         pdfPath = htmlFile.replace(".html", self.append + ".pdf")
 
         # CONVERT TO PDF WITH ELECTON PDF
