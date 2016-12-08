@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>polyglot &mdash; polyglot 0.7 documentation</title>
+  <title>polyglot &mdash; polyglot 0.7.2 documentation</title>
   
 
   
@@ -41,7 +41,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="polyglot 0.7 documentation" href="#"/>
+    <link rel="top" title="polyglot 0.7.2 documentation" href="#"/>
         <link rel="next" title="Installation" href="_includes/index.html"/> 
 
   
@@ -73,7 +73,7 @@
             
             
               <div class="version">
-                v0.7
+                v0.7.2
               </div>
             
           
@@ -163,26 +163,20 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="_autosummary/polyglot.authenticate.html#polyglot.authenticate" title="polyglot.authenticate"><code class="xref py py-obj docutils literal"><span class="pre">polyglot.authenticate</span></code></a></td>
-<td><em>Authenticate against readability api</em></td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="_autosummary/polyglot.ebook.html#polyglot.ebook" title="polyglot.ebook"><code class="xref py py-obj docutils literal"><span class="pre">polyglot.ebook</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="_autosummary/polyglot.ebook.html#polyglot.ebook" title="polyglot.ebook"><code class="xref py py-obj docutils literal"><span class="pre">polyglot.ebook</span></code></a></td>
 <td><em>The worker class for the ebook module</em></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="_autosummary/polyglot.htmlCleaner.html#polyglot.htmlCleaner" title="polyglot.htmlCleaner"><code class="xref py py-obj docutils literal"><span class="pre">polyglot.htmlCleaner</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="_autosummary/polyglot.htmlCleaner.html#polyglot.htmlCleaner" title="polyglot.htmlCleaner"><code class="xref py py-obj docutils literal"><span class="pre">polyglot.htmlCleaner</span></code></a></td>
 <td><em>A parser/cleaner to strip a webpage article of all cruft and neatly present it with some nice css</em></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="_autosummary/polyglot.kindle.html#polyglot.kindle" title="polyglot.kindle"><code class="xref py py-obj docutils literal"><span class="pre">polyglot.kindle</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="_autosummary/polyglot.kindle.html#polyglot.kindle" title="polyglot.kindle"><code class="xref py py-obj docutils literal"><span class="pre">polyglot.kindle</span></code></a></td>
 <td><em>Send documents or webpage articles to a kindle device or app</em></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="_autosummary/polyglot.printpdf.html#polyglot.printpdf" title="polyglot.printpdf"><code class="xref py py-obj docutils literal"><span class="pre">polyglot.printpdf</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="_autosummary/polyglot.printpdf.html#polyglot.printpdf" title="polyglot.printpdf"><code class="xref py py-obj docutils literal"><span class="pre">polyglot.printpdf</span></code></a></td>
 <td><em>PDF printer</em></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="_autosummary/polyglot.markdown.kindle_notebook.html#polyglot.markdown.kindle_notebook" title="polyglot.markdown.kindle_notebook"><code class="xref py py-obj docutils literal"><span class="pre">polyglot.markdown.kindle_notebook</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="_autosummary/polyglot.markdown.kindle_notebook.html#polyglot.markdown.kindle_notebook" title="polyglot.markdown.kindle_notebook"><code class="xref py py-obj docutils literal"><span class="pre">polyglot.markdown.kindle_notebook</span></code></a></td>
 <td><em>convert the HTML export of kindle notebooks (from kindle apps) to markdown</em></td>
-</tr>
-<tr class="row-odd"><td><a class="reference internal" href="_autosummary/polyglot.utKit.utKit.html#polyglot.utKit.utKit" title="polyglot.utKit.utKit"><code class="xref py py-obj docutils literal"><span class="pre">polyglot.utKit.utKit</span></code></a></td>
-<td><em>Override dryx utKit</em></td>
 </tr>
 </tbody>
 </table>
@@ -213,6 +207,7 @@
 <li class="toctree-l2"><a class="reference internal" href="_includes/index.html#webpage-article-to-pdf">Webpage Article to PDF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_includes/index.html#webpage-article-to-ebook">Webpage Article to eBook</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_includes/index.html#send-a-webpage-article-straight-to-your-kindle">Send a Webpage Article Straight to Your Kindle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_includes/index.html#converting-kindle-notebook-html-exports-to-markdown">Converting Kindle Notebook HTML Exports to Markdown</a></li>
 </ul>
 </li>
 </ul>
@@ -268,6 +263,7 @@ Usage:
     polyglot kindle &lt;url&gt; <span class="o">[</span>-f &lt;filename&gt; -s &lt;pathToSettingsFile&gt;<span class="o">]</span>
     polyglot <span class="o">[</span>-o<span class="o">]</span> <span class="o">(</span>epub<span class="p">|</span>mobi<span class="o">)</span> &lt;docx&gt; <span class="o">[</span>&lt;destinationFolder&gt; -f &lt;filename&gt; -s &lt;pathToSettingsFile&gt;<span class="o">]</span>
     polyglot kindle &lt;docx&gt; <span class="o">[</span>-f &lt;filename&gt; -s &lt;pathToSettingsFile&gt;<span class="o">]</span>
+    polyglot <span class="o">[</span>-o<span class="o">]</span> kindleNB2MD &lt;notebook&gt; <span class="o">[</span>&lt;destinationFolder&gt; -s &lt;pathToSettingsFile&gt;<span class="o">]</span>
 
 Options:
     init                                                            setup the polyglot settings file <span class="k">for</span> the first <span class="nb">time</span>
@@ -361,6 +357,21 @@ Xvfb :99 -screen <span class="m">0</span> 1024x768x24 &gt; /dev/null 2&gt;<span 
 </div>
 <p>And here&#8217;s the book appearing on a smart phone kindle app:</p>
 <a class="reference internal image-reference" href="https://i.imgur.com/RQpvBZu.png"><img alt="https://i.imgur.com/RQpvBZu.png" src="https://i.imgur.com/RQpvBZu.png" style="width: 300px;" /></a>
+</div>
+<div class="section" id="converting-kindle-notebook-html-exports-to-markdown">
+<h2>Converting Kindle Notebook HTML Exports to Markdown<a class="headerlink" href="#converting-kindle-notebook-html-exports-to-markdown" title="Permalink to this headline">  ∞</a></h2>
+<p>On the Kindle app for iOS you can export an HTML document of your notes and annotations via email.</p>
+<p>The colors of the annotation convert to markdown with the following color-key:</p>
+<p>&#8220;blue&#8221;: &#8220;code&#8221;,
+&#8220;yellow&#8221;: &#8220;text&#8221;,
+&#8220;orange&#8221;: &#8220;quote&#8221;,
+&#8220;pink&#8221;: &#8220;header&#8221;</p>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<ul class="last simple">
+<li>add a tutorial to convert kindle annotations</li>
+</ul>
+</div>
 <div class="toctree-wrapper compound" id="python-package-documentation">
 <p class="caption"><span class="caption-text">Python Package Documentation</span><a class="headerlink" href="#python-package-documentation" title="Permalink to this toctree">  ∞</a></p>
 <ul>
@@ -376,7 +387,6 @@ Xvfb :99 -screen <span class="m">0</span> 1024x768x24 &gt; /dev/null 2&gt;<span 
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="autosummary.html#classes">Classes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="_autosummary/polyglot.authenticate.html">polyglot.authenticate (<em>class</em>)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_autosummary/polyglot.ebook.html">polyglot.ebook (<em>class</em>)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_autosummary/polyglot.htmlCleaner.html">polyglot.htmlCleaner (<em>class</em>)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_autosummary/polyglot.kindle.html">polyglot.kindle (<em>class</em>)</a></li>
@@ -445,7 +455,7 @@ Xvfb :99 -screen <span class="m">0</span> 1024x768x24 &gt; /dev/null 2&gt;<span 
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.7',
+            VERSION:'0.7.2',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

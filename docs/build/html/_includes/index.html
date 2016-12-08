@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Installation &mdash; polyglot 0.7 documentation</title>
+  <title>Installation &mdash; polyglot 0.7.2 documentation</title>
   
 
   
@@ -41,7 +41,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="polyglot 0.7 documentation" href="../index.html"/>
+    <link rel="top" title="polyglot 0.7.2 documentation" href="../index.html"/>
         <link rel="next" title="Subpackages" href="../autosummary.html"/>
         <link rel="prev" title="polyglot" href="../index.html"/> 
 
@@ -74,7 +74,7 @@
             
             
               <div class="version">
-                v0.7
+                v0.7.2
               </div>
             
           
@@ -112,6 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#webpage-article-to-pdf">Webpage Article to PDF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#webpage-article-to-ebook">Webpage Article to eBook</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#send-a-webpage-article-straight-to-your-kindle">Send a Webpage Article Straight to Your Kindle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#converting-kindle-notebook-html-exports-to-markdown">Converting Kindle Notebook HTML Exports to Markdown</a></li>
 </ul>
 </li>
 </ul>
@@ -215,6 +216,7 @@ Usage:
     polyglot kindle &lt;url&gt; <span class="o">[</span>-f &lt;filename&gt; -s &lt;pathToSettingsFile&gt;<span class="o">]</span>
     polyglot <span class="o">[</span>-o<span class="o">]</span> <span class="o">(</span>epub<span class="p">|</span>mobi<span class="o">)</span> &lt;docx&gt; <span class="o">[</span>&lt;destinationFolder&gt; -f &lt;filename&gt; -s &lt;pathToSettingsFile&gt;<span class="o">]</span>
     polyglot kindle &lt;docx&gt; <span class="o">[</span>-f &lt;filename&gt; -s &lt;pathToSettingsFile&gt;<span class="o">]</span>
+    polyglot <span class="o">[</span>-o<span class="o">]</span> kindleNB2MD &lt;notebook&gt; <span class="o">[</span>&lt;destinationFolder&gt; -s &lt;pathToSettingsFile&gt;<span class="o">]</span>
 
 Options:
     init                                                            setup the polyglot settings file <span class="k">for</span> the first <span class="nb">time</span>
@@ -309,6 +311,21 @@ Xvfb :99 -screen <span class="m">0</span> 1024x768x24 &gt; /dev/null 2&gt;<span 
 <p>And here&#8217;s the book appearing on a smart phone kindle app:</p>
 <a class="reference internal image-reference" href="https://i.imgur.com/RQpvBZu.png"><img alt="https://i.imgur.com/RQpvBZu.png" src="https://i.imgur.com/RQpvBZu.png" style="width: 300px;" /></a>
 </div>
+<div class="section" id="converting-kindle-notebook-html-exports-to-markdown">
+<h2>Converting Kindle Notebook HTML Exports to Markdown<a class="headerlink" href="#converting-kindle-notebook-html-exports-to-markdown" title="Permalink to this headline">  ∞</a></h2>
+<p>On the Kindle app for iOS you can export an HTML document of your notes and annotations via email.</p>
+<p>The colors of the annotation convert to markdown with the following color-key:</p>
+<p>&#8220;blue&#8221;: &#8220;code&#8221;,
+&#8220;yellow&#8221;: &#8220;text&#8221;,
+&#8220;orange&#8221;: &#8220;quote&#8221;,
+&#8220;pink&#8221;: &#8220;header&#8221;</p>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<ul class="last simple">
+<li>add a tutorial to convert kindle annotations</li>
+</ul>
+</div>
+</div>
 </div>
 
 
@@ -352,7 +369,7 @@ Xvfb :99 -screen <span class="m">0</span> 1024x768x24 &gt; /dev/null 2&gt;<span 
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.7',
+            VERSION:'0.7.2',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

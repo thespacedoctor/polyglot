@@ -9,7 +9,8 @@ mobi ..)*.
 
 Here's a summary of what's included in the python package:
 
-Command-Line Usage ======
+Command-Line Usage
+==================
 
     Documentation for polyglot can be found here: http://pypolyglot.readthedocs.org/en/stable
 
@@ -21,6 +22,7 @@ Command-Line Usage ======
         polyglot kindle <url> [-f <filename> -s <pathToSettingsFile>]
         polyglot [-o] (epub|mobi) <docx> [<destinationFolder> -f <filename> -s <pathToSettingsFile>]
         polyglot kindle <docx> [-f <filename> -s <pathToSettingsFile>]
+        polyglot [-o] kindleNB2MD <notebook> [<destinationFolder> -s <pathToSettingsFile>]
 
     Options:
         init                                                            setup the polyglot settings file for the first time

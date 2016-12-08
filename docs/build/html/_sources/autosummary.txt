@@ -28,7 +28,6 @@ Classes
    :toctree: _autosummary
    :nosignatures:
 
-   polyglot.authenticate
    polyglot.ebook
    polyglot.htmlCleaner
    polyglot.kindle
