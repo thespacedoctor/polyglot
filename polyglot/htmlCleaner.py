@@ -115,6 +115,9 @@ class htmlCleaner():
             return None
         article = parser_response.json()
 
+        if not article:
+            return None
+
         # GRAB THE CSS USED TO STYLE THE WEBPAGE/PDF CONTENT
         if self.style:
             moduleDirectory = os.path.dirname(__file__)
