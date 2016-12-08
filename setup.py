@@ -14,7 +14,10 @@ install_requires = [
     'pypolyglot',
     'fundamentals',
     'readability-api',
-    'requests'
+    'requests',
+    'pyopenssl',
+    'ndg-httpsclient',
+    'pyasn1'
 ]
 
 # READ THE DOCS SERVERS
