@@ -220,7 +220,7 @@ class ebook():
         epub = html.replace(".html", ".epub")
         pandoc = self.settings["executables"]["pandoc"]
 
-        cmd = """%(pandoc)s -S -s -f html -t epub3 %(header)s "%(html)s" %(footer)s -o "%(epub)s" """ % locals(
+        cmd = """%(pandoc)s -S -s -f html -t epub3 %(header)s '%(html)s' %(footer)s -o '%(epub)s' """ % locals(
         )
         p = Popen(cmd, stdout=PIPE, stderr=PIPE, shell=True)
         stdout, stderr = p.communicate()
@@ -353,7 +353,7 @@ class ebook():
         imageDir = "/tmp/%(now)s" % locals()
         if not os.path.exists(imageDir):
             os.makedirs(imageDir)
-        cmd = """%(pandoc)s --extract-media=%(imageDir)s -t html -f docx "%(docx)s" -o "%(html)s" """ % locals()
+        cmd = """%(pandoc)s --extract-media=%(imageDir)s -t html -f docx '%(docx)s' -o '%(html)s' """ % locals()
         p = Popen(cmd, stdout=PIPE, stderr=PIPE, shell=True)
         stdout, stderr = p.communicate()
         self.log.debug('output: %(stdout)s' % locals())
@@ -380,7 +380,7 @@ class ebook():
                 epub = docx.replace(".docx", ".epub")
             pandoc = self.settings["executables"]["pandoc"]
 
-            cmd = """%(pandoc)s --metadata=title:"%(title)s" -S -s -f html -t epub3 %(header)s "%(html)s" %(footer)s -o "%(epub)s" """ % locals(
+            cmd = """%(pandoc)s --metadata=title:'%(title)s' -S -s -f html -t epub3 %(header)s '%(html)s' %(footer)s -o '%(epub)s' """ % locals(
             )
             p = Popen(cmd, stdout=PIPE, stderr=PIPE, shell=True)
             stdout, stderr = p.communicate()
