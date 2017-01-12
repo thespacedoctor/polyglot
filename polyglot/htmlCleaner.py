@@ -159,7 +159,7 @@ class htmlCleaner():
             title = article["title"].encode("utf-8", "ignore")
             title = title.decode("utf-8")
             title = title.encode("ascii", "ignore")
-            rstrings = """:/"&\\'"""
+            rstrings = """:/"&\\'`"""
             for i in rstrings:
                 title = title.replace(i, "")
 
