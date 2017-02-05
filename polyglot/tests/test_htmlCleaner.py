@@ -48,7 +48,7 @@ if not os.path.exists(pathToOutputDir):
 # xt-setup-unit-testing-files-and-folders
 
 
-class test_htmlCleaner():
+class test_htmlCleaner(unittest.TestCase):
 
     def test_htmlCleaner_function(self):
 

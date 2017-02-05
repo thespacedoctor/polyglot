@@ -13,10 +13,7 @@ install_requires = [
     'pyyaml',
     'pypolyglot',
     'fundamentals',
-    'requests==2.11.1',
-    'pyopenssl',
-    'ndg-httpsclient',
-    'pyasn1'
+    'requests==2.11.1'
 ]
 
 # READ THE DOCS SERVERS
@@ -50,8 +47,8 @@ setup(name="pypolyglot",
       packages=find_packages(),
       include_package_data=True,
       install_requires=install_requires,
-      test_suite='nose.collector',
-      tests_require=['nose', 'nose-cover3'],
+      test_suite='nose2.collector.collector',
+      tests_require=['nose2', 'cov-core'],
       entry_points={
           'console_scripts': ['polyglot=polyglot.cl_utils:main'],
       },
