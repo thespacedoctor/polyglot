@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # polyglot documentation build configuration file, created by
-# sphinx-quickstart on Thu Dec  8 13:42:04 2016.
+# sphinx-quickstart on Sat Feb 25 07:01:31 2017.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -53,7 +53,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'polyglot'
-copyright = u'2016, Author'
+copyright = u'2017, Author'
 author = u'Author'
 
 # The version info for the project you're documenting, acts as replacement for
