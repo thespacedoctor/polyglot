@@ -35,11 +35,6 @@ class ebook():
         - ``footer`` -- content to add at the end of the article/book content in the resulting ebook. Default *False*
 
     **Usage:**
-        .. todo::
-
-            - add usage info
-            - create a sublime snippet for usage
-            - update the package tutorial if needed
 
         **WebToEpub**
 
@@ -99,7 +94,6 @@ class ebook():
         To instead convert a DOCX document to epub, simply switch out the URL for the path to the DOCX file, like so:
 
         .. code-block:: python
-
 
             from polyglot import ebook
             epub = ebook(
