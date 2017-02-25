@@ -8,6 +8,7 @@
    polyglot.htmlCleaner
    polyglot.kindle
    polyglot.printpdf
+   polyglot.webarchive
    polyglot.markdown.kindle_notebook
  
 

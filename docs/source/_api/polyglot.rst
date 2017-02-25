@@ -25,4 +25,5 @@ Submodules
    polyglot.kindle
    polyglot.printpdf
    polyglot.utKit
+   polyglot.webarchive
 
