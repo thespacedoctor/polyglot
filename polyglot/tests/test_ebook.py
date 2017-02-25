@@ -46,7 +46,7 @@ if not os.path.exists(pathToOutputDir):
 # xt-setup-unit-testing-files-and-folders
 
 
-class test_ebook():
+class test_ebook(unittest.TestCase):
 
     # def test_epub_function(self):
 

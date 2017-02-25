@@ -51,7 +51,7 @@ shutil.copyfile(pathToInputDir + "Non-Kindle.html",
 # xt-setup-unit-testing-files-and-folders
 
 
-class test_kindle_notebook():
+class test_kindle_notebook(unittest.TestCase):
 
     def test_kindle_notebook_function(self):
 

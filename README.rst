@@ -54,7 +54,7 @@ Documentation for polyglot is hosted by `Read the Docs <http://pypolyglot.readth
 Installation
 ============
 
-The easiest way to install polyglot us to use ``pip``:
+The easiest way to install polyglot is to use ``pip``:
 
 .. code:: bash
 

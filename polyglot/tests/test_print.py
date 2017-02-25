@@ -30,7 +30,7 @@ if not os.path.exists(pathToOutputDir):
     os.makedirs(pathToOutputDir)
 
 
-class test_printpdf():
+class test_printpdf(unittest.TestCase):
 
     def test_printpdf_function(self):
 

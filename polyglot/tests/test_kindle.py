@@ -47,7 +47,7 @@ if not os.path.exists(pathToOutputDir):
 # xt-setup-unit-testing-files-and-folders
 
 
-class test_kindle():
+class test_kindle(unittest.TestCase):
 
     def test_kindle_function(self):
 
