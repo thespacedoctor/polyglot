@@ -12,4 +12,5 @@ Submodules
 .. toctree::
 
    polyglot.markdown.kindle_notebook
+   polyglot.markdown.translate
 

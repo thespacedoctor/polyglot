@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # polyglot documentation build configuration file, created by
-# sphinx-quickstart on Sat Feb 25 07:01:31 2017.
+# sphinx-quickstart on Thu Mar  2 13:43:30 2017.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
