@@ -34,6 +34,7 @@ Classes
    polyglot.printpdf
    polyglot.webarchive
    polyglot.markdown.kindle_notebook
+   polyglot.markdown.translate
    polyglot.utKit.utKit 
 
 Functions

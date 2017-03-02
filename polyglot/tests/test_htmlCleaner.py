@@ -2,6 +2,7 @@ import os
 import nose
 import shutil
 import yaml
+import unittest
 from polyglot import htmlCleaner, cl_utils
 from polyglot.utKit import utKit
 
