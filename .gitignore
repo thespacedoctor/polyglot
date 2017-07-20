@@ -3,6 +3,7 @@
 *.sublime-project
 *.sublime-workspace
 .DS_Store
+**/tests/output/*
 .svn
 _git*
 *.orig
