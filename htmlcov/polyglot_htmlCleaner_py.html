@@ -8,7 +8,7 @@
     
     
     <meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
-    <title>Coverage for polyglot/htmlCleaner.py: 84%</title>
+    <title>Coverage for polyglot/htmlCleaner.py: 82%</title>
     <link rel="stylesheet" href="style.css" type="text/css">
     
     <script type="text/javascript" src="jquery.min.js"></script>
@@ -24,15 +24,15 @@
 <div id="header">
     <div class="content">
         <h1>Coverage for <b>polyglot/htmlCleaner.py</b> :
-            <span class="pc_cov">84%</span>
+            <span class="pc_cov">82%</span>
         </h1>
 
         <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
 
         <h2 class="stats">
             89 statements &nbsp;
-            <span class="run hide_run shortkey_r button_toggle_run">75 run</span>
-            <span class="mis shortkey_m button_toggle_mis">14 missing</span>
+            <span class="run hide_run shortkey_r button_toggle_run">73 run</span>
+            <span class="mis shortkey_m button_toggle_mis">16 missing</span>
             <span class="exc shortkey_x button_toggle_exc">0 excluded</span>
 
             
@@ -196,7 +196,7 @@
 <p id="n127" class="stm run hide_run"><a href="#n127">127</a></p>
 <p id="n128" class="stm run hide_run"><a href="#n128">128</a></p>
 <p id="n129" class="pln"><a href="#n129">129</a></p>
-<p id="n130" class="stm run hide_run"><a href="#n130">130</a></p>
+<p id="n130" class="stm mis"><a href="#n130">130</a></p>
 <p id="n131" class="pln"><a href="#n131">131</a></p>
 <p id="n132" class="pln"><a href="#n132">132</a></p>
 <p id="n133" class="stm run hide_run"><a href="#n133">133</a></p>
@@ -254,7 +254,7 @@
 <p id="n185" class="stm run hide_run"><a href="#n185">185</a></p>
 <p id="n186" class="stm run hide_run"><a href="#n186">186</a></p>
 <p id="n187" class="pln"><a href="#n187">187</a></p>
-<p id="n188" class="stm run hide_run"><a href="#n188">188</a></p>
+<p id="n188" class="stm mis"><a href="#n188">188</a></p>
 <p id="n189" class="stm run hide_run"><a href="#n189">189</a></p>
 <p id="n190" class="pln"><a href="#n190">190</a></p>
 <p id="n191" class="pln"><a href="#n191">191</a></p>
@@ -461,7 +461,7 @@
 <p id="t127" class="stm run hide_run">            <span class="nam">thisCss</span> <span class="op">=</span> <span class="nam">readFile</span><span class="op">.</span><span class="nam">read</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t128" class="stm run hide_run">            <span class="nam">readFile</span><span class="op">.</span><span class="nam">close</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t129" class="pln">        <span class="key">else</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t130" class="stm run hide_run">            <span class="nam">thisCss</span> <span class="op">=</span> <span class="str">""</span><span class="strut">&nbsp;</span></p>
+<p id="t130" class="stm mis">            <span class="nam">thisCss</span> <span class="op">=</span> <span class="str">""</span><span class="strut">&nbsp;</span></p>
 <p id="t131" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t132" class="pln">        <span class="com"># CATCH ERRORS</span><span class="strut">&nbsp;</span></p>
 <p id="t133" class="stm run hide_run">        <span class="key">if</span> <span class="str">"error"</span> <span class="key">in</span> <span class="nam">article</span> <span class="key">and</span> <span class="nam">article</span><span class="op">[</span><span class="str">"error"</span><span class="op">]</span> <span class="op">==</span> <span class="nam">True</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
@@ -519,7 +519,7 @@
 <p id="t185" class="stm run hide_run">        <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">h1</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t186" class="stm run hide_run">            <span class="nam">h1</span> <span class="op">=</span> <span class="str">"&lt;h1>%(pageTitle)s&lt;/h1>"</span> <span class="op">%</span> <span class="nam">locals</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t187" class="pln">        <span class="key">else</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t188" class="stm run hide_run">            <span class="nam">h1</span> <span class="op">=</span> <span class="str">""</span><span class="strut">&nbsp;</span></p>
+<p id="t188" class="stm mis">            <span class="nam">h1</span> <span class="op">=</span> <span class="str">""</span><span class="strut">&nbsp;</span></p>
 <p id="t189" class="stm run hide_run">        <span class="nam">content</span> <span class="op">=</span> <span class="str">u"""</span><span class="strut">&nbsp;</span></p>
 <p id="t190" class="pln"><span class="str">&lt;!DOCTYPE html></span><span class="strut">&nbsp;</span></p>
 <p id="t191" class="pln"><span class="str">&lt;html></span><span class="strut">&nbsp;</span></p>
@@ -603,8 +603,8 @@
 <div id="footer">
     <div class="content">
         <p>
-            <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.3.4</a>,
-            created at 2017-03-02 13:43
+            <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.4.1</a>,
+            created at 2017-07-21 10:20
         </p>
     </div>
 </div>
