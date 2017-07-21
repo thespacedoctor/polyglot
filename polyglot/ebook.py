@@ -18,6 +18,7 @@ from fundamentals import tools
 import codecs
 from subprocess import Popen, PIPE
 from datetime import datetime, date, time
+from fundamentals.files.tag import tag
 
 
 class ebook():
@@ -172,6 +173,14 @@ class ebook():
                 epubPath=epub,
                 deleteEpub=False
             )
+
+        tag(
+            log=self.log,
+            filepath=ebook,
+            tags=False,
+            rating=False,
+            wherefrom=self.url
+        )
 
         self.log.info('completed the ``get`` method')
         return ebook

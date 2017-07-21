@@ -22,6 +22,7 @@ from subprocess import Popen, PIPE, STDOUT
 from docopt import docopt
 from fundamentals import tools, times
 import codecs
+from fundamentals.files.tag import tag
 # SET ENCODE ERROR RETURN VALUE
 
 
@@ -148,9 +149,17 @@ class printpdf():
             self.append = ""
 
         if not self.readability:
-            return self._print_original_webpage()
+            pdfPath = self._print_original_webpage()
         else:
-            return self._print_parsed_webpage()
+            pdfPath = self._print_parsed_webpage()
+
+        tag(
+            log=self.log,
+            filepath=pdfPath,
+            tags=False,
+            rating=False,
+            wherefrom=self.url
+        )
 
         self.log.info('completed the ``get`` method')
         return pdfPath
