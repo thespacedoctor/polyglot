@@ -17,6 +17,7 @@ import re
 os.environ['TERM'] = 'vt100'
 from fundamentals import tools
 import requests
+from fundamentals.files.tag import tag
 
 
 class htmlCleaner():
@@ -212,6 +213,15 @@ class htmlCleaner():
         writeFile.close()
 
         self.log.info('completed the ``clean`` method')
+
+        tag(
+            log=self.log,
+            filepath=filePath,
+            tags=False,
+            rating=False,
+            wherefrom=self.url
+        )
+
         return filePath
 
     def _request_parsed_article_from_mercury(
