@@ -97,7 +97,7 @@ class kindle_notebook():
 
             usage code 
         """
-        self.log.info('starting the ``convert`` method')
+        self.log.debug('starting the ``convert`` method')
 
         import codecs
         pathToReadFile = self.kindleExportPath
@@ -197,7 +197,7 @@ class kindle_notebook():
         writeFile.write(mdContent)
         writeFile.close()
 
-        self.log.info('completed the ``convert`` method')
+        self.log.debug('completed the ``convert`` method')
         return pathToWriteFile
 
     def clean(self, text):

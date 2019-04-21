@@ -105,7 +105,7 @@ class htmlCleaner():
 
             See class usage 
         """
-        self.log.info('starting the ``clean`` method')
+        self.log.debug('starting the ``clean`` method')
 
         url = self.url
 
@@ -212,7 +212,7 @@ class htmlCleaner():
         writeFile.write(content)
         writeFile.close()
 
-        self.log.info('completed the ``clean`` method')
+        self.log.debug('completed the ``clean`` method')
 
         tag(
             log=self.log,
@@ -247,8 +247,8 @@ class htmlCleaner():
                 usage code 
 
         """
-        self.log.info(
-            'starting the ``_request_parsed_article_from_mercury`` method')
+        self.log.debug(
+            'completed the ````_request_parsed_article_from_mercury`` method')
 
         try:
             response = requests.get(
@@ -264,7 +264,7 @@ class htmlCleaner():
         except requests.exceptions.RequestException:
             print('HTTP Request failed')
 
-        self.log.info(
+        self.log.debug(
             'completed the ``_request_parsed_article_from_mercury`` method')
         return response
 

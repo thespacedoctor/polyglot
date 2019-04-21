@@ -71,7 +71,7 @@ class webarchive():
 
             See class docstring for usage
         """
-        self.log.info('starting the ``create`` method')
+        self.log.debug('starting the ``create`` method')
 
         from subprocess import Popen, PIPE, STDOUT
         webarchiver = self.settings["executables"]["webarchiver"]
@@ -87,7 +87,7 @@ class webarchive():
                 "Could not generate the webarchive for this webpage: %(url)s. %(stderr)s " % locals())
             return -1
 
-        self.log.info('completed the ``create`` method')
+        self.log.debug('completed the ``create`` method')
         return webarchive
 
     # xt-class-method

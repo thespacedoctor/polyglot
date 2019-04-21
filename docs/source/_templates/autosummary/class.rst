@@ -1,20 +1,31 @@
 {{ fullname }} (*class*)
-{{ underline }}
+{{ underline }}==========
 
 .. currentmodule:: {{ module }}
 
 .. autoclass:: {{ objname }}
+   :members:
+   :private-members:
+   :show-inheritance:
+   :inherited-members:
+   :member-order: bysource
 
-   {% block methods %}
-   .. automethod:: __init__
+    {% block members %}
 
-   {% if methods %}
+   {% if members %}
    .. rubric:: Methods
 
    .. autosummary::
    {% for item in methods %}
-      ~{{ name }}.{{ item }}
-   {%- endfor %}
+        {% if "__" not in item %}
+            ~{{ name }}.{{ item }}
+       {% endif %}
+   {% endfor %}
+   {% for item in members %}
+       {% if "__" not in item and item not in methods and "_" in item %}
+            ~{{ name }}.{{ item }}
+        {% endif %}
+   {% endfor %}
    {% endif %}
    {% endblock %}
 
@@ -25,6 +36,6 @@
    .. autosummary::
    {% for item in attributes %}
       ~{{ name }}.{{ item }}
-   {%- endfor %}
+   {% endfor %}
    {% endif %}
    {% endblock %}

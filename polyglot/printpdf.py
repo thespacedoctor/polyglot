@@ -23,6 +23,8 @@ from docopt import docopt
 from fundamentals import tools, times
 import codecs
 from fundamentals.files.tag import tag
+import requests
+import bs4
 # SET ENCODE ERROR RETURN VALUE
 
 
@@ -142,7 +144,7 @@ class printpdf():
         **Return:**
             - ``pdfPath`` -- the path to the generated PDF
         """
-        self.log.info('starting the ``get`` method')
+        self.log.debug('starting the ``get`` method')
 
         # APPEND TO FILENAME?
         if not self.append:
@@ -156,12 +158,12 @@ class printpdf():
         tag(
             log=self.log,
             filepath=pdfPath,
-            tags=False,
-            rating=False,
+            tags="pop",
+            rating=2,
             wherefrom=self.url
         )
 
-        self.log.info('completed the ``get`` method')
+        self.log.debug('completed the ``get`` method')
         return pdfPath
 
     def _print_original_webpage(
@@ -171,25 +173,12 @@ class printpdf():
         **Return:**
             - ``pdfPath`` -- the path to the generated PDF
         """
-        self.log.info('starting the ``_print_original_webpage`` method')
+        self.log.debug('starting the ``_print_original_webpage`` method')
 
         if not self.title:
-            from polyglot import htmlCleaner
-            cleaner = htmlCleaner(
-                log=self.log,
-                settings=self.settings,
-                url=self.url,
-                outputDirectory=self.folderpath,
-                title=self.title,  # SET TO FALSE TO USE WEBPAGE TITLE,
-                style=True,  # add polyglot's styling to the HTML document
-                # include metadata in generated HTML (e.g. title),
-                metadata=True,
-                h1=True  # include title as H1 at the top of the doc
-            )
-            htmlFile = cleaner.clean()
-            basename = os.path.basename(htmlFile)
-            title = basename.replace(".html", "")
-            os.remove(htmlFile)
+            r = requests.get(self.url)
+            title = bs4.BeautifulSoup(r.text).title.text
+            print title
         else:
             title = self.title
 
@@ -210,7 +199,7 @@ class printpdf():
             print "%(pdfPath)s was not generated for some reason - please investigate" % locals()
             sys.exit(0)
 
-        self.log.info('completed the ``_print_original_webpage`` method')
+        self.log.debug('completed the ``_print_original_webpage`` method')
         return pdfPath
 
     def _print_parsed_webpage(
@@ -220,7 +209,7 @@ class printpdf():
         **Return:**
             - ``pdfPath`` -- the path to the generated PDF
         """
-        self.log.info('starting the ``_print_parsed_webpage()`` method')
+        self.log.debug('starting the ``_print_parsed_webpage()`` method')
 
         from polyglot import htmlCleaner
         cleaner = htmlCleaner(
@@ -256,7 +245,7 @@ class printpdf():
             print "%(pdfPath)s was not generated for some reason - please investigate" % locals()
             sys.exit(0)
 
-        self.log.info('completed the ``_print_parsed_webpage()`` method')
+        self.log.debug('completed the ``_print_parsed_webpage()`` method')
         return pdfPath
 
 

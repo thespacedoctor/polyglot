@@ -1,5 +1,5 @@
 {{ fullname }} (*function*)
-{{ underline }}
+{{ underline }}=============
 
 .. currentmodule:: {{ module }}
 

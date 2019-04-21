@@ -13,7 +13,8 @@ install_requires = [
     'pyyaml',
     'pypolyglot',
     'fundamentals',
-    'requests'
+    'requests',
+    'bs4'
 ]
 
 # READ THE DOCS SERVERS
