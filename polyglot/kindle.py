@@ -92,7 +92,7 @@ class kindle(ebook):
         **Return:**
             - ``success`` -- True or False depending on the success/failure of sending the email to the kindle email address(es).
         """
-        self.log.info('starting the ``send`` method')
+        self.log.debug('starting the ``send`` method')
 
         if self.urlOrPath.split(".")[-1] == "docx":
             if self.title:
@@ -142,7 +142,7 @@ class kindle(ebook):
 
         os.remove(pathToMobi)
 
-        self.log.info('completed the ``send`` method')
+        self.log.debug('completed the ``send`` method')
         return True
 
     def get_attachment(self, file_path):

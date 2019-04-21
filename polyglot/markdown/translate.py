@@ -313,12 +313,12 @@ class translate():
 
         **Key Arguments:**
             - ``title`` -- the citation title
-            - ``author`` -- the author. Dafault *False*
-            - ``year`` -- year published. Dafault *False*
-            - ``url`` -- url to the media. Dafault *False*
-            - ``publisher`` -- the publisher of the media. Dafault *False*
-            - ``mediaKind`` -- what kind of media is it?. Dafault *False*
-            - ``linkedText`` -- the text to link to the citation. Dafault *False/blank*
+            - ``author`` -- the author. Default *False*
+            - ``year`` -- year published. Default *False*
+            - ``url`` -- url to the media. Default *False*
+            - ``publisher`` -- the publisher of the media. Default *False*
+            - ``mediaKind`` -- what kind of media is it?. Default *False*
+            - ``linkedText`` -- the text to link to the citation. Default *False/blank*
             - ``nocite`` -- a give citation that has no reference in main doc
 
         **Return:**
@@ -780,7 +780,7 @@ class translate():
         **Return:**
             - ``prefix``, ``text``, ``suffix`` -- the starting whitespace, text and endding whitespace
         """
-        self.log.info('starting the ``_snip_whitespace`` method')
+        self.log.debug('starting the ``_snip_whitespace`` method')
 
         m = self.reWS.match(text)
 
@@ -788,7 +788,7 @@ class translate():
         text = m.group(2)
         suffix = m.group(3)
 
-        self.log.info('completed the ``_snip_whitespace`` method')
+        self.log.debug('completed the ``_snip_whitespace`` method')
         return prefix, text, suffix
 
     def _surround(
@@ -806,7 +806,7 @@ class translate():
         **Return:**
             - ``text`` -- the surronded text
         """
-        self.log.info('starting the ``_surround`` method')
+        self.log.debug('starting the ``_surround`` method')
 
         prefix, text, suffix = self._snip_whitespace(text)
 
@@ -815,7 +815,7 @@ class translate():
 
         text = """%(prefix)s%(left)s%(text)s%(right)s%(suffix)s""" % locals()
 
-        self.log.info('completed the ``_surround`` method')
+        self.log.debug('completed the ``_surround`` method')
         return text
 
     # use the tab-trigger below for new method

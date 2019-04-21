@@ -152,7 +152,7 @@ class ebook():
 
             See class docstring for usage
         """
-        self.log.info('starting the ``get`` method')
+        self.log.debug('starting the ``get`` method')
 
         if self.format == "epub":
             if self.urlOrPath[:4] == "http" or self.urlOrPath[:4] == "www.":
@@ -182,14 +182,14 @@ class ebook():
             wherefrom=self.url
         )
 
-        self.log.info('completed the ``get`` method')
+        self.log.debug('completed the ``get`` method')
         return ebook
 
     def _url_to_epub(
             self):
         """*generate the epub book from a URL*
         """
-        self.log.info('starting the ``_url_to_epub`` method')
+        self.log.debug('starting the ``_url_to_epub`` method')
 
         from polyglot import htmlCleaner
         cleaner = htmlCleaner(
@@ -240,7 +240,7 @@ class ebook():
 
         os.remove(html)
 
-        self.log.info('completed the ``_url_to_epub`` method')
+        self.log.debug('completed the ``_url_to_epub`` method')
         return epub
 
     def _tmp_html_file(
@@ -251,7 +251,7 @@ class ebook():
         **Key Arguments:**
             - ``content`` -- the content to include in the HTML file.
         """
-        self.log.info('starting the ``_tmp_html_file`` method')
+        self.log.debug('starting the ``_tmp_html_file`` method')
 
         content = """
 
@@ -278,7 +278,7 @@ class ebook():
         writeFile.write(content)
         writeFile.close()
 
-        self.log.info('completed the ``_tmp_html_file`` method')
+        self.log.debug('completed the ``_tmp_html_file`` method')
         return pathToWriteFile
 
     def _epub_to_mobi(
@@ -294,7 +294,7 @@ class ebook():
         **Return:**
             - ``mobi`` -- the path to the generated mobi book
         """
-        self.log.info('starting the ``_epub_to_mobi`` method')
+        self.log.debug('starting the ``_epub_to_mobi`` method')
 
         mobi = epubPath.replace(".epub", ".mobi")
         kindlegen = self.settings["executables"]["kindlegen"]
@@ -317,14 +317,14 @@ class ebook():
         if deleteEpub:
             os.remove(epubPath)
 
-        self.log.info('completed the ``_epub_to_mobi`` method')
+        self.log.debug('completed the ``_epub_to_mobi`` method')
         return mobi
 
     def _docx_to_epub(
             self):
         """*convert docx file to epub*
         """
-        self.log.info('starting the ``_docx_to_epub`` method')
+        self.log.debug('starting the ``_docx_to_epub`` method')
 
         if self.footer:
             footer = self._tmp_html_file(self.footer)
@@ -405,7 +405,7 @@ class ebook():
                     "the epub %s does not exist on this machine, here is the failure message: %s" % (epub, stderr))
                 return None
 
-        self.log.info('completed the ``_docx_to_epub`` method')
+        self.log.debug('completed the ``_docx_to_epub`` method')
         return epub
 
     # use the tab-trigger below for new method
