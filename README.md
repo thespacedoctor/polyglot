@@ -58,7 +58,7 @@ Installation
 
 The easiest way to install polyglot is to use `pip`:
 
-    pip install polyglot
+    pip install pypolyglot
 
 Or you can clone the [github
 repo](https://github.com/thespacedoctor/polyglot) and install from a
@@ -70,7 +70,7 @@ local version of the code:
 
 To upgrade to the latest version of polyglot use the command:
 
-    pip install polyglot --upgrade
+    pip install pypolyglot --upgrade
 
 Development
 -----------

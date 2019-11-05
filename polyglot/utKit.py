@@ -71,10 +71,11 @@ class utKit(utKit):
         # Override Variable Data Atrributes
         self.dbConfig = """
          version: 1
-         db: dryx_unit_testing
+         db: unit_tests
          host: localhost
-         user: unittesting
+         user: utuser
          password: utpass
+         loginPath: unittesting
          """
 
         return
@@ -134,10 +135,11 @@ class utKit(utKit):
         # Override Variable Data Atrributes
         self.dbConfig = """
          version: 1
-         db: dryx_unit_testing
+         db: unit_tests
          host: localhost
-         user: unittesting
+         user: utuser
          password: utpass
+         loginPath: unittesting
          """
 
         return
@@ -200,10 +202,11 @@ class utKit(utKit):
         # Override Variable Data Atrributes
         self.dbConfig = """
          version: 1
-         db: dryx_unit_testing
+         db: unit_tests
          host: localhost
-         user: unittesting
+         user: utuser
          password: utpass
+         loginPath: unittesting
          """
 
         return
