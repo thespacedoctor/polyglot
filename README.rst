@@ -10,8 +10,8 @@ polyglot
     :target: http://pypolyglot.readthedocs.io/en/latest/?badge
     :alt: Documentation Status
 
-.. image:: https://cdn.rawgit.com/thespacedoctor/polyglot/master/coverage.svg
-    :target: https://cdn.rawgit.com/thespacedoctor/polyglot/master/htmlcov/index.html
+.. image:: https://cdn.jsdelivr.net/gh/thespacedoctor/polyglot@master/coverage.svg
+    :target: https://cdn.jsdelivr.net/gh/thespacedoctor/polyglot@master/htmlcov/index.html
     :alt: Coverage Status
 
 

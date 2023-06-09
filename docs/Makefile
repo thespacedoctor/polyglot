@@ -79,7 +79,7 @@ html:
 	sed -i -e "s/Here's a summary of what's included in the python package://g" $(BLOGRST)
 	sed -i -e "s/.. include:: \/classes_and_functions.rst//g" $(BLOGRST)
 
-    pandoc -s --columns=3000 --smart --wrap=preserve -f rst -t  markdown_mmd+yaml_metadata_block+tex_math_dollars+mmd_link_attributes+raw_html+backtick_code_blocks --output=$(BLOGMD) $(BLOGRST)
+    pandoc -s --columns=3000 --wrap=preserve -f rst -t  markdown_mmd+yaml_metadata_block+tex_math_dollars+mmd_link_attributes+raw_html+backtick_code_blocks+smart --output=$(BLOGMD) $(BLOGRST)
 
 	pandoc --from=rst --to=markdown_mmd --output=$(READMEMD) $(READMERST)
 

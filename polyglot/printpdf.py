@@ -187,10 +187,11 @@ class printpdf():
         url = self.url
         pdfPath = self.folderpath + "/" + title + self.append + ".pdf"
         electron = self.settings["executables"]["electron path"]
-        cmd = """%(electron)s -i "%(url)s" -o "%(pdfPath)s" --printBackground """ % locals()
+        cmd = """%(electron)s "%(url)s" "%(pdfPath)s" --printBackground """ % locals()
         p = Popen(cmd, stdout=PIPE, stderr=PIPE, shell=True)
         stdout, stderr = p.communicate()
         self.log.debug('output: %(stdout)s' % locals())
+        print cmd
         if len(stderr):
             print stderr
 

@@ -7,3 +7,11 @@ include *.rst
 recursive-include polyglot *
 global-exclude *.pyo
 global-exclude *.pyc
+recursive-exclude tests *
+recursive-exclude */tests *
+recursive-exclude */*/tests *
+recursive-exclude */*/*/tests *
+recursive-exclude tests
+prune tests*
+global-exclude *_test.py
+global-exclude tests

@@ -9,7 +9,7 @@ mobi ..)*.
 
 [![Documentation Status](https://readthedocs.org/projects/pypolyglot/badge/)](http://pypolyglot.readthedocs.io/en/latest/?badge)
 
-[![Coverage Status](https://cdn.rawgit.com/thespacedoctor/polyglot/master/coverage.svg)](https://cdn.rawgit.com/thespacedoctor/polyglot/master/htmlcov/index.html)
+[![Coverage Status](https://cdn.jsdelivr.net/gh/thespacedoctor/polyglot@master/coverage.svg)](https://cdn.jsdelivr.net/gh/thespacedoctor/polyglot@master/htmlcov/index.html)
 
 Here's a summary of what's included in the python package:
 
